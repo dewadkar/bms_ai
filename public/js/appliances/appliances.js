@@ -86,11 +86,12 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         for (var i = 0; i < data.length; i++) {
             var listData = {};
             listData.index = data[i].floor;
-            listData.devices = data[i].data.devices.join('    ');
+            listData.devices = data[i].data.devices;
             listData.status = data[i].data.status;
             listData.discription = data[i].data.discription;
+            listData.rul = data[i].data.rul;
             listData.risk = data[i].data.risk;
-            listData.risk_history = data[i].data.risk_history;
+            listData.risk_history = data[i].data.risk_history.join('    ');
             listData.nominal_impact = data[i].data.nominal_impact;
             listData.expected_impact = data[i].data.expected_impact;
             listData.last_unschedule_maintanance = data[i].data.last_unschedule_maintanance;
@@ -107,10 +108,11 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         $scope.table = $(tabelID).DataTable({
             'data': $scope.tableData,
             'columns': [
-                { title: '# Block', width: '10px', data: 'index' },
+                { title: '#Block', width: '10px', data: 'index' },
                 { title: "Devices ", width: '30px', data: 'devices' },
                 { title: "Status ", width: '30px', data: 'status' },
                 { title: "Description ", width: '30px', data: 'discription' },
+                { title: "Remaining Useful Life (Days)", width: '30px', data: 'rul' },
                 { title: "Risk ", width: '30px', data: 'risk' },
                 { title: "Risk History ", width: '30px', data: 'risk_history' },
                 { title: "Nominal Impact ", width: '30px', data: 'nominal_impact' },
@@ -144,20 +146,19 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         "floor": "1",
         "data": {
             "flat_no": "101",
-            "devices": ['<a id="ac" href="/asset" >\u25C7</a>', '<a href="/asset" id="gyser">\u25CD</a>', '<a id="tv" href="/asset">\u25C8</a>'],
-            "status": "",
-            "discription": "",
-            "risk": "",
-            "risk_history": "",
-            "nominal_impact": "",
-            "expected_impact": "",
-            "last_unschedule_maintanance": "",
-            "average_subsystem_risk_level": "",
-            "max_subsystem_risk_level": "",
-            "average_exp_subsystem_impact": "",
-            "high_exp_subsystem_impact": "",
-            "location": ""
-
+            "devices": ['<a id="ac" href="/asset">\u25C8</a>'],
+            "status": "Active",
+            "discription": "Installed since three month",
+            "rul": "900 ",
+            "risk": "10 %",
+            "risk_history": [7, 8, 10],
+            "nominal_impact": "3 %",
+            "expected_impact": "3 %",
+            "last_unschedule_maintanance": "NA",
+            "average_subsystem_risk_level": "50 %",
+            "max_subsystem_risk_level": "70 %",
+            "average_exp_subsystem_impact": "50 %",
+            "high_exp_subsystem_impact": "70 %"
 
         }
 
@@ -167,23 +168,140 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
 
         "data": {
             "flat_no": "201",
-            "devices": ['<a id="ac" href="/asset">\u25C8</a>', '<a id="washing_machine" href="/asset">\u25D8</a>', '<a id="freeze" href="/asset">\u25CD</a>'],
+            "devices": ['<a id="gyser" href="/asset">\u25C7</a>'],
             "status": "active",
-            "discription": "",
-            "risk": "20",
-            "risk_history": "",
-            "nominal_impact": "",
-            "expected_impact": "",
-            "last_unschedule_maintanance": "",
-            "average_subsystem_risk_level": "",
-            "max_subsystem_risk_level": "",
-            "average_exp_subsystem_impact": "",
-            "high_exp_subsystem_impact": "",
-            "location": ""
+            "discription": "Installed since eight month",
+            "rul": "365 ",
+            "risk": "10 %",
+            "risk_history": [7, 8, 10],
+            "nominal_impact": "3 %",
+            "expected_impact": "3 %",
+            "last_unschedule_maintanance": "NA",
+            "average_subsystem_risk_level": "50 %",
+            "max_subsystem_risk_level": "70 %",
+            "average_exp_subsystem_impact": "50 %",
+            "high_exp_subsystem_impact": "70 %"
 
-        }
+        },
 
-    }];
+
+    },
+    {
+        "floor": "1",
+
+        "data": {
+            "flat_no": "102",
+            "devices": ['<a id="gyser" href="/asset">\u25C8</a>'],
+            "status": "active",
+            "discription": "Installed since eight month",
+            "rul": "365 ",
+            "risk": "10 %",
+            "risk_history": [7, 8, 10],
+            "nominal_impact": "3 %",
+            "expected_impact": "3 %",
+            "last_unschedule_maintanance": "NA",
+            "average_subsystem_risk_level": "50 %",
+            "max_subsystem_risk_level": "70 %",
+            "average_exp_subsystem_impact": "50 %",
+            "high_exp_subsystem_impact": "70 %"
+
+        },
+
+
+    },
+    {
+        "floor": "1",
+
+        "data": {
+            "flat_no": "103",
+            "devices": ['<a id="gyser" href="/asset">\u25D8</a>'],
+            "status": "active",
+            "discription": "Installed since eight month",
+            "rul": "365 ",
+            "risk": "10 %",
+            "risk_history": [7, 8, 10],
+            "nominal_impact": "3 %",
+            "expected_impact": "3 %",
+            "last_unschedule_maintanance": "NA",
+            "average_subsystem_risk_level": "50 %",
+            "max_subsystem_risk_level": "70 %",
+            "average_exp_subsystem_impact": "50 %",
+            "high_exp_subsystem_impact": "70 %"
+
+        },
+
+
+    },
+    {
+        "floor": "1",
+
+        "data": {
+            "flat_no": "104",
+            "devices": ['<a id="gyser" href="/asset">\u22C8</a>'],
+            "status": "active",
+            "discription": "Installed since eight month",
+            "rul": "365 ",
+            "risk": "10 %",
+            "risk_history": [7, 8, 10],
+            "nominal_impact": "3 %",
+            "expected_impact": "3 %",
+            "last_unschedule_maintanance": "NA",
+            "average_subsystem_risk_level": "50 %",
+            "max_subsystem_risk_level": "70 %",
+            "average_exp_subsystem_impact": "50 %",
+            "high_exp_subsystem_impact": "70 %"
+
+        },
+
+
+    },
+    {
+        "floor": "2",
+
+        "data": {
+            "flat_no": "201",
+            "devices": ['<a id="gyser" href="/asset">\u23C8</a>'],
+            "status": "active",
+            "discription": "Installed since eight month",
+            "rul": "365 ",
+            "risk": "10 %",
+            "risk_history": [7, 8, 10],
+            "nominal_impact": "3 %",
+            "expected_impact": "3 %",
+            "last_unschedule_maintanance": "NA",
+            "average_subsystem_risk_level": "50 %",
+            "max_subsystem_risk_level": "70 %",
+            "average_exp_subsystem_impact": "50 %",
+            "high_exp_subsystem_impact": "70 %"
+
+        },
+
+
+    },
+    {
+        "floor": "2",
+
+        "data": {
+            "flat_no": "202",
+            "devices": ['<a id="gyser" href="/asset">\u25CD</a>'],
+            "status": "active",
+            "discription": "Installed since eight month",
+            "rul": "365 ",
+            "risk": "10 %",
+            "risk_history": [7, 8, 10],
+            "nominal_impact": "3 %",
+            "expected_impact": "3 %",
+            "last_unschedule_maintanance": "NA",
+            "average_subsystem_risk_level": "50 %",
+            "max_subsystem_risk_level": "70 %",
+            "average_exp_subsystem_impact": "50 %",
+            "high_exp_subsystem_impact": "70 %"
+
+        },
+
+
+    }
+    ];
 
     // console.log(data);
     var tabelID = "#table-building";
