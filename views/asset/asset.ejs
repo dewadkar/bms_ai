@@ -8,11 +8,11 @@
 
     </script>
 
-    <script src="/js/appliances/asset.js"></script>
+    <script src="/js/asset/asset.js"></script>
 
 </head>
 
-<body ng-app="appliances" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
+<body ng-app="asset" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
 
     <div class="wrapper">
         <% include ../partial/headbar.ejs %>
@@ -31,20 +31,16 @@
             </section>
             <section class="content" ng-controller="assetController">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="box box-primary" ng-cloak>
+                    <div class="col-md-6">
+                        <%- include ../asset/side_left.ejs %>
 
 
-                            <div class="box-body">
-                                <div class="row">
-
-
-                                </div>
-                                <!-- /.row -->
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
                     </div>
+                    <div class="col-md-6">
+                        <%- include ../asset/side_right.ejs %>
+
+                    </div>
+
 
                 </div>
             </section>

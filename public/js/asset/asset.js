@@ -1,4 +1,4 @@
-var app = angular.module('appliances', []);
+var app = angular.module('asset', []);
 
 app.factory('Scopes', function ($rootScope) {
     var mem = {};

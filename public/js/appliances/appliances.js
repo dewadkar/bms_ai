@@ -151,7 +151,7 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         "floor": "1",
         "data": {
             "flat_no": "101",
-            "devices": ['<a id="ac" href="#" >\u25C8</a>', '<a href="#" id="gyser">\u25CD</a>', '<a href="/">\u25C8</a>'],
+            "devices": ['<a id="ac" href="/asset" >\u25C8</a>', '<a href="#" id="gyser">\u25CD</a>', '<a href="/">\u25C8</a>'],
             "status": "",
             "discription": "",
             "risk": "",

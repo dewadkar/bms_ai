@@ -9,5 +9,5 @@ module.exports = function (app) {
 
     // Simulation Appliances page
     require('./appliances/appliances')(app);
-    require('./appliances/asset')(app);
+    require('./asset/asset')(app);
 };

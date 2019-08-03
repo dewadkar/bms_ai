@@ -1,5 +1,5 @@
 // Location for logs
-var location = '/routes/appliances/asset';
+var location = '/routes/asset/asset';
 
 module.exports = function (app) {
 
@@ -12,7 +12,7 @@ module.exports = function (app) {
      */
     this.view = function (request, response) {
         // var loc = location + 'view';
-        response.render('appliances/asset', { title: "Asset", });
+        response.render('asset/asset', { title: "Asset", });
     };
 
     // Kvinna home page
