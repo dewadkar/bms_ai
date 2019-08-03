@@ -33,252 +33,501 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
 
     $scope.building_data = [
         {
-            id: 'Block-1',
+            id: 'Block-A',
             devices: [
                 {
-                    id: 'Device-1',
-                    icon: 'fa fa-battery-2',
-                    status: ''
-                },
-                {
                     id: 'Device-2',
-                    icon: 'fa fa-hourglass-2',
+                    icon: 'fas fa-battery-three-quarters',
                     status: ''
                 },
                 {
                     id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
+                    icon: 'fas fa-fan',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-odnoklassniki-square',
+                    icon: 'fas fa-hourglass-half',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-safari',
+                    icon: 'fab fa-safari',
                     status: ''
                 }
             ]
         },
         {
-            id: 'Block-2',
+            id: 'Block-B',
             devices: [
                 {
-                    id: 'Device-1',
-                    icon: 'fa fa-battery-2',
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
                     status: ''
                 },
                 {
                     id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
+                    icon: 'fas fa-fan',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-odnoklassniki-square',
+                    icon: 'fas fa-hourglass-half',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-safari',
+                    icon: 'fab fa-safari',
                     status: ''
                 }
             ]
         },
         {
-            id: 'Block-3',
+            id: 'Block-C',
             devices: [
                 {
-                    id: 'Device-1',
-                    icon: 'fa fa-battery-2',
-                    status: ''
-                },
-                {
                     id: 'Device-2',
-                    icon: 'fa fa-hourglass-2',
+                    icon: 'fas fa-battery-three-quarters',
                     status: ''
                 },
                 {
                     id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
-                    status: ''
-                },
-                
-            ]
-        },
-        {
-            id: 'Block-4',
-            devices: [
-                {
-                    id: 'Device-2',
-                    icon: 'fa fa-hourglass-2',
-                    status: ''
-                },
-                {
-                    id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
+                    icon: 'fas fa-fan',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-odnoklassniki-square',
+                    icon: 'fas fa-hourglass-half',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-safari',
+                    icon: 'fab fa-safari',
                     status: ''
                 }
             ]
         },
         {
-            id: 'Block-4',
+            id: 'Block-D',
             devices: [
                 {
                     id: 'Device-2',
-                    icon: 'fa fa-hourglass-2',
+                    icon: 'fas fa-battery-three-quarters',
                     status: ''
                 },
                 {
                     id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
+                    icon: 'fas fa-fan',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-odnoklassniki-square',
+                    icon: 'fas fa-hourglass-half',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-safari',
+                    icon: 'fab fa-safari',
                     status: ''
                 }
             ]
         },
         {
-            id: 'Block-4',
+            id: 'Block-E',
             devices: [
                 {
                     id: 'Device-2',
-                    icon: 'fa fa-hourglass-2',
+                    icon: 'fas fa-battery-three-quarters',
                     status: ''
                 },
                 {
                     id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
+                    icon: 'fas fa-fan',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-odnoklassniki-square',
+                    icon: 'fas fa-hourglass-half',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-safari',
+                    icon: 'fab fa-safari',
                     status: ''
                 }
             ]
         },
         {
-            id: 'Block-4',
+            id: 'Block-F',
             devices: [
                 {
                     id: 'Device-2',
-                    icon: 'fa fa-hourglass-2',
+                    icon: 'fas fa-battery-three-quarters',
                     status: ''
                 },
                 {
                     id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
+                    icon: 'fas fa-fan',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-odnoklassniki-square',
+                    icon: 'fas fa-hourglass-half',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-safari',
+                    icon: 'fab fa-safari',
                     status: ''
                 }
             ]
         },
         {
-            id: 'Block-4',
+            id: 'Block-G',
             devices: [
                 {
                     id: 'Device-2',
-                    icon: 'fa fa-hourglass-2',
+                    icon: 'fas fa-battery-three-quarters',
                     status: ''
                 },
                 {
                     id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
+                    icon: 'fas fa-fan',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-odnoklassniki-square',
+                    icon: 'fas fa-hourglass-half',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-safari',
+                    icon: 'fab fa-safari',
                     status: ''
                 }
             ]
         },
         {
-            id: 'Block-4',
+            id: 'Block-H',
             devices: [
                 {
                     id: 'Device-2',
-                    icon: 'fa fa-hourglass-2',
+                    icon: 'fas fa-battery-three-quarters',
                     status: ''
                 },
                 {
                     id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
+                    icon: 'fas fa-fan',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-odnoklassniki-square',
+                    icon: 'fas fa-hourglass-half',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-safari',
+                    icon: 'fab fa-safari',
                     status: ''
                 }
             ]
         },
         {
-            id: 'Block-4',
+            id: 'Block-I',
             devices: [
                 {
                     id: 'Device-2',
-                    icon: 'fa fa-hourglass-2',
+                    icon: 'fas fa-battery-three-quarters',
                     status: ''
                 },
                 {
                     id: 'Device-3',
-                    icon: 'fa fa-gg-circle',
+                    icon: 'fas fa-fan',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-odnoklassniki-square',
+                    icon: 'fas fa-hourglass-half',
                     status: ''
                 },
                 {
                     id: 'Device-1',
-                    icon: 'fa fa-safari',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-J',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-K',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-L',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-M',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-N',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-O',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-P',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-Q',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-R',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-S',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-T',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fas fa-battery-three-quarters',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fas fa-fan',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fas fa-hourglass-half',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fab fa-safari',
                     status: ''
                 }
             ]
