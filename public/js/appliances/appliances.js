@@ -94,11 +94,8 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
             listData.nominal_impact = data[i].data.nominal_impact;
             listData.expected_impact = data[i].data.expected_impact;
             listData.last_unschedule_maintanance = data[i].data.last_unschedule_maintanance;
-            listData.average_subsystem_risk_level = data[i].data.average_subsystem_risk_level;
             listData.max_subsystem_risk_level = data[i].data.max_subsystem_risk_level;
-            listData.average_exp_subsystem_impact = data[i].data.average_exp_subsystem_impact;
             listData.high_exp_subsystem_impact = data[i].data.high_exp_subsystem_impact;
-            listData.location = data[i].data.location;
             $scope.tableData.push(listData);
         }
 
@@ -119,11 +116,8 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
                 { title: "Nominal Impact ", width: '30px', data: 'nominal_impact' },
                 { title: "Expected Impact ", width: '30px', data: 'expected_impact' },
                 { title: "Last Unschedule Maintanance ", width: '30px', data: 'last_unschedule_maintanance' },
-                { title: "Avg Subsystem Risk Level ", width: '30px', data: 'average_subsystem_risk_level' },
                 { title: "Max Subsystem Risk Level ", width: '30px', data: 'max_subsystem_risk_level' },
-                { title: "Average Exp Subsystem Impact ", width: '30px', data: 'average_exp_subsystem_impact' },
                 { title: "High Exp Subsystem Impact ", width: '30px', data: 'high_exp_subsystem_impact' },
-                { title: "Location ", width: '30px', data: 'location' },
 
             ],
             createdRow: function (row, data, dataIndex) {
@@ -219,5 +213,36 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         html: true,
     });
 
+    // Check for the various File API support.
+    if ($window.File && $window.FileReader && $window.FileList && $window.Blob) {
+        // Great success! All the File APIs are supported.
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "resources/data.csv",
+                dataType: "text",
+                success: function (data) { processData(data); }
+            });
+        });
+
+        function processData(allText) {
+            var record_num = 5;  // or however many elements there are in each row
+            var allTextLines = allText.split(/\r\n|\n/);
+            var entries = allTextLines[0].split(',');
+            var lines = [];
+
+            var headings = entries.splice(0, record_num);
+            while (entries.length > 0) {
+                var tarr = [];
+                for (var j = 0; j < record_num; j++) {
+                    tarr.push(headings[j] + ":" + entries.shift());
+                }
+                lines.push(tarr);
+            }
+            // alert(lines);
+        }
+    } else {
+        alert('The File APIs are not fully supported in this browser.');
+    }
 
 });
