@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simulation - Appliances</title>
+    <% include ../partial/head.ejs %>
+    <script>
+
+    </script>
+
+    <script src="/js/appliances/appliances.js"></script>
+
+</head>
+
+<body ng-app="appliances" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
+
+    <div class="wrapper">
+        <% include ../partial/headbar.ejs %>
+        <% include ../partial/sidebar.ejs %>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    Appliances
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/appliances"><i class="fa fa-home"></i>Appliances</a></li>
+                </ol>
+            </section>
+
+            <section class="content" ng-controller="appliancesController">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-primary" ng-cloak>
+                            <div class="box-header with-border" data-widget="collapse">
+                                <h3 class="box-title">Device History</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <style>
+                                /* table,
+                                td {
+                                    border: 1px solid rgb(46, 43, 43);
+                                    padding: 5px;
+                                    border-spacing: 1;
+                                    border-collapse: collapse;
+                                    caption-side: bottom;
+                                    display: table-cell;
+                                    vertical-align: auto;
+                            } */
+
+                                /* tr {
+                                    background-color: rgb(239, 239, 243);
+                                    width: 30px;
+                            } */
+                            </style>
+                            <div class="box-body">
+                                <div class="row">
+                                    <!-- <div class="col-md-2">
+
+                                        <table id="my-table">
+                                            <tbody id="t-body">
+                                            </tbody>
+                                        </table>
+                                    </div> -->
+                                    <style>
+                                        i.fa {
+                                            display: inline-block;
+                                        }
+                                    </style>
+                                    <div id="selector" style="display: none;">
+                                        Anything you want in your popovers, either dynamic or static
+                                    </div>
+                                    <div id="my-popover-container" style="display: none;">
+                                        <p>Any markup that you want here!</p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table id="table-building" class="table table-condensed table-hover"
+                                                style="width: 100%;">
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div id="popover-content" class="hide">
+                                        <form class="form-inline" role="form">
+                                            <div class="form-group">
+                                                <input class="headerSearch search-query" id="str" name="str" type="text"
+                                                    placeholder="Search..." />
+                                                <span class="glyphicon glyphicon-search"
+                                                    style="margin:3px 8px 0 -20px;"></span>
+                                                <input class="btn btn-primary btn-xs" id="phSearchButton" type="submit"
+                                                    value="Search" />
+                                                <input class="btn btn-primary btn-xs" id="searchButton" type="submit"
+                                                    value="Dictionary" />
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+        <%- include ../partial/footer.ejs %>
+    </div>
+</body>
+
+</html>
