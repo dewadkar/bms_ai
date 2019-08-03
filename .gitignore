@@ -1,1 +1,9 @@
 node_modules
+.project
+.settings
+.jshintrc
+.sublime-project
+.tern-project
+.DS_Store
+.vscode
+.idea
