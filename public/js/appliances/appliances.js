@@ -136,7 +136,6 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         $(tabelID).DataTable().draw();
     }
 
-
     var popover_title = "AC";
     var popover_contents = '<span class="glyphicon glyphicon-plus-sign" style="margin:3px 0 0 0"></span>';
     var popover_template = '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content">ssscscsacsac</div></div>';
@@ -145,7 +144,7 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         "floor": "1",
         "data": {
             "flat_no": "101",
-            "devices": ['<a id="ac" href="/asset" >\u25C8</a>', '<a href="#" id="gyser">\u25CD</a>', '<a href="/">\u25C8</a>'],
+            "devices": ['<a id="ac" href="/asset" >\u25C7</a>', '<a href="/asset" id="gyser">\u25CD</a>', '<a id="tv" href="/asset">\u25C8</a>'],
             "status": "",
             "discription": "",
             "risk": "",
@@ -168,7 +167,7 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
 
         "data": {
             "flat_no": "201",
-            "devices": ["\u25C8 ", "\u25D8", "\u25CD"],
+            "devices": ['<a id="ac" href="/asset">\u25C8</a>', '<a id="washing_machine" href="/asset">\u25D8</a>', '<a id="freeze" href="/asset">\u25CD</a>'],
             "status": "active",
             "discription": "",
             "risk": "20",

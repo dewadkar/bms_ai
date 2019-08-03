@@ -16,7 +16,7 @@ app.factory('Scopes', function ($rootScope) {
 
 
 app.run(function ($rootScope) {
-    $rootScope.$on('scope.stored', function (event, data) {});
+    $rootScope.$on('scope.stored', function (event, data) { });
 });
 
 app.controller("assetController", function ($scope, $http, $window, $compile, Scopes) {
@@ -388,25 +388,25 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     var areaChartData = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
-                label: 'Electronics',
-                fillColor: 'rgba(210, 214, 222, 1)',
-                strokeColor: 'rgba(210, 214, 222, 1)',
-                pointColor: 'rgba(210, 214, 222, 1)',
-                pointStrokeColor: '#c1c7d1',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(220,220,220,1)',
-                data: [35, 39]
-            },
-            {
-                label: 'Digital Goods',
-                fillColor: 'rgba(60,141,188,0.9)',
-                strokeColor: 'rgba(60,141,188,0.8)',
-                pointColor: '#3b8bba',
-                pointStrokeColor: 'rgba(60,141,188,1)',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(60,141,188,1)',
-                data: [28, 48]
-            }
+            label: 'Electronics',
+            fillColor: 'rgba(210, 214, 222, 1)',
+            strokeColor: 'rgba(210, 214, 222, 1)',
+            pointColor: 'rgba(210, 214, 222, 1)',
+            pointStrokeColor: '#c1c7d1',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(220,220,220,1)',
+            data: [35, 39]
+        },
+        {
+            label: 'Digital Goods',
+            fillColor: 'rgba(60,141,188,0.9)',
+            strokeColor: 'rgba(60,141,188,0.8)',
+            pointColor: '#3b8bba',
+            pointStrokeColor: 'rgba(60,141,188,1)',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(60,141,188,1)',
+            data: [28, 48]
+        }
         ]
     }
 
@@ -447,5 +447,96 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     barChartOptions.datasetFill = false
     barChart.Bar(barChartData, barChartOptions)
 
+    var data = [{
+        "brand": "Samsung",
+        "model": "TV",
+        "model_year": "2015",
+        "model_number": "STV1022",
+        "serial_number": "SN00076564444",
+        "warranty": "2 Year",
+        "service_center_number": "(+91) 7045535344",
+        "last_unschedule_maintanance": "Yes",
+        "average_subsystem_risk_level": "20%",
+        "average_exp_subsystem_impact": "30%",
+        "high_exp_subsystem_impact": "",
+        "location": "Pune"
+    },
+    {
+        "brand": "LG",
+        "model": "AC",
+        "model_year": "2018",
+        "model_number": "LG2034",
+        "serial_number": "SN1243434353",
+        "warranty": "5 Year",
+        "service_center_number": "(+91) 9543535324",
+        "last_unschedule_maintanance": "No",
+        "average_subsystem_risk_level": "10 %",
+        "average_exp_subsystem_impact": "20 %",
+        "high_exp_subsystem_impact": "",
+        "location": "Pune"
 
+    }];
+
+    $scope.table = null;
+    function generateTable(data, tabelID) {
+        console.log(data)
+        $scope.tableData = [];
+        for (var i = 0; i < data.length; i++) {
+            var listData = {};
+            listData.index = i + 1;
+            listData.brand = data[i].brand;
+            listData.model = data[i].model;
+            listData.model_year = data[i].model_year;
+            listData.model_number = data[i].model_number;
+            listData.serial_number = data[i].serial_number;
+            listData.warranty = data[i].warranty;
+            listData.service_center_number = data[i].service_center_number;
+            listData.last_unschedule_maintanance = data[i].last_unschedule_maintanance;
+            listData.average_subsystem_risk_level = data[i].average_subsystem_risk_level;
+            listData.average_exp_subsystem_impact = data[i].average_exp_subsystem_impact;
+            listData.high_exp_subsystem_impact = data[i].high_exp_subsystem_impact;
+            listData.location = data[i].location;
+            $scope.tableData.push(listData);
+        }
+
+        if ($scope.table !== null) {
+            $(tabelID).DataTable().destroy();
+            $(tabelID).empty();
+            $scope.table = null;
+        }
+        $scope.table = $(tabelID).DataTable({
+            'data': $scope.tableData,
+            'columns': [
+                { title: 'Sr.Num', width: '10px', data: 'index' },
+                { title: "Brand ", width: '30px', data: 'brand' },
+                { title: "Model ", width: '30px', data: 'model' },
+                { title: "Model Year ", width: '30px', data: 'model_year' },
+                { title: "Model Number ", width: '30px', data: 'model_number' },
+                { title: "Serial Number ", width: '30px', data: 'serial_number' },
+                { title: "Warranty ", width: '30px', data: 'warranty' },
+                { title: "Service Center Number ", width: '70px', data: 'service_center_number' },
+                { title: "Last Unschedule Maintanance ", width: '30px', data: 'last_unschedule_maintanance' },
+                { title: "Avg. Subsystem Risk Level ", width: '30px', data: 'average_subsystem_risk_level' },
+                { title: "Avg.Exp. Subsystem Impact ", width: '30px', data: 'average_exp_subsystem_impact' },
+                { title: "High Exp Subsystem Impact ", width: '30px', data: 'high_exp_subsystem_impact' },
+                { title: "Location ", width: '30px', data: 'location' },
+
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $compile(angular.element(row).contents())($scope);
+            },
+            'retrieve': true,
+            'destroy': true,
+            'paging': false,
+            'lengthChange': true,
+            'searching': true,
+            'ordering': false,
+            'info': false,
+            'autoWidth': true,
+            "scrollX": true,
+        });
+        $(tabelID).DataTable().draw();
+    }
+    var tabelID = "#table-asset-description";
+    generateTable(data, tabelID);
 });
