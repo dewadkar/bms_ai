@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BMS - Asset</title>
+    <% include ../partial/head.ejs %>
+    <script>
+
+    </script>
+
+    <script src="/js/appliances/asset.js"></script>
+
+</head>
+
+<body ng-app="appliances" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
+
+    <div class="wrapper">
+        <% include ../partial/headbar.ejs %>
+        <% include ../partial/sidebar.ejs %>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    Asset
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+                    <li class="active">
+                        Asset
+                    </li>
+                </ol>
+            </section>
+            <section class="content" ng-controller="assetController">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-primary" ng-cloak>
+
+
+                            <div class="box-body">
+                                <div class="row">
+
+
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+        <%- include ../partial/footer.ejs %>
+    </div>
+</body>
+
+</html>
