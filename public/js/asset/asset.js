@@ -395,7 +395,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 pointStrokeColor: '#c1c7d1',
                 pointHighlightFill: '#fff',
                 pointHighlightStroke: 'rgba(220,220,220,1)',
-                data: [65, 59, 80, 81, 56, 55, 40]
+                data: [35, 39]
             },
             {
                 label: 'Digital Goods',
@@ -405,7 +405,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 pointStrokeColor: 'rgba(60,141,188,1)',
                 pointHighlightFill: '#fff',
                 pointHighlightStroke: 'rgba(60,141,188,1)',
-                data: [28, 48, 40, 19, 86, 27, 90]
+                data: [28, 48]
             }
         ]
     }
@@ -417,7 +417,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     barChartData.datasets[1].strokeColor = '#00a65a'
     barChartData.datasets[1].pointColor = '#00a65a'
     var barChartOptions = {
-        type: "horizontalBar",
         //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
         scaleBeginAtZero: true,
         //Boolean - Whether grid lines are shown across the chart
