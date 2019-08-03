@@ -29,4 +29,259 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
     });
 
     $("#test-datepicker").datepicker("setDate", new Date());
+
+
+    $scope.building_data = [
+        {
+            id: 'Block-1',
+            devices: [
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-battery-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-2',
+                    icon: 'fa fa-hourglass-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-odnoklassniki-square',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-2',
+            devices: [
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-battery-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-odnoklassniki-square',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-3',
+            devices: [
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-battery-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-2',
+                    icon: 'fa fa-hourglass-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                
+            ]
+        },
+        {
+            id: 'Block-4',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fa fa-hourglass-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-odnoklassniki-square',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-4',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fa fa-hourglass-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-odnoklassniki-square',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-4',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fa fa-hourglass-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-odnoklassniki-square',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-4',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fa fa-hourglass-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-odnoklassniki-square',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-4',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fa fa-hourglass-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-odnoklassniki-square',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-4',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fa fa-hourglass-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-odnoklassniki-square',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-safari',
+                    status: ''
+                }
+            ]
+        },
+        {
+            id: 'Block-4',
+            devices: [
+                {
+                    id: 'Device-2',
+                    icon: 'fa fa-hourglass-2',
+                    status: ''
+                },
+                {
+                    id: 'Device-3',
+                    icon: 'fa fa-gg-circle',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-odnoklassniki-square',
+                    status: ''
+                },
+                {
+                    id: 'Device-1',
+                    icon: 'fa fa-safari',
+                    status: ''
+                }
+            ]
+        },
+    ];
 });

@@ -1,29 +1,26 @@
 <div class="box box-primary" ng-cloak>
     <div class="box-header with-border" data-widget="collapse">
-        <h3 class="box-title">Site Left</h3>
+        <h3 class="box-title">Section</h3>
     </div>
     <!-- /.box-header -->
-    <div class="box-body">
-        <div class="row">
-            <div class="col-md-12">
+    <div class="box-body no-padding">
 
-                <table class="table-condensed table-bordered ">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <!-- /.row -->
+        <ul class="users-list clearfix">
+            <li ng-repeat="block in building_data" style="padding: 5px;">
+                <!-- small box -->
+                <div class="small-box" style="height: 105px; margin-bottom: 0px; background-color: #ecf0f6">
+                    <div class="inner">
+                        <div class="row">
+                            <div class="col-md-6" ng-repeat="device in block.devices">
+                                <a href="#"> <i class="{{device.icon}}" style="color: rgb(159, 226, 145);"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="small-box-footer">{{block.id}} <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </li>
+        </ul>
+        <!-- /.users-list -->
     </div>
     <!-- /.box-body -->
 </div>

@@ -4,12 +4,8 @@
 <head>
     <title>Simulation - Home</title>
     <% include ../partial/head.ejs %>
-    <script>
-
-    </script>
-
+    
     <script src="/js/dashboard/dashboard.js"></script>
-
 </head>
 
 <body ng-app="simulationHome" class="hold-transition skin-blue fixed sidebar-mini" ng-cloak>
@@ -20,26 +16,22 @@
         <div class="content-wrapper">
             <section class="content-header">
                 <h1>
-                    Simulation BMS
+                    Smart BMS
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="/"><i class="fa fa-home"></i>home</a></li>
+                    <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
                 </ol>
             </section>
 
             <section class="content" ng-controller="homeController">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <%- include ../dashboard/side_left.ejs %>
-
-
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-7">
                         <%- include ../dashboard/side_right.ejs %>
-
                     </div>
-
-
                 </div>
             </section>
         </div>
