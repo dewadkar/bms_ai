@@ -8,7 +8,7 @@
     <script src="/js/dashboard/dashboard.js"></script>
 </head>
 
-<body ng-app="simulationHome" class="hold-transition skin-blue fixed sidebar-mini" ng-cloak>
+<body ng-app="simulationHome" ng-controller="homeController" class="hold-transition skin-blue fixed sidebar-mini" ng-cloak>
 
     <div class="wrapper">
         <% include ../partial/headbar.ejs %>
@@ -16,14 +16,16 @@
         <div class="content-wrapper">
             <section class="content-header">
                 <h1>
-                    Smart BMS
+                    Smart BMS <button class="btn btn-primary"> Simulate Random Data</button>
+                    <button class="btn btn-primary" ng-click="getFailure()"> Simulate Failure</button>
+
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
                 </ol>
             </section>
 
-            <section class="content" ng-controller="homeController">
+            <section class="content" >
                 <div class="row">
                     <div class="col-md-5">
                         <%- include ../dashboard/side_left.ejs %>

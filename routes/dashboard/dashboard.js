@@ -27,6 +27,8 @@ module.exports = function (app) {
         });
     };
 
+
+
     // Render to BMS Home Page
     app.get('/', this.view);
 

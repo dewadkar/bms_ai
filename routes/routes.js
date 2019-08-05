@@ -10,4 +10,5 @@ module.exports = function (app) {
     // Simulation Appliances page
     require('./appliances/appliances')(app);
     require('./asset/asset')(app);
+    require('./devices/status')(app);
 };
