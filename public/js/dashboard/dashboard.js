@@ -577,6 +577,30 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
     ];
     $scope.original = [];
     angular.copy($scope.building_data, $scope.original);
+
+    $scope.total_appliances = 0;
+    $scope.total_type_a = 0;
+    $scope.total_type_b = 0;
+    $scope.total_type_c = 0;
+    $scope.total_type_d = 0;
+    for (var i = 0; i < $scope.original.length; i++) {
+        var devices = $scope.original[i].devices;
+        for (var j = 0; j < devices.length; j++) {
+            $scope.total_appliances++;
+            if (devices[j].id.includes('1')) {
+                $scope.total_type_a++;
+            }
+            if (devices[j].id.includes('2')) {
+                $scope.total_type_b++;
+            }
+            if (devices[j].id.includes('3')) {
+                $scope.total_type_c++;
+            }
+            if (devices[j].id.includes('4')) {
+                $scope.total_type_d++;
+            }
+        }
+    }
     $scope.getFailure = function () {
         $http.get('/device/status')
             .then(function (response) {
