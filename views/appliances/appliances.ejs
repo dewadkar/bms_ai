@@ -4,13 +4,10 @@
 <head>
     <title>Simulation - Appliances</title>
     <% include ../partial/head.ejs %>
-    <!-- <script src="/js/appliances/convetTocsv.js"></script> -->
     <script src="/js/appliances/appliances.js"></script>
     <style>
-        div.dataTable thead .sorting,
-        div.dataTable thead .sorting_asc,
-        div.dataTable thead .sorting_desc {
-            background: none;
+        .dataTable>thead>tr>th[class*="sort"]::after {
+            display: none
         }
     </style>
 
