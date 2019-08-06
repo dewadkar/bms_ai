@@ -219,7 +219,7 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
                     for (var i = 0; i < failed_data.length; i++) {
                         for (var j = 0; j < origionalData.length; j++) {
                             if (failed_data[i].device_id == origionalData[j].device_id) {
-                                origionalData[j].device = '<a href="/asset" style="color: crimson">' + origionalData[j].device + '</a>';
+                                origionalData[j].device = '<a href="/asset/' + origionalData[j].device_id + '" style="color: crimson">' + origionalData[j].device + '</a>';
                                 origionalData[j].status = "On but need repairing";
                             }
                         }
