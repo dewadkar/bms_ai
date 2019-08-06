@@ -1,4 +1,6 @@
-// Location for logs
+var appliance = require('../../lib/appliances');
+
+
 var location = '/routes/appliances/appliances';
 
 module.exports = function (app) {
@@ -15,6 +17,53 @@ module.exports = function (app) {
         response.render('appliances/appliances', { title: "Appliances", });
     };
 
-    // Kvinna home page
+    this.readCsvData = function (request, response) {
+        appliance.readCsvData(function (error, data) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.send(data);
+            }
+        });
+    };
+
+    this.updateCsv = function (request, response) {
+        appliance.updateCsv(function (error, result) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.send(result);
+            }
+        });
+    };
+
+    this.csvToJson = function (request, response) {
+        appliance.csvToJson(function (error, result) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.send(result);
+            }
+        });
+
+    };
+
+    this.jsonToCsv = function (request, response) {
+        appliance.jsonToCsv(function (error, result) {
+            if (error) {
+                response.send(error);
+            } else {
+                console.log(result);
+                response.send(result);
+            }
+        });
+
+    };
+
+    // Appliance Page
     app.get('/appliances', this.view);
+    app.get('/appliances/readApplianceData', this.readCsvData);
+    app.get('/appliances/WriteToApplianceData', this.updateCsv);
+    app.get('/appliances/csvtojson', this.csvToJson);
+    app.get('/appliances/jsontocsv', this.jsonToCsv);
 };

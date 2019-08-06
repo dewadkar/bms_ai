@@ -41,44 +41,6 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
     });
 
 
-
-    var table = document.getElementById("my-table");
-
-    // function generateTable() {
-    //     var newTable = document.createElement("table"),
-    //         tBody = newTable.createTBody(),
-    //         nOfColumns = parseInt(5, 10),
-    //         nOfRows = parseInt(20, 10),
-    //         row = generateRow(nOfColumns);
-    //     for (var i = 0; i < nOfRows; i++) {
-    //         tBody.appendChild(row.cloneNode(true));
-    //     }
-
-    //     (table.hasChildNodes() ? table.replaceChild : table.appendChild).call(table, newTable, table.children[0]);
-    // }
-    // generateTable();
-
-    // function generateRow(n) {
-    //     var row = document.createElement("tr"),
-    //         text1 = document.createTextNode('\u25A9 \u25CD'),
-    //         text2 = document.createTextNode('\u25C8 \u25D8'),
-    //         text3 = document.createTextNode('\u25A9 \u25D8'),
-    //         text4 = document.createTextNode('\u25CD \u25D8')
-
-    //     for (var i = 0; i < n; i++) {
-    //         if (i == 0) {
-    //             row.insertCell().appendChild(text1.cloneNode(true));
-    //         } else if (i == 1) {
-    //             row.insertCell().appendChild(text2.cloneNode(true));
-    //         } else if (i == 2) {
-    //             row.insertCell().appendChild(text3.cloneNode(true));
-    //         } else if (i == 3) {
-    //             row.insertCell().appendChild(text4.cloneNode(true));
-    //         }
-    //     }
-    // }
-
-
     $scope.table = null;
     function generateTable(data, tabelID) {
 
@@ -109,7 +71,7 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
             'data': $scope.tableData,
             'columns': [
                 { title: '#Block', width: '10px', data: 'index' },
-                { title: "Devices ", width: '30px', data: 'devices' },
+                { title: "Device ", width: '30px', data: 'devices' },
                 { title: "Status ", width: '30px', data: 'status' },
                 { title: "Description ", width: '30px', data: 'discription' },
                 { title: "Remaining Useful Life (Days)", width: '30px', data: 'rul' },
@@ -140,170 +102,168 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
 
     var popover_title = "AC";
     var popover_contents = '<span class="glyphicon glyphicon-plus-sign" style="margin:3px 0 0 0"></span>';
-    var popover_template = '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content">ssscscsacsac</div></div>';
+    var data = [
+        {
+            "floor": "1",
+            "data": {
+                "flat_no": "101",
+                "devices": ['<a id="ac" href="/asset">\u25C8</a>'],
+                "status": "Active",
+                "discription": "Installed since three month",
+                "rul": "900 ",
+                "risk": "10 %",
+                "risk_history": [7, 8, 10],
+                "nominal_impact": "3 %",
+                "expected_impact": "3 %",
+                "last_unschedule_maintanance": "NA",
+                "average_subsystem_risk_level": "50 %",
+                "max_subsystem_risk_level": "70 %",
+                "average_exp_subsystem_impact": "50 %",
+                "high_exp_subsystem_impact": "70 %"
 
-    var data = [{
-        "floor": "1",
-        "data": {
-            "flat_no": "101",
-            "devices": ['<a id="ac" href="/asset">\u25C8</a>'],
-            "status": "Active",
-            "discription": "Installed since three month",
-            "rul": "900 ",
-            "risk": "10 %",
-            "risk_history": [7, 8, 10],
-            "nominal_impact": "3 %",
-            "expected_impact": "3 %",
-            "last_unschedule_maintanance": "NA",
-            "average_subsystem_risk_level": "50 %",
-            "max_subsystem_risk_level": "70 %",
-            "average_exp_subsystem_impact": "50 %",
-            "high_exp_subsystem_impact": "70 %"
+            }
+
+        },
+        {
+            "floor": "2",
+
+            "data": {
+                "flat_no": "201",
+                "devices": ['<a id="gyser" href="/asset">\u25C7</a>'],
+                "status": "active",
+                "discription": "Installed since eight month",
+                "rul": "365 ",
+                "risk": "10 %",
+                "risk_history": [7, 8, 10],
+                "nominal_impact": "3 %",
+                "expected_impact": "3 %",
+                "last_unschedule_maintanance": "NA",
+                "average_subsystem_risk_level": "50 %",
+                "max_subsystem_risk_level": "70 %",
+                "average_exp_subsystem_impact": "50 %",
+                "high_exp_subsystem_impact": "70 %"
+
+            },
+
+
+        },
+        {
+            "floor": "1",
+
+            "data": {
+                "flat_no": "102",
+                "devices": ['<a id="gyser" href="/asset">\u25C8</a>'],
+                "status": "active",
+                "discription": "Installed since eight month",
+                "rul": "365 ",
+                "risk": "10 %",
+                "risk_history": [7, 8, 10],
+                "nominal_impact": "3 %",
+                "expected_impact": "3 %",
+                "last_unschedule_maintanance": "NA",
+                "average_subsystem_risk_level": "50 %",
+                "max_subsystem_risk_level": "70 %",
+                "average_exp_subsystem_impact": "50 %",
+                "high_exp_subsystem_impact": "70 %"
+
+            },
+
+
+        },
+        {
+            "floor": "1",
+
+            "data": {
+                "flat_no": "103",
+                "devices": ['<a id="gyser" href="/asset">\u25D8</a>'],
+                "status": "active",
+                "discription": "Installed since eight month",
+                "rul": "365 ",
+                "risk": "10 %",
+                "risk_history": [7, 8, 10],
+                "nominal_impact": "3 %",
+                "expected_impact": "3 %",
+                "last_unschedule_maintanance": "NA",
+                "average_subsystem_risk_level": "50 %",
+                "max_subsystem_risk_level": "70 %",
+                "average_exp_subsystem_impact": "50 %",
+                "high_exp_subsystem_impact": "70 %"
+
+            },
+
+
+        },
+        {
+            "floor": "1",
+
+            "data": {
+                "flat_no": "104",
+                "devices": ['<a id="gyser" href="/asset">\u22C8</a>'],
+                "status": "active",
+                "discription": "Installed since eight month",
+                "rul": "365 ",
+                "risk": "10 %",
+                "risk_history": [7, 8, 10],
+                "nominal_impact": "3 %",
+                "expected_impact": "3 %",
+                "last_unschedule_maintanance": "NA",
+                "average_subsystem_risk_level": "50 %",
+                "max_subsystem_risk_level": "70 %",
+                "average_exp_subsystem_impact": "50 %",
+                "high_exp_subsystem_impact": "70 %"
+
+            },
+
+
+        },
+        {
+            "floor": "2",
+
+            "data": {
+                "flat_no": "201",
+                "devices": ['<a id="gyser" href="/asset">\u23C8</a>'],
+                "status": "active",
+                "discription": "Installed since eight month",
+                "rul": "365 ",
+                "risk": "10 %",
+                "risk_history": [7, 8, 10],
+                "nominal_impact": "3 %",
+                "expected_impact": "3 %",
+                "last_unschedule_maintanance": "NA",
+                "average_subsystem_risk_level": "50 %",
+                "max_subsystem_risk_level": "70 %",
+                "average_exp_subsystem_impact": "50 %",
+                "high_exp_subsystem_impact": "70 %"
+
+            },
+
+
+        },
+        {
+            "floor": "2",
+
+            "data": {
+                "flat_no": "202",
+                "devices": ['<a id="gyser" href="/asset">\u25CD</a>'],
+                "status": "active",
+                "discription": "Installed since eight month",
+                "rul": "365 ",
+                "risk": "10 %",
+                "risk_history": [7, 8, 10],
+                "nominal_impact": "3 %",
+                "expected_impact": "3 %",
+                "last_unschedule_maintanance": "NA",
+                "average_subsystem_risk_level": "50 %",
+                "max_subsystem_risk_level": "70 %",
+                "average_exp_subsystem_impact": "50 %",
+                "high_exp_subsystem_impact": "70 %"
+
+            },
+
 
         }
-
-    },
-    {
-        "floor": "2",
-
-        "data": {
-            "flat_no": "201",
-            "devices": ['<a id="gyser" href="/asset">\u25C7</a>'],
-            "status": "active",
-            "discription": "Installed since eight month",
-            "rul": "365 ",
-            "risk": "10 %",
-            "risk_history": [7, 8, 10],
-            "nominal_impact": "3 %",
-            "expected_impact": "3 %",
-            "last_unschedule_maintanance": "NA",
-            "average_subsystem_risk_level": "50 %",
-            "max_subsystem_risk_level": "70 %",
-            "average_exp_subsystem_impact": "50 %",
-            "high_exp_subsystem_impact": "70 %"
-
-        },
-
-
-    },
-    {
-        "floor": "1",
-
-        "data": {
-            "flat_no": "102",
-            "devices": ['<a id="gyser" href="/asset">\u25C8</a>'],
-            "status": "active",
-            "discription": "Installed since eight month",
-            "rul": "365 ",
-            "risk": "10 %",
-            "risk_history": [7, 8, 10],
-            "nominal_impact": "3 %",
-            "expected_impact": "3 %",
-            "last_unschedule_maintanance": "NA",
-            "average_subsystem_risk_level": "50 %",
-            "max_subsystem_risk_level": "70 %",
-            "average_exp_subsystem_impact": "50 %",
-            "high_exp_subsystem_impact": "70 %"
-
-        },
-
-
-    },
-    {
-        "floor": "1",
-
-        "data": {
-            "flat_no": "103",
-            "devices": ['<a id="gyser" href="/asset">\u25D8</a>'],
-            "status": "active",
-            "discription": "Installed since eight month",
-            "rul": "365 ",
-            "risk": "10 %",
-            "risk_history": [7, 8, 10],
-            "nominal_impact": "3 %",
-            "expected_impact": "3 %",
-            "last_unschedule_maintanance": "NA",
-            "average_subsystem_risk_level": "50 %",
-            "max_subsystem_risk_level": "70 %",
-            "average_exp_subsystem_impact": "50 %",
-            "high_exp_subsystem_impact": "70 %"
-
-        },
-
-
-    },
-    {
-        "floor": "1",
-
-        "data": {
-            "flat_no": "104",
-            "devices": ['<a id="gyser" href="/asset">\u22C8</a>'],
-            "status": "active",
-            "discription": "Installed since eight month",
-            "rul": "365 ",
-            "risk": "10 %",
-            "risk_history": [7, 8, 10],
-            "nominal_impact": "3 %",
-            "expected_impact": "3 %",
-            "last_unschedule_maintanance": "NA",
-            "average_subsystem_risk_level": "50 %",
-            "max_subsystem_risk_level": "70 %",
-            "average_exp_subsystem_impact": "50 %",
-            "high_exp_subsystem_impact": "70 %"
-
-        },
-
-
-    },
-    {
-        "floor": "2",
-
-        "data": {
-            "flat_no": "201",
-            "devices": ['<a id="gyser" href="/asset">\u23C8</a>'],
-            "status": "active",
-            "discription": "Installed since eight month",
-            "rul": "365 ",
-            "risk": "10 %",
-            "risk_history": [7, 8, 10],
-            "nominal_impact": "3 %",
-            "expected_impact": "3 %",
-            "last_unschedule_maintanance": "NA",
-            "average_subsystem_risk_level": "50 %",
-            "max_subsystem_risk_level": "70 %",
-            "average_exp_subsystem_impact": "50 %",
-            "high_exp_subsystem_impact": "70 %"
-
-        },
-
-
-    },
-    {
-        "floor": "2",
-
-        "data": {
-            "flat_no": "202",
-            "devices": ['<a id="gyser" href="/asset">\u25CD</a>'],
-            "status": "active",
-            "discription": "Installed since eight month",
-            "rul": "365 ",
-            "risk": "10 %",
-            "risk_history": [7, 8, 10],
-            "nominal_impact": "3 %",
-            "expected_impact": "3 %",
-            "last_unschedule_maintanance": "NA",
-            "average_subsystem_risk_level": "50 %",
-            "max_subsystem_risk_level": "70 %",
-            "average_exp_subsystem_impact": "50 %",
-            "high_exp_subsystem_impact": "70 %"
-
-        },
-
-
-    }
     ];
 
-    // console.log(data);
     var tabelID = "#table-building";
     generateTable(data, tabelID);
 
@@ -330,36 +290,87 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         html: true,
     });
 
-    // Check for the various File API support.
-    if ($window.File && $window.FileReader && $window.FileList && $window.Blob) {
-        // Great success! All the File APIs are supported.
-        $(document).ready(function () {
-            $.ajax({
-                type: "GET",
-                url: "resources/data.csv",
-                dataType: "text",
-                success: function (data) { processData(data); }
-            });
-        });
+    $scope.table1 = null;
+    $scope.readApplianceData = function () {
+        $http.get('/appliances/readApplianceData')
+            .then(function (response) {
+                var csv_data = response.data.split(/\r\n|\n/);
 
-        function processData(allText) {
-            var record_num = 5;  // or however many elements there are in each row
-            var allTextLines = allText.split(/\r\n|\n/);
-            var entries = allTextLines[0].split(',');
-            var lines = [];
-
-            var headings = entries.splice(0, record_num);
-            while (entries.length > 0) {
-                var tarr = [];
-                for (var j = 0; j < record_num; j++) {
-                    tarr.push(headings[j] + ":" + entries.shift());
+                var table_data = '<table class="table-bordered table-striped">';
+                for (var i = 0; i < csv_data.length; i++) {
+                    var cell_data = csv_data[i].split(',');
+                    table_data += '<tr>';
+                    for (var j = 0; j < cell_data.length; j++) {
+                        if (i === 0) {
+                            table_data += '<th>' + cell_data[j] + '</th>';
+                        } else {
+                            table_data += '<td>' + cell_data[j] + '</td>';
+                        }
+                    }
+                    table_data += '</tr>';
                 }
-                lines.push(tarr);
-            }
-            // alert(lines);
-        }
-    } else {
-        alert('The File APIs are not fully supported in this browser.');
-    }
+                table_data += '</table>';
+                $('#appliances_table_csv_data').html(table_data);
 
+            })
+            .catch(function (error) {
+                console.log('Error while reading Appliance data!', error);
+            });
+
+        $scope.updateApplianceData = function () {
+            var content = "Happy Birth Day";
+
+            $http.get('/appliances/WriteToApplianceData/', content)
+                .then(function (response) {
+                    return response;
+                })
+                .catch(function (error) {
+                    console.log('Error while updating Appliance data!', error);
+                });
+        };
+
+        $scope.convertCsvtojson = function () {
+            $http.get('/appliances/csvtojson')
+                .then(function (response) {
+                    return response;
+                })
+                .catch(function (error) {
+                    console.log('Error while converting csv to json object!', error);
+                });
+        };
+
+        $scope.convertJsonToCsv = function () {
+            $http.get('/appliances/jsonToCsv')
+                .then(function (response) {
+                    return response;
+                })
+                .catch(function (error) {
+                    console.log('Error while converting data into json to csv!', error);
+                });
+
+
+
+
+        };
+
+        function ConvertToCSV(objArray) {
+            var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+            var str = '';
+
+            for (var i = 0; i < array.length; i++) {
+                var line = '';
+                for (var index in array[i]) {
+                    if (line != '') line += ',';
+                    line += array[i][index];
+                }
+                str += line + '\r\n\r';
+            }
+            return str;
+        }
+
+
+
+
+
+    };
 });

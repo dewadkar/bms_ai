@@ -401,3 +401,42 @@ exports.data = [
         "status": "on"
     }
 ];
+
+exports.appliances_data = [
+    {
+        "block_id": "Block-A",
+        "device_id": "A1",
+        "status": "on",
+        "device": '<a id="ac" href="/asset">\u25C8</a>',
+        "discription": "Installed since three month",
+        "rul": "900 ",
+        "risk": "10 %",
+        "risk_history": [7, 8, 10],
+        "nominal_impact": "3 %",
+        "expected_impact": "3 %",
+        "last_unschedule_maintanance": "NA",
+        "average_subsystem_risk_level": "50 %",
+        "max_subsystem_risk_level": "70 %",
+        "average_exp_subsystem_impact": "50 %",
+        "high_exp_subsystem_impact": "70 %"
+    },
+    {
+        "block_id": "Block-A",
+        "device_id": "A2",
+        "status": "on",
+        "devices": ['<a id="gyser" href="/asset">\u25C7</a>'],
+        "discription": "Installed since eight month",
+        "rul": "365 ",
+        "risk": "10 %",
+        "risk_history": [7, 8, 10],
+        "nominal_impact": "3 %",
+        "expected_impact": "3 %",
+        "last_unschedule_maintanance": "NA",
+        "average_subsystem_risk_level": "50 %",
+        "max_subsystem_risk_level": "70 %",
+        "average_exp_subsystem_impact": "50 %",
+        "high_exp_subsystem_impact": "70 %"
+    }
+
+];
+

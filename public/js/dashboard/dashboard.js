@@ -329,22 +329,22 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'K1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'K2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'K3',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'K4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -354,22 +354,22 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'L1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'L2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'L3',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'L4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -379,22 +379,22 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'M1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'M2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'M3',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'M4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -404,22 +404,22 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'N1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'N2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'N3',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'N4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -429,22 +429,22 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'O1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'O2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'O4',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'O4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -454,22 +454,22 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'P1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'P2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'P3',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'P4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -479,22 +479,22 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'Q1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'Q2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'Q3',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'Q4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -504,22 +504,22 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'R1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'R2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'R3',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'R4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -529,22 +529,22 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'S1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'S2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'S3',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'S4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -554,50 +554,50 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             devices: [
                 {
                     id: 'T1',
-                    icon: 'fas fa-battery-three-quarters',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'T2',
-                    icon: 'fas fa-fan',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'T3',
-                    icon: 'fas fa-hourglass-half',color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'T4',
-                    icon: 'fab fa-safari',color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
     ];
-    $scope.original =[];
-    angular.copy($scope.building_data,$scope.original);
-    $scope.getFailure = function() {
+    $scope.original = [];
+    angular.copy($scope.building_data, $scope.original);
+    $scope.getFailure = function () {
         $http.get('/device/status')
             .then(function (response) {
-                angular.copy($scope.original,$scope.building_data);
+                angular.copy($scope.original, $scope.building_data);
                 var failed_data = response.data;
-                for(var i=0;i<failed_data.length;i++){
-                    for(var j=0;j<$scope.building_data.length;j++){
-                        if($scope.building_data[j].id===failed_data[i].block_id){
+                for (var i = 0; i < failed_data.length; i++) {
+                    for (var j = 0; j < $scope.building_data.length; j++) {
+                        if ($scope.building_data[j].id === failed_data[i].block_id) {
                             var devices = $scope.building_data[j].devices;
-                            for(var k=0;k<devices.length;k++){
-                                if(devices[k].id===failed_data[i].device_id){
+                            for (var k = 0; k < devices.length; k++) {
+                                if (devices[k].id === failed_data[i].device_id) {
                                     $scope.building_data[j].devices[k].color = "rgb(245, 6, 6)";
                                 }
                             }
                         }
                     }
                 }
-                console.log($scope.building_data);
+
             })
             .catch(function (error) {
-                console.log(error);
+                // console.log(error);
             });
     };
 
