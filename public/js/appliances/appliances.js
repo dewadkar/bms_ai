@@ -43,22 +43,22 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
 
     $scope.table = null;
     function generateTable(data, tabelID) {
-
         $scope.tableData = [];
         for (var i = 0; i < data.length; i++) {
             var listData = {};
-            listData.index = data[i].floor;
-            listData.devices = data[i].data.devices;
-            listData.status = data[i].data.status;
-            listData.discription = data[i].data.discription;
-            listData.rul = data[i].data.rul;
-            listData.risk = data[i].data.risk;
-            listData.risk_history = data[i].data.risk_history.join('    ');
-            listData.nominal_impact = data[i].data.nominal_impact;
-            listData.expected_impact = data[i].data.expected_impact;
-            listData.last_unschedule_maintanance = data[i].data.last_unschedule_maintanance;
-            listData.max_subsystem_risk_level = data[i].data.max_subsystem_risk_level;
-            listData.high_exp_subsystem_impact = data[i].data.high_exp_subsystem_impact;
+            listData.block_id = data[i].block_id;
+            listData.device_id = data[i].device_id;
+            listData.status = data[i].status;
+            listData.device = data[i].device;
+            listData.description = data[i].description;
+            listData.rul = data[i].rul;
+            listData.risk = data[i].risk;
+            // listData.risk_history = data[i].risk_history.join('    ');
+            listData.nominal_impact = data[i].nominal_impact;
+            listData.expected_impact = data[i].expected_impact;
+            listData.last_unscheduled_maintenance = data[i].last_unscheduled_maintenance;
+            listData.max_subsystem_risk_level = data[i].max_subsystem_risk_level;
+            listData.high_exp_subsystem_impact = data[i].high_exp_subsystem_impact;
             $scope.tableData.push(listData);
         }
 
@@ -70,16 +70,16 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         $scope.table = $(tabelID).DataTable({
             'data': $scope.tableData,
             'columns': [
-                { title: '#Block', width: '10px', data: 'index' },
-                { title: "Device ", width: '30px', data: 'devices' },
-                { title: "Status ", width: '30px', data: 'status' },
-                { title: "Description ", width: '30px', data: 'discription' },
-                { title: "Remaining Useful Life (Days)", width: '30px', data: 'rul' },
+                { title: 'Block ID', width: '12px', data: 'block_id' },
+                { title: "Device ", width: '10px', data: 'device' },
+                { title: "Status ", width: '50px', data: 'status' },
+                { title: "Description ", width: '30px', data: 'description' },
+                { title: "Remaining Useful Life (Days)", width: '20px', data: 'rul' },
                 { title: "Risk ", width: '30px', data: 'risk' },
-                { title: "Risk History ", width: '30px', data: 'risk_history' },
+                // { title: "Risk History ", width: '30px', data: 'risk_history' },
                 { title: "Nominal Impact ", width: '30px', data: 'nominal_impact' },
                 { title: "Expected Impact ", width: '30px', data: 'expected_impact' },
-                { title: "Last Unschedule Maintanance ", width: '30px', data: 'last_unschedule_maintanance' },
+                { title: "Last Unschedule Maintanance ", width: '30px', data: 'last_unscheduled_maintenance' },
                 { title: "Max Subsystem Risk Level ", width: '30px', data: 'max_subsystem_risk_level' },
                 { title: "High Exp Subsystem Impact ", width: '30px', data: 'high_exp_subsystem_impact' },
 
@@ -89,15 +89,20 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
             },
             'retrieve': true,
             'destroy': true,
-            'paging': false,
+            'paging': true,
             'lengthChange': true,
             'searching': true,
-            'ordering': false,
+            'ordering': true,
             'info': false,
             'autoWidth': true,
             "scrollX": true,
+            aaSorting: [[2, 'desc']],
         });
+        // $(tabelID).DataTable().order([2, 'desc']).draw();
         $(tabelID).DataTable().draw();
+
+
+
     }
 
     var popover_title = "AC";
@@ -264,9 +269,6 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         }
     ];
 
-    var tabelID = "#table-building";
-    generateTable(data, tabelID);
-
 
     $('#ac').popover({
         placement: 'bottom',
@@ -317,42 +319,6 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
                 console.log('Error while reading Appliance data!', error);
             });
 
-        $scope.updateApplianceData = function () {
-            var content = "Happy Birth Day";
-
-            $http.get('/appliances/WriteToApplianceData/', content)
-                .then(function (response) {
-                    return response;
-                })
-                .catch(function (error) {
-                    console.log('Error while updating Appliance data!', error);
-                });
-        };
-
-        $scope.convertCsvtojson = function () {
-            $http.get('/appliances/csvtojson')
-                .then(function (response) {
-                    return response;
-                })
-                .catch(function (error) {
-                    console.log('Error while converting csv to json object!', error);
-                });
-        };
-
-        $scope.convertJsonToCsv = function () {
-            $http.get('/appliances/jsonToCsv')
-                .then(function (response) {
-                    return response;
-                })
-                .catch(function (error) {
-                    console.log('Error while converting data into json to csv!', error);
-                });
-
-
-
-
-        };
-
         function ConvertToCSV(objArray) {
             var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
             var str = '';
@@ -367,10 +333,76 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
             }
             return str;
         }
-
-
-
-
-
     };
+
+    $scope.updateApplianceData = function () {
+        var content = "Happy Birth Day";
+
+        $http.get('/appliances/WriteToApplianceData/', content)
+            .then(function (response) {
+                return response;
+            })
+            .catch(function (error) {
+                console.log('Error while updating Appliance data!', error);
+            });
+    };
+
+    $scope.convertCsvtojson = function () {
+        $http.get('/appliances/csvtojson')
+            .then(function (response) {
+                return response;
+            })
+            .catch(function (error) {
+                console.log('Error while converting csv to json object!', error);
+            });
+    };
+
+    $scope.convertJsonToCsv = function () {
+        $http.get('/appliances/jsonToCsv')
+            .then(function (response) {
+
+                return response;
+            })
+            .catch(function (error) {
+                console.log('Error while converting data into json to csv!', error);
+            });
+    };
+
+    // $scope.readJsonObjectdata = function () {
+    var origionalData, failed_data;
+    $http.get('/appliances/readJsonobject')
+        .then(function (response) {
+            var origionalData = response.data;
+            return origionalData;
+        })
+        .then(function (response) {
+            origionalData = response;
+            $http.get('/appliances/csvtojson')
+                .then(function (response) {
+                    var failed_data = response.data;
+
+                    for (var i = 0; i < failed_data.length; i++) {
+                        for (var j = 0; j < origionalData.length; j++) {
+                            if (failed_data[i].device_id == origionalData[j].device_id) {
+                                origionalData[j].device = '<a href="/asset" style="color: crimson">' + origionalData[j].device + '</a>';
+                                origionalData[j].status = "On but need repairing";
+                            }
+                        }
+                    }
+                    return origionalData;
+                }).then(function (response) {
+                    var tabelID = "#table-building";
+                    generateTable(response, tabelID);
+                })
+                .catch(function (error) {
+                    console.log('Error while converting csv to json object!', error);
+                });
+
+            return response;
+        })
+        .catch(function (error) {
+            console.log('Error while converting data into json to csv!', error);
+        });
+    // };
+
 });

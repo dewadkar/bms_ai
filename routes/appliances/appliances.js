@@ -53,11 +53,20 @@ module.exports = function (app) {
             if (error) {
                 response.send(error);
             } else {
-                console.log(result);
                 response.send(result);
             }
         });
 
+    };
+
+    this.readJsonObj = function (request, response) {
+        appliance.readJsonObj(function (error, data) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.send(data);
+            }
+        });
     };
 
     // Appliance Page
@@ -66,4 +75,5 @@ module.exports = function (app) {
     app.get('/appliances/WriteToApplianceData', this.updateCsv);
     app.get('/appliances/csvtojson', this.csvToJson);
     app.get('/appliances/jsontocsv', this.jsonToCsv);
+    app.get('/appliances/readJsonobject', this.readJsonObj);
 };

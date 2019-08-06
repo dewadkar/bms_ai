@@ -6,6 +6,13 @@
     <% include ../partial/head.ejs %>
     <!-- <script src="/js/appliances/convetTocsv.js"></script> -->
     <script src="/js/appliances/appliances.js"></script>
+    <style>
+        div.dataTable thead .sorting,
+        div.dataTable thead .sorting_asc,
+        div.dataTable thead .sorting_desc {
+            background: none;
+        }
+    </style>
 
 </head>
 
@@ -42,11 +49,7 @@
                                         <pre id="csv"></pre>
                                     </div> -->
                                     <div class="col-md-12">
-                                        <button class="btn btn-info" ng-click="readApplianceData()">Read Csv</button>
-                                        <button class="btn btn-info" ng-click="convertCsvtojson()">Convert Csv to
-                                            json</button>
-                                        <button class="btn btn-info" ng-click="convertJsonToCsv()">Convert
-                                            json to Csv</button>
+
                                     </div>
                                     <div class="col-md-12">
                                         <div class="table-responsive">
