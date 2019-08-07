@@ -28,13 +28,29 @@ module.exports = function (app) {
     };
 
     this.updateCsv = function (request, response) {
-        appliance.updateCsv(function (error, result) {
-            if (error) {
-                response.send(error);
-            } else {
-                response.send(result);
-            }
-        });
+        var options = {
+            body: request.body,
+            json: true
+        };
+
+        // return Promise(function (resolve, reject) {
+        // appliance.updateCsv(options, function (error, result) {
+        //     if (error) {
+        //         response.send(error);
+        //     } else {
+        //         response.send(result);
+        //     }
+        // });
+        appliance.updateCsv(options)
+            .then(result => response.send(result))
+            .catch(error => response.send(error));
+        // appliance.updateCsv(function (options, error, result) {
+        //     if (error) {
+        //         response.send(error);
+        //     } else {
+        //         response.send(result);
+        //     }
+        // });
     };
 
     this.csvToJson = function (request, response) {
@@ -72,7 +88,7 @@ module.exports = function (app) {
     // Appliance Page
     app.get('/appliances', this.view);
     app.get('/appliances/readApplianceData', this.readCsvData);
-    app.get('/appliances/WriteToApplianceData', this.updateCsv);
+    app.put('/appliances/WriteToApplianceData', this.updateCsv);
     app.get('/appliances/csvtojson', this.csvToJson);
     app.get('/appliances/jsontocsv', this.jsonToCsv);
     app.get('/appliances/readJsonobject', this.readJsonObj);
