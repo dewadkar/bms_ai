@@ -43,6 +43,7 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
 
     $scope.table = null;
     function generateTable(data, tabelID) {
+        // console.log(data)
         $scope.tableData = [];
         for (var i = 0; i < data.length; i++) {
             var listData = {};
@@ -53,6 +54,7 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
             listData.description = data[i].description;
             listData.rul = data[i].rul;
             listData.risk = data[i].risk;
+
             // listData.risk_history = data[i].risk_history.join('    ');
             listData.nominal_impact = data[i].nominal_impact;
             listData.expected_impact = data[i].expected_impact;
@@ -171,9 +173,9 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
     };
 
     $scope.updateApplianceData = function () {
-        var content = "Happy Birth Day";
+        var content = { data: "Happy Birth Day" };
 
-        $http.get('/appliances/WriteToApplianceData/', content)
+        $http.put('/appliances/WriteToApplianceData', content)
             .then(function (response) {
                 return response;
             })
@@ -219,7 +221,7 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
                     for (var i = 0; i < failed_data.length; i++) {
                         for (var j = 0; j < origionalData.length; j++) {
                             if (failed_data[i].device_id == origionalData[j].device_id) {
-                                origionalData[j].device = '<a href="/asset/' + origionalData[j].device_id + '/' + origionalData[j].status + '" style="color: crimson">' + origionalData[j].device + '</a>';
+                                origionalData[j].device = '<a href="/device/status/' + origionalData[j].device_id + '" style="color: crimson">' + origionalData[j].device + '</a>';
                                 origionalData[j].status = "On but need repairing";
                             }
                         }
