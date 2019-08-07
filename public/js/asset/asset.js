@@ -128,49 +128,28 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         }
     })
 
-    var temprature_humidity = $.plot('#temp_humidity', [getRandomData1(), getRandomData1()], {
-        grid: {
-            borderColor: '#f3f3f3',
-            borderWidth: 1,
-            tickColor: '#f3f3f3'
-        },
-        series: {
-            shadowSize: 0, // Drawing is faster without shadows
-            color: '#3c8dbc'
-        },
-        lines: {
-            fill: false, //Converts the line chart to area chart
-            color: ['#3c8dbc', '#fc8dbc']
-        },
-        yaxis: {
-            min: 0,
-            max: 100,
-            show: true
-        },
-        xaxis: {
-            show: true
-        }
-    })
+
 
 
     var updateInterval = 500 //Fetch data ever x milliseconds
     var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
-    function update() {
-
-        electricity_consumption.setData([getRandomData(), getRandomData()])
-        temprature_humidity.setData([getRandomData1(), getRandomData1()])
-
-        // Since the axes don't change, we don't need to call plot.setupGrid()
-        electricity_consumption.draw()
-        temprature_humidity.draw()
-        if (realtime === 'on')
-            setTimeout(update, updateInterval)
-    }
+    // function update() {
+    //
+    //     electricity_consumption.setData([getRandomData(), getRandomData()])
+    //     temprature_humidity.setData([getRandomData1(), getRandomData1()])
+    //
+    //     // Since the axes don't change, we don't need to call plot.setupGrid()
+    //     electricity_consumption.draw()
+    //     temprature_humidity.draw()
+    //     if (realtime === 'on'){
+    //         setTimeout(update, updateInterval)
+    //     }
+    // }
 
     //INITIALIZE REALTIME DATA FETCHING
-    if (realtime === 'on') {
-        update()
-    }
+    // if (realtime === 'on') {
+    //     update()
+    // }
     //REALTIME TOGGLE
     $('#realtime .btn').click(function () {
         if ($(this).data('toggle') === 'on') {
@@ -269,92 +248,11 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         data: cos,
         color: '#00c0ef'
     }
-    $.plot('#rul-chart', [line_data1, line_data2], {
-        grid: {
-            hoverable: true,
-            borderColor: '#f3f3f3',
-            borderWidth: 1,
-            tickColor: '#f3f3f3'
-        },
-        series: {
-            shadowSize: 0,
-            lines: {
-                show: true
-            },
-            points: {
-                show: true
-            }
-        },
-        lines: {
-            fill: false,
-            color: ['#3c8dbc', '#f56954']
-        },
-        yaxis: {
-            show: true
-        },
-        xaxis: {
-            show: true,
-            label: "RUL History"
-        }
-    })
 
-    $.plot('#health-score-chart', [line_data1, line_data2], {
-        grid: {
-            hoverable: true,
-            borderColor: '#f3f3f3',
-            borderWidth: 1,
-            tickColor: '#f3f3f3'
-        },
-        series: {
-            shadowSize: 0,
-            lines: {
-                show: true
-            },
-            points: {
-                show: true
-            }
-        },
-        lines: {
-            fill: false,
-            color: ['#3c8dbc', '#f56954']
-        },
-        yaxis: {
-            show: true
-        },
-        xaxis: {
-            show: true,
-            label: "RUL History"
-        }
-    })
 
-    $.plot('#risk-chart', [line_data1, line_data2], {
-        grid: {
-            hoverable: true,
-            borderColor: '#f3f3f3',
-            borderWidth: 1,
-            tickColor: '#f3f3f3'
-        },
-        series: {
-            shadowSize: 0,
-            lines: {
-                show: true
-            },
-            points: {
-                show: true
-            }
-        },
-        lines: {
-            fill: false,
-            color: ['#3c8dbc', '#f56954']
-        },
-        yaxis: {
-            show: true
-        },
-        xaxis: {
-            show: true,
-            label: "RUL History"
-        }
-    })
+
+
+
     //Initialize tooltip on hover
     $('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
         position: 'absolute',
@@ -479,7 +377,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     $scope.table = null;
     function generateTable(data, tabelID) {
-        console.log(data)
         $scope.tableData = [];
         for (var i = 0; i < data.length; i++) {
             var listData = {};
@@ -540,10 +437,190 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     var tabelID = "#table-asset-description";
     generateTable(data, tabelID);
 
+
+
+    function plotAssetRiskChart(data){
+
+        $.plot('#risk-chart', [data], {
+            grid: {
+                hoverable: true,
+                borderColor: '#f3f3f3',
+                borderWidth: 1,
+                tickColor: '#f3f3f3'
+            },
+            series: {
+                shadowSize: 0,
+                lines: {
+                    show: true
+                },
+                points: {
+                    show: true
+                }
+            },
+            lines: {
+                fill: false,
+                color: ['#3c8dbc', '#f56954']
+            },
+            yaxis: {
+                show: true
+            },
+            xaxis: {
+                show: true,
+                label: "RUL History"
+            }
+        })
+    }
+    function plotRiskScoreChart(data){
+        $.plot('#health-score-chart', [data], {
+            grid: {
+                hoverable: true,
+                borderColor: '#f3f3f3',
+                borderWidth: 1,
+                tickColor: '#f3f3f3'
+            },
+            series: {
+                shadowSize: 0,
+                lines: {
+                    show: true
+                },
+                points: {
+                    show: true
+                }
+            },
+            lines: {
+                fill: false,
+                color: ['#3c8dbc', '#f56954']
+            },
+            yaxis: {
+                show: true
+            },
+            xaxis: {
+                show: true,
+                label: "RUL History"
+            }
+        })
+    }
+    function plotRulChart(data){
+        $.plot('#rul-chart', [data], {
+            grid: {
+                hoverable: true,
+                borderColor: '#f3f3f3',
+                borderWidth: 1,
+                tickColor: '#f3f3f3'
+            },
+            series: {
+                shadowSize: 0,
+                lines: {
+                    show: true
+                },
+                points: {
+                    show: true
+                }
+            },
+            lines: {
+                fill: false,
+                color: ['#3c8dbc', '#f56954']
+            },
+            yaxis: {
+                show: true
+            },
+            xaxis: {
+                show: true,
+                label: "RUL History"
+            }
+        })
+    }
+    function plotTemperatureHumidityChart(data){
+        $.plot('#temp_humidity', [data], {
+            grid: {
+                borderColor: '#f3f3f3',
+                borderWidth: 1,
+                tickColor: '#f3f3f3'
+            },
+            series: {
+                shadowSize: 0, // Drawing is faster without shadows
+                color: '#3c8dbc'
+            },
+            lines: {
+                fill: false, //Converts the line chart to area chart
+                color: ['#3c8dbc', '#fc8dbc']
+            },
+            yaxis: {
+                min: 0,
+                max: 100,
+                show: true
+            },
+            xaxis: {
+                show: true
+            }
+        })
+    }
+   function plotEnergyConsumptionChart(data){
+        $.plot('#interactive', [data], {
+            grid: {
+                borderColor: '#f3f3f3',
+                borderWidth: 1,
+                tickColor: '#f3f3f3'
+            },
+            series: {
+                shadowSize: 0, // Drawing is faster without shadows
+                color: '#3c8dbc'
+            },
+            lines: {
+                fill: false, //Converts the line chart to area chart
+                color: ['#3c8dbc', '#fc8dbc']
+            },
+            yaxis: {
+                min: 0,
+                max: 5000,
+                show: true
+            },
+            xaxis: {
+                show: true
+            }
+        })
+    }
+
     function getStats(){
         $http.get('/device/status/D1')
             .then(function(data){
-                console.log(data);
+                var riskData = data["data"][""].failure_risk[""].split(";");
+                var risk = [];
+                for(var i=0;i<riskData.length;i++){
+                    risk.push([i,parseInt(riskData[i])]);
+                }
+                console.log(data["data"][""]);
+                var healthScoreData = data["data"][""].health_score[""].split(";");
+                var healthScore = [];
+                for(var i=0;i<healthScoreData.length;i++){
+                    healthScore.push([i,parseInt(healthScoreData[i])]);
+                }
+                var remainingUsefulLifeData = data["data"][""].remaining_useful_life[""].split(";");
+                var remainingUsefulLife = [];
+                for(var i=0;i<remainingUsefulLifeData.length;i++){
+                    remainingUsefulLife.push([i,parseInt(remainingUsefulLifeData[i])]);
+                }
+
+
+                var temperatureHumidityData = data["data"][""].temperature_humidity[""].split(";");
+                var temperatureHumidity = [];
+                for(var i=0;i<temperatureHumidityData.length;i++){
+                    temperatureHumidity.push([i,parseInt(temperatureHumidityData[i])]);
+                }
+
+                var energyConsumptionData = data["data"][""].energy_consumption[""].split(";");
+                var energyConsumption = [];
+                for(var i=0;i<energyConsumptionData.length;i++){
+                    energyConsumption.push([i,parseInt(energyConsumptionData[i])]);
+                }
+
+                plotAssetRiskChart(risk);
+                plotRiskScoreChart(healthScore);
+                plotRulChart(remainingUsefulLife);
+                plotTemperatureHumidityChart(temperatureHumidity);
+                plotEnergyConsumptionChart(energyConsumption);
+
+
             })
             .catch(function(error){
                 console.log(error);
