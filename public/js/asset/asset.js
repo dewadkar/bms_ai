@@ -539,4 +539,15 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }
     var tabelID = "#table-asset-description";
     generateTable(data, tabelID);
+
+    function getStats(){
+        $http.get('/device/status/D1')
+            .then(function(data){
+                console.log(data);
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+    }
+    getStats();
 });
