@@ -632,6 +632,15 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             .then(function (response) {
                 angular.copy($scope.original, $scope.building_data);
                 var failed_data = response.data;
+                $scope.device_a_on = 0;
+                $scope.device_a_off = 0;
+                $scope.device_b_on = 0;
+                $scope.device_b_off = 0;
+                $scope.device_c_on = 0;
+                $scope.device_c_off = 0;
+                $scope.device_d_on = 0;
+                $scope.device_d_off = 0;
+
                 for (var i = 0; i < failed_data.length; i++) {
                     for (var j = 0; j < $scope.building_data.length; j++) {
                         if ($scope.building_data[j].id === failed_data[i].block_id) {
@@ -643,7 +652,24 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
                             }
                         }
                     }
+                    if (failed_data[i].device_id.includes('1')) {
+                        $scope.device_a_off++;
+                    }
+                    if (failed_data[i].device_id.includes('2')) {
+                        $scope.device_b_off++;
+                    }
+                    if (failed_data[i].device_id.includes('3')) {
+                        $scope.device_c_off++;
+                    }
+                    if (failed_data[i].device_id.includes('4')) {
+                        $scope.device_d_off++;
+                    }
                 }
+                debugger;
+                $scope.device_a_on =  $scope.total_type_a - $scope.device_a_off;
+                $scope.device_b_on =  $scope.total_type_b - $scope.device_b_off;
+                $scope.device_c_on =  $scope.total_type_c - $scope.device_c_off;
+                $scope.device_d_on =  $scope.total_type_d - $scope.device_d_off;
 
             })
             .catch(function (error) {
