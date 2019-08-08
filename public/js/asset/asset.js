@@ -398,7 +398,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     function plotAssetRiskChart(data) {
 
-        console.log('Risk chart data-------', data)
+        // console.log('Risk chart data-------', data)
 
 
         $.plot('#risk-chart', [data], {
