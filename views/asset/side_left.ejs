@@ -1,3 +1,13 @@
+<style>
+
+
+
+    canvas{
+        background:#fff;
+    }
+
+
+</style>
 <div class="box box-primary">
     <div class="box-header with-border">
         <i class="fa fa-bar-chart-o"></i>
@@ -5,13 +15,14 @@
     </div>
     <div class="box-body">
         <div class="row">
-            <div class="col-xs-6 col-md-4 text-center">
-                <input type="text" class="knob" value="80" data-min="-150" data-max="150" data-width="90"
+            <div class="col-xs-6 col-md-4 text-center" >
+                <input type="text" class="knob"  ng-value="risk_value" id="risk_value"  data-min="1" data-max="100" data-width="90"
                     data-height="90" data-fgColor="#f56954">
                 <!-- <div class="knob-label">Risk</div> -->
             </div>
             <div class="col-xs-6 col-md-8 text-center">
-                <div id="risk-chart" style="height: 100px;"></div>
+<!--                <div id="risk-chart" style="height: 100px;"></div>-->
+                <canvas style="height: 100px;" id="risk-chart"></canvas>
             </div>
         </div>
     </div>
@@ -24,12 +35,12 @@
     <div class="box-body">
         <div class="row">
             <div class="col-xs-6 col-md-4 text-center">
-                <input type="text" class="knob" value="30" data-width="90" data-height="90" data-fgColor="#f56954">
+                <input type="text" class="knob" value="30" id="health_score" data-width="90" data-height="90" data-fgColor="#f56954">
 
                 <!-- <div class="knob-label">Health Score (%)</div> -->
             </div>
             <div class="col-xs-6 col-md-8 text-center">
-                <div id="health-score-chart" style="height: 100px;"></div>
+                <canvas id="health-score-chart" style="height: 100px;"></canvas>
             </div>
         </div>
     </div>
@@ -47,7 +58,7 @@
                 <!-- <div class="knob-label">Remaining Useful Life(Days)</div> -->
             </div>
             <div class="col-xs-6 col-md-8 text-center">
-                <div id="rul-chart" style="height: 100px;"></div>
+                <canvas id="rul-chart" style="height: 100px;"></canvas>
             </div>
         </div>
     </div>

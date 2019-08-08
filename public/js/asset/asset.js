@@ -267,12 +267,12 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         ]
     }
 
-    var barChartCanvas = $('#barChart').get(0).getContext('2d')
-    var barChart = new Chart(barChartCanvas)
-    var barChartData = areaChartData
-    barChartData.datasets[1].fillColor = '#00a65a'
-    barChartData.datasets[1].strokeColor = '#00a65a'
-    barChartData.datasets[1].pointColor = '#00a65a'
+    // var barChartCanvas = $('#barChart').get(0).getContext('2d')
+    // var barChart = new Chart(barChartCanvas)
+    // var barChartData = areaChartData
+    // barChartData.datasets[1].fillColor = '#00a65a'
+    // barChartData.datasets[1].strokeColor = '#00a65a'
+    // barChartData.datasets[1].pointColor = '#00a65a'
     var barChartOptions = {
         //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
         scaleBeginAtZero: true,
@@ -301,8 +301,8 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         maintainAspectRatio: true
     }
 
-    barChartOptions.datasetFill = false
-    barChart.Bar(barChartData, barChartOptions)
+    // barChartOptions.datasetFill = false
+    // barChart.Bar(barChartData, barChartOptions)
 
     var data = [
         {
@@ -485,50 +485,112 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     function plotAssetRiskChart(data) {
 
         // console.log('Risk chart data-------', data)
+        var riskctx = document.getElementById('risk-chart').getContext("2d");
 
-
-        $.plot('#risk-chart', [data], {
-            data: data1,
-            grid: {
-                hoverable: true,
-                borderColor: '#f3f3f3',
-                borderWidth: 1,
-                tickColor: '#f3f3f3'
+        var gradientStroke = riskctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, 'green');
+        // gradientStroke.addColorStop(1, '#00a9ff');
+        gradientStroke.addColorStop(1, 'red');
+        var labels  = [];
+        for(var i=0;i<data.length;i++){
+            labels.push(i+1);
+        }
+        var myChart = new Chart(riskctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Data",
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data
+                }]
             },
-            // legend: {
-            //     cursor: "pointer",
-            //     itemclick: function (e) {
-            //         if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-            //             e.dataSeries.visible = false;
-            //         } else {
-            //             e.dataSeries.visible = true;
-            //         }
-
-            //         e.chart.render();
-            //     }
-            // },
-            series: {
-                shadowSize: 2,
-                lines: {
-                    show: true
+            options: {
+                legend: {
+                    position: "bottom"
                 },
-                points: {
-                    show: true
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        }
+                    }]
                 }
-            },
-            lines: {
-                fill: false,
-                color: ['#3c8dbc', '#f56954']
-            },
-            yaxis: {
-                show: true,
-                title: "Axis Y Title",
-            },
-            xaxis: {
-                show: true,
-                title: "RUL History",
             }
-        })
+        });
+
+
+        // $.plot('#risk-chart', [data], {
+        //     data: data1,
+        //     grid: {
+        //         hoverable: true,
+        //         borderColor: '#f3f3f3',
+        //         borderWidth: 1,
+        //         tickColor: '#f3f3f3'
+        //     },
+        //     // legend: {
+        //     //     cursor: "pointer",
+        //     //     itemclick: function (e) {
+        //     //         if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+        //     //             e.dataSeries.visible = false;
+        //     //         } else {
+        //     //             e.dataSeries.visible = true;
+        //     //         }
+        //
+        //     //         e.chart.render();
+        //     //     }
+        //     // },
+        //     series: {
+        //         shadowSize: 2,
+        //         lines: {
+        //             show: true
+        //         },
+        //         points: {
+        //             show: true
+        //         }
+        //     },
+        //     lines: {
+        //         fill: false,
+        //         color: ['#3c8dbc', '#f56954']
+        //     },
+        //     yaxis: {
+        //         show: true,
+        //         title: "Axis Y Title",
+        //     },
+        //     xaxis: {
+        //         show: true,
+        //         title: "RUL History",
+        //     }
+        // })
     }
     function plotRiskScoreChart(data) {
         $.plot('#health-score-chart', [data], {
@@ -654,14 +716,15 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             }
         })
     }
+    $scope.risk_value = 0;
 
     function getStats() {
         $http.get('/device/status/' + $window.appliance)
             .then(function (data) {
                 var riskData = data["data"][""].failure_risk[""].split(";");
                 var risk = [];
-                for (var i = 0; i < riskData.length; i++) {
-                    risk.push([i, parseInt(riskData[i])]);
+                for (var i = 0; i < 8; i++) {
+                    risk.push( parseInt(riskData[i]));
                 }
                 var healthScoreData = data["data"][""].health_score[""].split(";");
                 var healthScore = [];
@@ -692,6 +755,12 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 plotRulChart(remainingUsefulLife);
                 plotTemperatureHumidityChart(temperatureHumidity);
                 plotEnergyConsumptionChart(energyConsumption);
+                $('#risk_value').val(risk[risk.length-1]);
+                $("#risk_value").trigger('change');
+                $("#health_score").val(healthScore[healthScore.length-1][1]);
+                $("#health_score").trigger('change');
+
+
             })
             .catch(function (error) {
                 console.log(error);
