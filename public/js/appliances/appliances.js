@@ -228,6 +228,13 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
                             if (failed_data[i].device_id == origionalData[j].device_id) {
                                 origionalData[j].device = '<a href="/asset/' + origionalData[j].device_id + '" style="color: crimson">' + origionalData[j].device + '</a>';
                                 origionalData[j].status = "On but need repairing";
+                                origionalData[j].risk = '<span style="color:red">' + origionalData[j].risk + '</span>';
+                                origionalData[j].nominal_impact = '<span style="color:red">' + origionalData[j].nominal_impact + '</span>';
+                                origionalData[j].expected_impact = '<span style="color:red">' + origionalData[j].expected_impact + '</span>';
+                                origionalData[j].average_subsystem_risk_level = '<span style="color:red">' + origionalData[j].average_subsystem_risk_level + '</span>';
+                                origionalData[j].max_subsystem_risk_level = '<span style="color:red">' + origionalData[j].max_subsystem_risk_level + '</span>';
+                                origionalData[j].average_exp_subsystem_impact = '<span style="color:red">' + origionalData[j].average_exp_subsystem_impact + '</span>';
+                                origionalData[j].high_exp_subsystem_impact = '<span style="color:red">' + origionalData[j].high_exp_subsystem_impact + '</span>';
                             }
                         }
                     }

@@ -31,6 +31,30 @@
             </section>
             <section class="content" ng-controller="assetController">
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-primary" ng-cloak>
+                            <div class="box-header with-border" data-widget="collapse">
+                                <h3 class="box-title">Device Information</h3>
+                            </div>
+                            <!-- /.box-header -->
+
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table id="table-selected-device" class="table table-condensed table-hover"
+                                                style="width: 100%;">
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+
                     <div class="col-md-6">
                         <%- include ../asset/side_left.ejs %>
 
