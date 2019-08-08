@@ -838,6 +838,63 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         myChart.render();
 
     }
+    function plotSimilarVsIndividualAssetChart(data) {
+        console.log(data)
+        var similarIndividualAssetctx = document.getElementById('similar_vs_individual').getContext("2d");
+
+        var labels = [];
+        for (var i = 0; i < data.length; i++) {
+            labels.push(i + 1);
+        }
+        var myChart = new Chart(similarIndividualAssetctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Data",
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data
+                }]
+            },
+            options: {
+                legend: {
+                    position: "bottom"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        }
+                    }]
+                }
+            }
+        });
+        myChart.render();
+    }
     function getStats() {
         $http.get('/device/status/' + $window.appliance)
             .then(function (data) {
@@ -856,18 +913,20 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 for (var i = 0; i < 8; i++) {
                     remainingUsefulLife.push(parseInt(remainingUsefulLifeData[i]));
                 }
-
-
+                var energyConsumptionData = data["data"][""].energy_consumption[""].split(";");
+                var energyConsumption = [];
+                for (var i = 0; i < 8; i++) {
+                    energyConsumption.push(parseInt(energyConsumptionData[i]));
+                }
                 var temperatureHumidityData = data["data"][""].temperature_humidity[""].split(";");
                 var temperatureHumidity = [];
                 for (var i = 0; i < 8; i++) {
                     temperatureHumidity.push(parseInt(temperatureHumidityData[i]));
                 }
-
-                var energyConsumptionData = data["data"][""].energy_consumption[""].split(";");
-                var energyConsumption = [];
+                var similarVsIndividualData = data["data"][""].similar_individual[""].split(";");
+                var similarIndividual = [];
                 for (var i = 0; i < 8; i++) {
-                    energyConsumption.push(parseInt(energyConsumptionData[i]));
+                    similarIndividual.push(parseInt(similarVsIndividualData[i]));
                 }
                 $scope.risk_value = 0;
                 $scope.health_score = 0;
@@ -876,7 +935,9 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 plotRiskScoreChart(healthScore);
                 plotRulChart(remainingUsefulLife);
                 plotTemperatureHumidityChart(temperatureHumidity);
-                plotEnergyConsumptionChart(energyConsumption);
+                plotEnergyConsumptionChart(similarIndividual);
+                plotSimilarVsIndividualAssetChart(similarIndividual)
+
                 $('#risk_value').val(risk[risk.length - 1]);
                 $("#risk_value").trigger('change');
 
