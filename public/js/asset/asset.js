@@ -680,68 +680,163 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     }
     function plotTemperatureHumidityChart(data) {
-        $.plot('#temp_humidity', [data], {
-            grid: {
-                hoverable: true,
-                borderColor: '#f3f3f3',
-                borderWidth: 1,
-                tickColor: '#f3f3f3'
+        var humidityctx = document.getElementById('temp_humidity').getContext("2d");
+        var gradientStroke = humidityctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, 'green');
+        // gradientStroke.addColorStop(1, '#00a9ff');
+        gradientStroke.addColorStop(1, 'red');
+        var labels = [];
+        for (var i = 0; i < data.length; i++) {
+            labels.push(i + 1);
+        }
+        var myChart = new Chart(humidityctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Data",
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data
+                }]
             },
-            series: {
-                shadowSize: 2,
-                lines: {
-                    show: true
+            options: {
+                legend: {
+                    position: "bottom"
                 },
-                points: {
-                    show: true
-                },
-                color: '#3c8dbc'
-            },
-            lines: {
-                fill: false, //Converts the line chart to area chart
-                color: ['#3c8dbc', '#fc8dbc']
-            },
-            yaxis: {
-                min: 0,
-                max: 100,
-                show: true
-            },
-            xaxis: {
-                show: true
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        }
+                    }]
+                }
             }
-        })
+        });
+        myChart.render();
+        // $.plot('#temp_humidity', [data], {
+        //     grid: {
+        //         hoverable: true,
+        //         borderColor: '#f3f3f3',
+        //         borderWidth: 1,
+        //         tickColor: '#f3f3f3'
+        //     },
+        //     series: {
+        //         shadowSize: 2,
+        //         lines: {
+        //             show: true
+        //         },
+        //         points: {
+        //             show: true
+        //         },
+        //         color: '#3c8dbc'
+        //     },
+        //     lines: {
+        //         fill: false, //Converts the line chart to area chart
+        //         color: ['#3c8dbc', '#fc8dbc']
+        //     },
+        //     yaxis: {
+        //         min: 0,
+        //         max: 100,
+        //         show: true
+        //     },
+        //     xaxis: {
+        //         show: true
+        //     }
+        // })
     }
     function plotEnergyConsumptionChart(data) {
-        $.plot('#interactive', [data], {
-            grid: {
-                hoverable: true,
-                borderColor: '#f3f3f3',
-                borderWidth: 1,
-                tickColor: '#f3f3f3'
+        var enrgyctx = document.getElementById('interactive').getContext("2d");
+        var gradientStroke = enrgyctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, 'green');
+        // gradientStroke.addColorStop(1, '#00a9ff');
+        gradientStroke.addColorStop(1, 'red');
+        var labels = [];
+        for (var i = 0; i < data.length; i++) {
+            labels.push(i + 1);
+        }
+        var myChart = new Chart(enrgyctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Data",
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data
+                }]
             },
-            series: {
-                shadowSize: 2,
-                lines: {
-                    show: true
+            options: {
+                legend: {
+                    position: "bottom"
                 },
-                points: {
-                    show: true
-                },
-                color: '#3c8dbc'
-            },
-            lines: {
-                fill: false, //Converts the line chart to area chart
-                color: ['#3c8dbc', '#fc8dbc']
-            },
-            yaxis: {
-                min: 0,
-                max: 5000,
-                show: true
-            },
-            xaxis: {
-                show: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        }
+                    }]
+                }
             }
-        })
+        });
+        myChart.render();
+
     }
     function getStats() {
         $http.get('/device/status/' + $window.appliance)
