@@ -484,16 +484,14 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     function plotAssetRiskChart(data) {
 
-        // console.log('Risk chart data-------', data)
         var riskctx = document.getElementById('risk-chart').getContext("2d");
-
         var gradientStroke = riskctx.createLinearGradient(500, 0, 100, 0);
         gradientStroke.addColorStop(0, 'green');
         // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'red');
-        var labels  = [];
-        for(var i=0;i<data.length;i++){
-            labels.push(i+1);
+        var labels = [];
+        for (var i = 0; i < data.length; i++) {
+            labels.push(i + 1);
         }
         var myChart = new Chart(riskctx, {
             type: 'line',
@@ -547,110 +545,139 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 }
             }
         });
+        myChart.render();
 
-
-        // $.plot('#risk-chart', [data], {
-        //     data: data1,
-        //     grid: {
-        //         hoverable: true,
-        //         borderColor: '#f3f3f3',
-        //         borderWidth: 1,
-        //         tickColor: '#f3f3f3'
-        //     },
-        //     // legend: {
-        //     //     cursor: "pointer",
-        //     //     itemclick: function (e) {
-        //     //         if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-        //     //             e.dataSeries.visible = false;
-        //     //         } else {
-        //     //             e.dataSeries.visible = true;
-        //     //         }
-        //
-        //     //         e.chart.render();
-        //     //     }
-        //     // },
-        //     series: {
-        //         shadowSize: 2,
-        //         lines: {
-        //             show: true
-        //         },
-        //         points: {
-        //             show: true
-        //         }
-        //     },
-        //     lines: {
-        //         fill: false,
-        //         color: ['#3c8dbc', '#f56954']
-        //     },
-        //     yaxis: {
-        //         show: true,
-        //         title: "Axis Y Title",
-        //     },
-        //     xaxis: {
-        //         show: true,
-        //         title: "RUL History",
-        //     }
-        // })
     }
     function plotRiskScoreChart(data) {
-        $.plot('#health-score-chart', [data], {
-            grid: {
-                hoverable: true,
-                borderColor: '#f3f3f3',
-                borderWidth: 1,
-                tickColor: '#f3f3f3'
+
+        var healthctx = document.getElementById('health-score-chart').getContext("2d");
+        var gradientStroke = healthctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, 'green');
+        // gradientStroke.addColorStop(1, '#00a9ff');
+        gradientStroke.addColorStop(1, 'red');
+        var labels = [];
+        for (var i = 0; i < data.length; i++) {
+            labels.push(i + 1);
+        }
+        var myChart = new Chart(healthctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data
+                }]
             },
-            series: {
-                shadowSize: 0,
-                lines: {
-                    show: true
+            options: {
+                legend: {
+                    position: "bottom"
                 },
-                points: {
-                    show: true
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        }
+                    }]
                 }
-            },
-            lines: {
-                fill: false,
-                color: ['#3c8dbc', '#f56954']
-            },
-            yaxis: {
-                show: true
-            },
-            xaxis: {
-                show: true,
-                label: "RUL History"
             }
-        })
+        });
+        myChart.render();
+
     }
     function plotRulChart(data) {
-        $.plot('#rul-chart', [data], {
-            grid: {
-                hoverable: true,
-                borderColor: '#f3f3f3',
-                borderWidth: 1,
-                tickColor: '#f3f3f3'
+
+        var rulctx = document.getElementById('rul-chart').getContext("2d");
+        var gradientStroke = rulctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, 'green');
+        // gradientStroke.addColorStop(1, '#00a9ff');
+        gradientStroke.addColorStop(1, 'red');
+        var labels = [];
+        for (var i = 0; i < data.length; i++) {
+            labels.push(i + 1);
+        }
+        var myChart = new Chart(rulctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Data",
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data
+                }]
             },
-            series: {
-                shadowSize: 0,
-                lines: {
-                    show: true
+            options: {
+                legend: {
+                    position: "bottom"
                 },
-                points: {
-                    show: true
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        }
+                    }]
                 }
-            },
-            lines: {
-                fill: false,
-                color: ['#3c8dbc', '#f56954']
-            },
-            yaxis: {
-                show: true
-            },
-            xaxis: {
-                show: true,
-                label: "RUL History"
-            },
-        })
+            }
+        });
+        myChart.render();
+
     }
     function plotTemperatureHumidityChart(data) {
         $.plot('#temp_humidity', [data], {
@@ -716,49 +743,55 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             }
         })
     }
-    $scope.risk_value = 0;
-
     function getStats() {
         $http.get('/device/status/' + $window.appliance)
             .then(function (data) {
                 var riskData = data["data"][""].failure_risk[""].split(";");
                 var risk = [];
                 for (var i = 0; i < 8; i++) {
-                    risk.push( parseInt(riskData[i]));
+                    risk.push(parseInt(riskData[i]));
                 }
                 var healthScoreData = data["data"][""].health_score[""].split(";");
                 var healthScore = [];
-                for (var i = 0; i < healthScoreData.length; i++) {
-                    healthScore.push([i, parseInt(healthScoreData[i])]);
+                for (var i = 0; i < 8; i++) {
+                    healthScore.push(parseInt(healthScoreData[i]));
                 }
                 var remainingUsefulLifeData = data["data"][""].remaining_useful_life[""].split(";");
                 var remainingUsefulLife = [];
-                for (var i = 0; i < remainingUsefulLifeData.length; i++) {
-                    remainingUsefulLife.push([i, parseInt(remainingUsefulLifeData[i])]);
+                for (var i = 0; i < 8; i++) {
+                    remainingUsefulLife.push(parseInt(remainingUsefulLifeData[i]));
                 }
 
 
                 var temperatureHumidityData = data["data"][""].temperature_humidity[""].split(";");
                 var temperatureHumidity = [];
-                for (var i = 0; i < temperatureHumidityData.length; i++) {
-                    temperatureHumidity.push([i, parseInt(temperatureHumidityData[i])]);
+                for (var i = 0; i < 8; i++) {
+                    temperatureHumidity.push(parseInt(temperatureHumidityData[i]));
                 }
 
                 var energyConsumptionData = data["data"][""].energy_consumption[""].split(";");
                 var energyConsumption = [];
-                for (var i = 0; i < energyConsumptionData.length; i++) {
-                    energyConsumption.push([i, parseInt(energyConsumptionData[i])]);
+                for (var i = 0; i < 8; i++) {
+                    energyConsumption.push(parseInt(energyConsumptionData[i]));
                 }
-
+                $scope.risk_value = 0;
+                $scope.health_score = 0;
+                $scope.rul_score = 0;
                 plotAssetRiskChart(risk);
                 plotRiskScoreChart(healthScore);
                 plotRulChart(remainingUsefulLife);
                 plotTemperatureHumidityChart(temperatureHumidity);
                 plotEnergyConsumptionChart(energyConsumption);
-                $('#risk_value').val(risk[risk.length-1]);
+                $('#risk_value').val(risk[risk.length - 1]);
                 $("#risk_value").trigger('change');
-                $("#health_score").val(healthScore[healthScore.length-1][1]);
+
+                $("#health_score").val(healthScore[healthScore.length - 1]);
                 $("#health_score").trigger('change');
+
+                $("#rul_score").val(remainingUsefulLife[remainingUsefulLife.length - 1]);
+                $("#rul_score").trigger('change');
+
+
 
 
             })
