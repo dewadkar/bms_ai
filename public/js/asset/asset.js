@@ -498,7 +498,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                    label: "Data",
                     borderColor: gradientStroke,
                     pointBorderColor: gradientStroke,
                     pointBackgroundColor: gradientStroke,
@@ -548,7 +547,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         myChart.render();
 
     }
-    function plotRiskScoreChart(data) {
+    function plotHealthScoreChart(data) {
 
         var healthctx = document.getElementById('health-score-chart').getContext("2d");
         var gradientStroke = healthctx.createLinearGradient(500, 0, 100, 0);
@@ -629,7 +628,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                    label: "Data",
                     borderColor: gradientStroke,
                     pointBorderColor: gradientStroke,
                     pointBackgroundColor: gradientStroke,
@@ -694,7 +692,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                    label: "Data",
                     borderColor: gradientStroke,
                     pointBorderColor: gradientStroke,
                     pointBackgroundColor: gradientStroke,
@@ -788,7 +785,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                    label: "Data",
                     borderColor: gradientStroke,
                     pointBorderColor: gradientStroke,
                     pointBackgroundColor: gradientStroke,
@@ -839,9 +835,12 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     }
     function plotSimilarVsIndividualAssetChart(data) {
-        console.log(data)
-        var similarIndividualAssetctx = document.getElementById('similar_vs_individual').getContext("2d");
 
+        var similarIndividualAssetctx = document.getElementById('similar_vs_individual').getContext("2d");
+        var gradientStroke = similarIndividualAssetctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, 'green');
+        // gradientStroke.addColorStop(1, '#00a9ff');
+        gradientStroke.addColorStop(1, 'red');
         var labels = [];
         for (var i = 0; i < data.length; i++) {
             labels.push(i + 1);
@@ -851,7 +850,11 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                    label: "Data",
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
                     pointBorderWidth: 5,
                     pointHoverRadius: 5,
                     pointHoverBorderWidth: 1,
@@ -932,7 +935,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 $scope.health_score = 0;
                 $scope.rul_score = 0;
                 plotAssetRiskChart(risk);
-                plotRiskScoreChart(healthScore);
+                plotHealthScoreChart(healthScore);
                 plotRulChart(remainingUsefulLife);
                 plotTemperatureHumidityChart(temperatureHumidity);
                 plotEnergyConsumptionChart(similarIndividual);
