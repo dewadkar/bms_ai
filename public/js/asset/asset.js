@@ -570,7 +570,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }
 
     function getStats() {
-        $http.get('/device/status/D1')
+        $http.get('/device/status/'+$window.appliance)
             .then(function (data) {
                 var riskData = data["data"][""].failure_risk[""].split(";");
                 var risk = [];

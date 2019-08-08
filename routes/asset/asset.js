@@ -12,9 +12,9 @@ module.exports = function (app) {
      */
     this.view = function (request, response) {
         // var loc = location + 'view';
-        response.render('asset/asset', { title: "Asset", });
+        response.render('asset/asset', { title: "Asset",  appliance_id:request.params.id });
     };
 
     // Kvinna home page
-    app.get('/asset', this.view);
+    app.get('/asset/:id', this.view);
 };
