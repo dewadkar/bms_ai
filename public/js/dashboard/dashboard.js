@@ -16,8 +16,7 @@ app.factory('Scopes', function ($rootScope) {
 
 
 app.run(function ($rootScope) {
-    $rootScope.$on('scope.stored', function (event, data) {
-    });
+    $rootScope.$on('scope.stored', function (event, data) {});
 });
 
 app.controller("homeController", function ($scope, $http, $window, $compile, Scopes) {
@@ -32,11 +31,9 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
     $("#test-datepicker").datepicker("setDate", new Date());
 
 
-    $scope.building_data = [
-        {
+    $scope.building_data = [{
             id: 'Block-A',
-            devices: [
-                {
+            devices: [{
                     id: 'A1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -64,8 +61,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-B',
-            devices: [
-                {
+            devices: [{
                     id: 'B1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -94,8 +90,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-C',
-            devices: [
-                {
+            devices: [{
                     id: 'C1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -123,8 +118,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-D',
-            devices: [
-                {
+            devices: [{
                     id: 'D1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -152,8 +146,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-E',
-            devices: [
-                {
+            devices: [{
                     id: 'E1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -181,8 +174,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-F',
-            devices: [
-                {
+            devices: [{
                     id: 'F1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -210,8 +202,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-G',
-            devices: [
-                {
+            devices: [{
                     id: 'G1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -239,8 +230,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-H',
-            devices: [
-                {
+            devices: [{
                     id: 'H1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -268,8 +258,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-I',
-            devices: [
-                {
+            devices: [{
                     id: 'I1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -297,8 +286,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-J',
-            devices: [
-                {
+            devices: [{
                     id: 'J1',
                     icon: 'fas fa-battery-three-quarters',
                     color: 'rgb(255, 255, 255)',
@@ -326,250 +314,280 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
         },
         {
             id: 'Block-K',
-            devices: [
-                {
+            devices: [{
                     id: 'K1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'K2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'K3',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'K4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
         {
             id: 'Block-L',
-            devices: [
-                {
+            devices: [{
                     id: 'L1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'L2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'L3',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'L4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
         {
             id: 'Block-M',
-            devices: [
-                {
+            devices: [{
                     id: 'M1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'M2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'M3',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'M4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
         {
             id: 'Block-N',
-            devices: [
-                {
+            devices: [{
                     id: 'N1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'N2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'N3',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'N4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
         {
             id: 'Block-O',
-            devices: [
-                {
+            devices: [{
                     id: 'O1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'O2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'O4',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'O4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
         {
             id: 'Block-P',
-            devices: [
-                {
+            devices: [{
                     id: 'P1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'P2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'P3',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'P4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
         {
             id: 'Block-Q',
-            devices: [
-                {
+            devices: [{
                     id: 'Q1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'Q2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'Q3',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'Q4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
         {
             id: 'Block-R',
-            devices: [
-                {
+            devices: [{
                     id: 'R1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'R2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'R3',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'R4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
         {
             id: 'Block-S',
-            devices: [
-                {
+            devices: [{
                     id: 'S1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'S2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'S3',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'S4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
         },
         {
             id: 'Block-T',
-            devices: [
-                {
+            devices: [{
                     id: 'T1',
-                    icon: 'fas fa-battery-three-quarters', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-battery-three-quarters',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'T2',
-                    icon: 'fas fa-fan', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-fan',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'T3',
-                    icon: 'fas fa-hourglass-half', color: 'rgb(255, 255, 255)',
+                    icon: 'fas fa-hourglass-half',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 },
                 {
                     id: 'T4',
-                    icon: 'fab fa-safari', color: 'rgb(255, 255, 255)',
+                    icon: 'fab fa-safari',
+                    color: 'rgb(255, 255, 255)',
                     status: ''
                 }
             ]
@@ -577,6 +595,14 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
     ];
     $scope.original = [];
     angular.copy($scope.building_data, $scope.original);
+
+
+
+    $scope.label_total_type_d = "Electrical Meter";
+    $scope.label_total_type_c = "AC Filter";
+    $scope.label_total_type_b = "Water Pump Station";
+    $scope.label_total_type_a = "DG Set";
+
 
     $scope.total_appliances = 0;
     $scope.total_type_a = 0;
