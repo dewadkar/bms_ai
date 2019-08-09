@@ -16,7 +16,8 @@ app.factory('Scopes', function ($rootScope) {
 
 
 app.run(function ($rootScope) {
-    $rootScope.$on('scope.stored', function (event, data) {});
+    $rootScope.$on('scope.stored', function (event, data) {
+    });
 });
 
 app.controller("assetController", function ($scope, $http, $window, $compile, Scopes) {
@@ -167,14 +168,14 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 this.g.lineWidth = this.lineWidth;
 
                 this.o.cursor &&
-                    (sat = eat - 0.3) &&
-                    (eat = eat + 0.3);
+                (sat = eat - 0.3) &&
+                (eat = eat + 0.3);
 
                 if (this.o.displayPrevious) {
                     ea = this.startAngle + this.angle(this.value);
                     this.o.cursor &&
-                        (sa = ea - 0.3) &&
-                        (ea = ea + 0.3);
+                    (sa = ea - 0.3) &&
+                    (ea = ea + 0.3);
                     this.g.beginPath();
                     this.g.strokeStyle = this.previousColor;
                     this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
@@ -245,15 +246,15 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     var areaChartData = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
-                label: 'Electronics',
-                fillColor: 'rgba(210, 214, 222, 1)',
-                strokeColor: 'rgba(210, 214, 222, 1)',
-                pointColor: 'rgba(210, 214, 222, 1)',
-                pointStrokeColor: '#c1c7d1',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(220,220,220,1)',
-                data: [35, 39]
-            },
+            label: 'Electronics',
+            fillColor: 'rgba(210, 214, 222, 1)',
+            strokeColor: 'rgba(210, 214, 222, 1)',
+            pointColor: 'rgba(210, 214, 222, 1)',
+            pointStrokeColor: '#c1c7d1',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(220,220,220,1)',
+            data: [35, 39]
+        },
             {
                 label: 'Digital Goods',
                 fillColor: 'rgba(60,141,188,0.9)',
@@ -350,10 +351,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         $scope.table = $(tabelID).DataTable({
             'data': $scope.tableData,
             'columns': [{
-                    title: 'Sr.Num',
-                    width: '10px',
-                    data: 'index'
-                },
+                title: 'Sr.Num',
+                width: '10px',
+                data: 'index'
+            },
                 {
                     title: "Brand ",
                     width: '30px',
@@ -431,6 +432,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         });
         $(tabelID).DataTable().draw();
     }
+
     var tabelID = "#table-asset-description";
     generateAssetTable(data, tabelID);
 
@@ -465,10 +467,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         $scope.selectedDevicetable = $(selectedDeviceTabelID).DataTable({
             'data': $scope.deviceTableData,
             'columns': [{
-                    title: 'Block ID',
-                    width: '12px',
-                    data: 'block_id'
-                },
+                title: 'Block ID',
+                width: '12px',
+                data: 'block_id'
+            },
                 {
                     title: 'Device ID',
                     width: '12px',
@@ -553,6 +555,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         });
         $(selectedDeviceTabelID).DataTable().draw();
     }
+
     $http.get('/appliances/readJsonobject')
         .then(function (response) {
             var origionalData = response.data;
@@ -605,20 +608,20 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                        borderColor: gradientStroke,
-                        pointBorderColor: gradientStroke,
-                        pointBackgroundColor: gradientStroke,
-                        pointHoverBackgroundColor: gradientStroke,
-                        pointHoverBorderColor: gradientStroke,
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 5,
-                        pointHoverBorderWidth: 1,
-                        pointRadius: 3,
-                        fill: false,
-                        borderWidth: 4,
-                        data: data.slice(0, data.length - 1),
-                        label: "Risk History"
-                    },
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data.slice(0, data.length - 1),
+                    label: "Risk History"
+                },
                     {
                         borderColor: "red",
                         data: data.slice(0, data.length),
@@ -678,20 +681,20 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                        borderColor: gradientStroke,
-                        pointBorderColor: gradientStroke,
-                        pointBackgroundColor: gradientStroke,
-                        pointHoverBackgroundColor: gradientStroke,
-                        pointHoverBorderColor: gradientStroke,
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 5,
-                        pointHoverBorderWidth: 1,
-                        pointRadius: 3,
-                        fill: false,
-                        borderWidth: 4,
-                        data: data.slice(0, data.length - 1),
-                        label: "Histry of Health "
-                    },
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data.slice(0, data.length - 1),
+                    label: "Histry of Health "
+                },
                     {
                         borderColor: "red",
                         data: data.slice(0, data.length),
@@ -751,20 +754,20 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                        borderColor: gradientStroke,
-                        pointBorderColor: gradientStroke,
-                        pointBackgroundColor: gradientStroke,
-                        pointHoverBackgroundColor: gradientStroke,
-                        pointHoverBorderColor: gradientStroke,
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 5,
-                        pointHoverBorderWidth: 1,
-                        pointRadius: 3,
-                        fill: false,
-                        borderWidth: 4,
-                        data: data.slice(0, data.length - 1),
-                        label: "History RUL"
-                    },
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data.slice(0, data.length - 1),
+                    label: "History RUL"
+                },
                     {
                         borderColor: "red",
                         data: data.slice(0, data.length),
@@ -808,7 +811,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     }
 
-    function plotTemperatureHumidityChart(data) {
+    function plotTemperatureHumidityChart(data, humidity) {
         var humidityctx = document.getElementById('temp_humidity').getContext("2d");
         var gradientStroke = humidityctx.createLinearGradient(500, 0, 100, 0);
         gradientStroke.addColorStop(0, 'green');
@@ -818,55 +821,96 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         for (var i = 0; i < data.length; i++) {
             labels.push(i + 1);
         }
+        var lineChartData = {
+            labels: labels,
+            datasets: [{
+                label: 'Temperature',
+                borderColor: 'red',
+                backgroundColor: 'red',
+                fill: false,
+                data: data,
+                yAxisID: 'y-axis-1',
+            }, {
+                label: 'Humidity',
+                borderColor: 'blue',
+                backgroundColor: 'blue',
+                fill: false,
+                data: humidity,
+                yAxisID: 'y-axis-2'
+            }]
+        };
         var myChart = new Chart(humidityctx, {
             type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    borderColor: gradientStroke,
-                    pointBorderColor: gradientStroke,
-                    pointBackgroundColor: gradientStroke,
-                    pointHoverBackgroundColor: gradientStroke,
-                    pointHoverBorderColor: gradientStroke,
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBorderWidth: 1,
-                    pointRadius: 3,
-                    fill: false,
-                    borderWidth: 4,
-                    data: data
-                }]
-            },
+            // data: {
+            //     labels: labels,
+            //     datasets: [{
+            //         borderColor: gradientStroke,
+            //         pointBorderColor: gradientStroke,
+            //         pointBackgroundColor: gradientStroke,
+            //         pointHoverBackgroundColor: gradientStroke,
+            //         pointHoverBorderColor: gradientStroke,
+            //         pointBorderWidth: 5,
+            //         pointHoverRadius: 5,
+            //         pointHoverBorderWidth: 1,
+            //         pointRadius: 3,
+            //         fill: false,
+            //         borderWidth: 4,
+            //         label: 'A',
+            //         yAxisID: 'AA',
+            //         data: data
+            //     }]
+            // },
+            data: lineChartData,
             options: {
+                scales: {
+                    yAxes: [
+                        {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            id: 'y-axis-1',
+                        },
+                        {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            id: 'y-axis-2',
+                        },
+                    ],
+                    xAxes: [
+                        {
+                            gridLines: {
+                                zeroLineColor: "transparent"
+                            },
+                            ticks: {
+                                padding: 20,
+                                fontColor: "rgba(0,0,0,0.5)",
+                                fontStyle: "bold"
+                            }
+                        }
+                    ]
+
+                },
                 legend: {
                     position: "bottom"
                 },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            fontColor: "rgba(0,0,0,0.5)",
-                            fontStyle: "bold",
-                            beginAtZero: true,
-                            maxTicksLimit: 10,
-                            padding: 20
-                        },
-                        gridLines: {
-                            drawTicks: false,
-                            display: false
-                        }
-
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            zeroLineColor: "transparent"
-                        },
-                        ticks: {
-                            padding: 20,
-                            fontColor: "rgba(0,0,0,0.5)",
-                            fontStyle: "bold"
-                        }
-                    }]
-                }
+                // scales: {
+                //     yAxes: [{
+                //         ticks: {
+                //             fontColor: "rgba(0,0,0,0.5)",
+                //             fontStyle: "bold",
+                //             beginAtZero: true,
+                //             maxTicksLimit: 10,
+                //             padding: 20
+                //         },
+                //         gridLines: {
+                //             drawTicks: false,
+                //             display: false
+                //         }
+                //
+                //     }],
+                //     // xAxes: []
+                // }
             }
         });
         myChart.render();
@@ -1065,26 +1109,30 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 for (var i = 0; i < 8; i++) {
                     similarIndividual.push(parseInt(similarVsIndividualData[i]));
                 }
+                var humidityData = data["data"][""].humidity[""].split(";");
+                var humidity = [];
+                for (var i = 0; i < 8; i++) {
+                    humidity.push(parseInt(humidityData[i]));
+                }
+
                 $scope.risk_value = 0;
                 $scope.health_score = 0;
                 $scope.rul_score = 0;
                 plotAssetRiskChart(risk);
                 plotHealthScoreChart(healthScore);
                 plotRulChart(remainingUsefulLife);
-                plotTemperatureHumidityChart(temperatureHumidity);
-                plotEnergyConsumptionChart(similarIndividual);
-                plotSimilarVsIndividualAssetChart(similarIndividual)
+                plotTemperatureHumidityChart(temperatureHumidity, humidity);
+                plotEnergyConsumptionChart(energyConsumption);
+                plotSimilarVsIndividualAssetChart(similarIndividual);
 
-                $('#risk_value').val(risk[risk.length - 1]);
+                $('#risk_value').val(risk[risk.length - 2]);
                 $("#risk_value").trigger('change');
 
-                $("#health_score").val(healthScore[healthScore.length - 1]);
+                $("#health_score").val(healthScore[healthScore.length - 2]);
                 $("#health_score").trigger('change');
 
-                $("#rul_score").val(remainingUsefulLife[remainingUsefulLife.length - 1]);
+                $("#rul_score").val(remainingUsefulLife[remainingUsefulLife.length - 2]);
                 $("#rul_score").trigger('change');
-
-
 
 
             })
@@ -1092,5 +1140,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 console.log(error);
             })
     }
+
     getStats();
 });
