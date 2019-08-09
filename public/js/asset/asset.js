@@ -303,22 +303,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }).appendTo('body')
 
 
-    var data = [{
-        "brand": "XXX",
-        "model": "AC",
-        "model_year": "2018",
-        "model_number": "XXX2034",
-        "serial_number": "SN1243434353",
-        "warranty": "5 Year",
-        "service_center_number": "(+91) 9543535324",
-        "last_unschedule_maintanance": "No",
-        "average_subsystem_risk_level": "10 %",
-        "average_exp_subsystem_impact": "20 %",
-        "high_exp_subsystem_impact": "",
-        "location": "Pune"
-
-    }];
-
     $scope.table = null;
 
     function generateAssetTable(data, tabelID) {
@@ -430,9 +414,24 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         });
         $(tabelID).DataTable().draw();
     }
+    var assetTableData = [{
+        "brand": "XXX",
+        "model": "AC",
+        "model_year": "2018",
+        "model_number": "XXX2034",
+        "serial_number": "SN1243434353",
+        "warranty": "5 Year",
+        "service_center_number": "(+91) 9543535324",
+        "last_unschedule_maintanance": "No",
+        "average_subsystem_risk_level": "10 %",
+        "average_exp_subsystem_impact": "20 %",
+        "high_exp_subsystem_impact": "",
+        "location": "Pune"
+
+    }];
 
     var tabelID = "#table-asset-description";
-    generateAssetTable(data, tabelID);
+    generateAssetTable(assetTableData, tabelID);
 
     $scope.selectedDevicetable = null;
 
@@ -1059,75 +1058,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         $scope.myChart.render();
 
     }
-    // function plotEnergyConsumptionChart(data) {
-    //     var enrgyctx = document.getElementById('interactive').getContext("2d");
-    //     var gradientStroke = enrgyctx.createLinearGradient(500, 0, 100, 0);
-    //     gradientStroke.addColorStop(0, 'green');
-    //     // gradientStroke.addColorStop(1, '#00a9ff');
-    //     gradientStroke.addColorStop(1, 'red');
-    //     var labels = [];
-    //     for (var i = 8; i > 0; i--) {
-    //         labels.push(now.getHours() - i + 'Hr');
-    //     }
-    //
-    //     var myChart = new Chart(enrgyctx, {
-    //         type: 'line',
-    //         data: {
-    //             labels: labels,
-    //             datasets: [{
-    //                 label: "Hours",
-    //                 borderColor: gradientStroke,
-    //                 pointBorderColor: gradientStroke,
-    //                 pointBackgroundColor: gradientStroke,
-    //                 pointHoverBackgroundColor: gradientStroke,
-    //                 pointHoverBorderColor: gradientStroke,
-    //                 pointBorderWidth: 5,
-    //                 pointHoverRadius: 5,
-    //                 pointHoverBorderWidth: 1,
-    //                 pointRadius: 3,
-    //                 fill: false,
-    //                 borderWidth: 4,
-    //                 data: data
-    //             }]
-    //         },
-    //         options: {
-    //             legend: {
-    //                 position: "bottom"
-    //             },
-    //             scales: {
-    //                 yAxes: [{
-    //                     ticks: {
-    //                         fontColor: "rgba(0,0,0,0.5)",
-    //                         fontStyle: "bold",
-    //                         beginAtZero: true,
-    //                         maxTicksLimit: 10,
-    //                         padding: 20
-    //                     },
-    //                     gridLines: {
-    //                         drawTicks: false,
-    //                         display: false
-    //                     },
-    //                     scaleLabel: {
-    //                         display: true,
-    //                         labelString: 'Energy Consumption (Watt/Hr)'
-    //                     }
-    //                 }],
-    //                 xAxes: [{
-    //                     gridLines: {
-    //                         zeroLineColor: "transparent"
-    //                     },
-    //                     ticks: {
-    //                         padding: 20,
-    //                         fontColor: "rgba(0,0,0,0.5)",
-    //                         fontStyle: "bold"
-    //                     }
-    //                 }]
-    //             }
-    //         }
-    //     });
-    //     myChart.render();
-    //
-    // }
 
     function plotSimilarVsIndividualAssetChart(data) {
 
