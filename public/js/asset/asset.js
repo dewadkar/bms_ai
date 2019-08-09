@@ -145,42 +145,29 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     /* jQueryKnob */
 
     $(".knob").knob({
-        /*change : function (value) {
-         //console.log("change : " + value);
-         },
-         release : function (value) {
-         console.log("release : " + value);
-         },
-         cancel : function () {
-         console.log("cancel : " + this.value);
-         },*/
         draw: function () {
 
             // "tron" case
             if (this.$.data('skin') == 'tron') {
 
-                var a = this.angle(this.cv) // Angle
-                    ,
-                    sa = this.startAngle // Previous start angle
-                    ,
-                    sat = this.startAngle // Start angle
-                    ,
-                    ea // Previous end angle
-                    , eat = sat + a // End angle
-                    ,
+                var a = this.angle(this.cv), // Angle
+                    sa = this.startAngle, // Previous start angle
+                    sat = this.startAngle,// Start angle                    
+                    ea, // Previous end angle
+                    eat = sat + a, // End angle                    
                     r = true;
 
                 this.g.lineWidth = this.lineWidth;
 
                 this.o.cursor &&
-                (sat = eat - 0.3) &&
-                (eat = eat + 0.3);
+                    (sat = eat - 0.3) &&
+                    (eat = eat + 0.3);
 
                 if (this.o.displayPrevious) {
                     ea = this.startAngle + this.angle(this.value);
                     this.o.cursor &&
-                    (sa = ea - 0.3) &&
-                    (ea = ea + 0.3);
+                        (sa = ea - 0.3) &&
+                        (ea = ea + 0.3);
                     this.g.beginPath();
                     this.g.strokeStyle = this.previousColor;
                     this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
@@ -200,6 +187,95 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
                 return false;
             }
+            $('#risk_value').trigger('configure', {
+                'draw': function (v) {
+                    v = parseInt(document.getElementById('risk_value').value);
+                    if (v <= 20) {
+                        this.o.fgColor = 'green';
+                        $("#risk_value").css("color", "green");
+                    }
+                    if (v > 20 && v <= 40) {
+                        this.o.fgColor = '#cdd81e';
+                        $("#risk_value").css("color", "#cdd81e");
+                    }
+                    if (v > 40 && v <= 60) {
+                        this.o.fgColor = 'orange';
+                        $("#risk_value").css("color", "orange");
+                    }
+                    if (v > 60 && v <= 80) {
+                        this.o.fgColor = '#f56969';
+                        $("#risk_value").css("color", "#f56969");
+                    }
+                    if (v > 80) {
+                        this.o.fgColor = 'red';
+                        $("#risk_value").css("color", "red");
+                    }
+                },
+                'format': function (v) {
+                    return v + ' %';
+                }
+            });
+            $('#risk_value').trigger('change');
+
+            $('#health_score').trigger('configure', {
+                'draw': function (v) {
+                    v = parseInt(document.getElementById('health_score').value);
+                    if (v <= 20) {
+                        this.o.fgColor = 'red';
+                        $("#health_score").css("color", "red");
+                    }
+                    if (v > 20 && v <= 40) {
+                        this.o.fgColor = '#f56969';
+                        $("#health_score").css("color", "#f56969");
+                    }
+                    if (v > 40 && v <= 60) {
+                        this.o.fgColor = 'orange';
+                        $("#health_score").css("color", "orange");
+                    }
+                    if (v > 60 && v <= 80) {
+                        this.o.fgColor = '#cdd81e';
+                        $("#health_score").css("color", "#cdd81e");
+                    }
+                    if (v > 80) {
+                        this.o.fgColor = 'green';
+                        $("#health_score").css("color", "green");
+                    }
+                },
+                'format': function (v) {
+                    return v + ' %';
+                }
+            });
+            $('#health_score').trigger('change');
+
+            $('#rul_score').trigger('configure', {
+                'draw': function (v) {
+                    v = parseInt(document.getElementById('rul_score').value);
+                    if (v <= 70) {
+                        this.o.fgColor = 'red';
+                        $("#rul_score").css("color", "red");
+                    }
+                    if (v > 70 && v <= 140) {
+                        this.o.fgColor = '#f56969';
+                        $("#rul_score").css("color", "#f56969");
+                    }
+                    if (v > 140 && v <= 210) {
+                        this.o.fgColor = 'orange';
+                        $("#rul_score").css("color", "orange");
+                    }
+                    if (v > 210 && v <= 280) {
+                        this.o.fgColor = '#cdd81e';
+                        $("#rul_score").css("color", "#cdd81e");
+                    }
+                    if (v > 280) {
+                        this.o.fgColor = 'green';
+                        $("#rul_score").css("color", "green");
+                    }
+                },
+                'format': function (v) {
+                    return v + ' D';
+                }
+            });
+            $('#rul_score').trigger('change');
         }
     });
 
@@ -225,90 +301,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         opacity: 0.8
     }).appendTo('body')
 
-    $('#line-chart').bind('plothover', function (event, pos, item) {
 
-        if (item) {
-            var x = item.datapoint[0].toFixed(2),
-                y = item.datapoint[1].toFixed(2)
-
-            $('#line-chart-tooltip').html(item.series.label + ' of ' + x + ' = ' + y)
-                .css({
-                    top: item.pageY + 5,
-                    left: item.pageX + 5
-                })
-                .fadeIn(200)
-        } else {
-            $('#line-chart-tooltip').hide()
-        }
-
-    })
-    /* END LINE CHART */
-
-
-    //-------------
-    //- BAR CHART -
-    //-------------
-    var areaChartData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'Electronics',
-            fillColor: 'rgba(210, 214, 222, 1)',
-            strokeColor: 'rgba(210, 214, 222, 1)',
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [35, 39]
-        },
-            {
-                label: 'Digital Goods',
-                fillColor: 'rgba(60,141,188,0.9)',
-                strokeColor: 'rgba(60,141,188,0.8)',
-                pointColor: '#3b8bba',
-                pointStrokeColor: 'rgba(60,141,188,1)',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(60,141,188,1)',
-                data: [28, 48]
-            }
-        ]
-    }
-
-    // var barChartCanvas = $('#barChart').get(0).getContext('2d')
-    // var barChart = new Chart(barChartCanvas)
-    // var barChartData = areaChartData
-    // barChartData.datasets[1].fillColor = '#00a65a'
-    // barChartData.datasets[1].strokeColor = '#00a65a'
-    // barChartData.datasets[1].pointColor = '#00a65a'
-    var barChartOptions = {
-        //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-        scaleBeginAtZero: true,
-        //Boolean - Whether grid lines are shown across the chart
-        scaleShowGridLines: true,
-        //String - Colour of the grid lines
-        scaleGridLineColor: 'rgba(0,0,0,.05)',
-        //Number - Width of the grid lines
-        scaleGridLineWidth: 1,
-        //Boolean - Whether to show horizontal lines (except X axis)
-        scaleShowHorizontalLines: true,
-        //Boolean - Whether to show vertical lines (except Y axis)
-        scaleShowVerticalLines: true,
-        //Boolean - If there is a stroke on each bar
-        barShowStroke: true,
-        //Number - Pixel width of the bar stroke
-        barStrokeWidth: 2,
-        //Number - Spacing between each of the X value sets
-        barValueSpacing: 5,
-        //Number - Spacing between data sets within X values
-        barDatasetSpacing: 1,
-        //String - A legend template
-        legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-        //Boolean - whether to make the chart responsive
-        responsive: true,
-        maintainAspectRatio: true
-    }
-
-    // barChartOptions.datasetFill = false
-    // barChart.Bar(barChartData, barChartOptions)
 
     var data = [{
         "brand": "XXX",
@@ -360,66 +353,66 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 width: '10px',
                 data: 'index'
             },
-                {
-                    title: "Brand ",
-                    width: '30px',
-                    data: 'brand'
-                },
-                {
-                    title: "Model ",
-                    width: '30px',
-                    data: 'model'
-                },
-                {
-                    title: "Model Year ",
-                    width: '30px',
-                    data: 'model_year'
-                },
-                {
-                    title: "Model Number ",
-                    width: '30px',
-                    data: 'model_number'
-                },
-                {
-                    title: "Serial Number ",
-                    width: '30px',
-                    data: 'serial_number'
-                },
-                {
-                    title: "Warranty ",
-                    width: '30px',
-                    data: 'warranty'
-                },
-                {
-                    title: "Service Center Number ",
-                    width: '70px',
-                    data: 'service_center_number'
-                },
-                {
-                    title: "Last Unschedule Maintanance ",
-                    width: '30px',
-                    data: 'last_unschedule_maintanance'
-                },
-                {
-                    title: "Avg. Subsystem Risk Level ",
-                    width: '30px',
-                    data: 'average_subsystem_risk_level'
-                },
-                {
-                    title: "Avg.Exp. Subsystem Impact ",
-                    width: '30px',
-                    data: 'average_exp_subsystem_impact'
-                },
-                {
-                    title: "High Exp Subsystem Impact ",
-                    width: '30px',
-                    data: 'high_exp_subsystem_impact'
-                },
-                {
-                    title: "Location ",
-                    width: '30px',
-                    data: 'location'
-                },
+            {
+                title: "Brand ",
+                width: '30px',
+                data: 'brand'
+            },
+            {
+                title: "Model ",
+                width: '30px',
+                data: 'model'
+            },
+            {
+                title: "Model Year ",
+                width: '30px',
+                data: 'model_year'
+            },
+            {
+                title: "Model Number ",
+                width: '30px',
+                data: 'model_number'
+            },
+            {
+                title: "Serial Number ",
+                width: '30px',
+                data: 'serial_number'
+            },
+            {
+                title: "Warranty ",
+                width: '30px',
+                data: 'warranty'
+            },
+            {
+                title: "Service Center Number ",
+                width: '70px',
+                data: 'service_center_number'
+            },
+            {
+                title: "Last Unschedule Maintanance ",
+                width: '30px',
+                data: 'last_unschedule_maintanance'
+            },
+            {
+                title: "Avg. Subsystem Risk Level ",
+                width: '30px',
+                data: 'average_subsystem_risk_level'
+            },
+            {
+                title: "Avg.Exp. Subsystem Impact ",
+                width: '30px',
+                data: 'average_exp_subsystem_impact'
+            },
+            {
+                title: "High Exp Subsystem Impact ",
+                width: '30px',
+                data: 'high_exp_subsystem_impact'
+            },
+            {
+                title: "Location ",
+                width: '30px',
+                data: 'location'
+            },
 
             ],
             createdRow: function (row, data, dataIndex) {
@@ -476,72 +469,72 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 width: '12px',
                 data: 'block_id'
             },
-                {
-                    title: 'Device ID',
-                    width: '12px',
-                    data: 'device_id'
-                },
-                {
-                    title: "Device ",
-                    width: '10px',
-                    data: 'device'
-                },
-                {
-                    title: "Status ",
-                    width: '50px',
-                    data: 'status'
-                },
-                {
-                    title: "Description ",
-                    width: '30px',
-                    data: 'description'
-                },
-                {
-                    title: "Remaining Useful Life (Days)",
-                    width: '20px',
-                    data: 'rul'
-                },
-                {
-                    title: "Risk ",
-                    width: '30px',
-                    data: 'risk'
-                },
-                // { title: "Risk History ", width: '30px', data: 'risk_history' },
-                {
-                    title: "Nominal Impact ",
-                    width: '30px',
-                    data: 'nominal_impact'
-                },
-                {
-                    title: "Expected Impact ",
-                    width: '30px',
-                    data: 'expected_impact'
-                },
-                {
-                    title: "Average Subsystem Risk Level ",
-                    width: '30px',
-                    data: 'average_subsystem_risk_level'
-                },
-                {
-                    title: "Last Unschedule Maintanance ",
-                    width: '30px',
-                    data: 'last_unscheduled_maintenance'
-                },
-                {
-                    title: "Max Subsystem Risk Level ",
-                    width: '30px',
-                    data: 'max_subsystem_risk_level'
-                },
-                {
-                    title: "Average Exp Subsystem Impact",
-                    width: '30px',
-                    data: 'average_exp_subsystem_impact'
-                },
-                {
-                    title: "High Exp Subsystem Impact ",
-                    width: '30px',
-                    data: 'high_exp_subsystem_impact'
-                },
+            {
+                title: 'Device ID',
+                width: '12px',
+                data: 'device_id'
+            },
+            {
+                title: "Device ",
+                width: '10px',
+                data: 'device'
+            },
+            {
+                title: "Status ",
+                width: '50px',
+                data: 'status'
+            },
+            {
+                title: "Description ",
+                width: '30px',
+                data: 'description'
+            },
+            {
+                title: "Remaining Useful Life (Days)",
+                width: '20px',
+                data: 'rul'
+            },
+            {
+                title: "Risk ",
+                width: '30px',
+                data: 'risk'
+            },
+            // { title: "Risk History ", width: '30px', data: 'risk_history' },
+            {
+                title: "Nominal Impact ",
+                width: '30px',
+                data: 'nominal_impact'
+            },
+            {
+                title: "Expected Impact ",
+                width: '30px',
+                data: 'expected_impact'
+            },
+            {
+                title: "Average Subsystem Risk Level ",
+                width: '30px',
+                data: 'average_subsystem_risk_level'
+            },
+            {
+                title: "Last Unschedule Maintanance ",
+                width: '30px',
+                data: 'last_unscheduled_maintenance'
+            },
+            {
+                title: "Max Subsystem Risk Level ",
+                width: '30px',
+                data: 'max_subsystem_risk_level'
+            },
+            {
+                title: "Average Exp Subsystem Impact",
+                width: '30px',
+                data: 'average_exp_subsystem_impact'
+            },
+            {
+                title: "High Exp Subsystem Impact ",
+                width: '30px',
+                data: 'high_exp_subsystem_impact'
+            },
 
             ],
             createdRow: function (row, data, dataIndex) {
@@ -638,11 +631,11 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     data: data.slice(0, data.length - 1),
                     label: "Risk History"
                 },
-                    {
-                        borderColor: "red",
-                        data: data.slice(0, data.length),
-                        label: "Prediction"
-                    }
+                {
+                    borderColor: "red",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
                 ]
             },
             options: {
@@ -666,7 +659,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                             display: true,
                             labelString: 'probability(%)'
                         }
-                    }, ],
+                    },],
                     xAxes: [{
                         gridLines: {
                             zeroLineColor: "transparent"
@@ -719,11 +712,11 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     data: data.slice(0, data.length - 1),
                     label: "Histry of Health "
                 },
-                    {
-                        borderColor: "red",
-                        data: data.slice(0, data.length),
-                        label: "Prediction"
-                    }
+                {
+                    borderColor: "red",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
                 ]
             },
             options: {
@@ -800,11 +793,11 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     data: data.slice(0, data.length - 1),
                     label: "History RUL"
                 },
-                    {
-                        borderColor: "red",
-                        data: data.slice(0, data.length),
-                        label: "Prediction"
-                    }
+                {
+                    borderColor: "red",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
                 ]
             },
             options: {
