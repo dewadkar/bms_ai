@@ -40,9 +40,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     });
 
-
-
-
     // var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -861,8 +858,30 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         gradientStroke.addColorStop(0, 'green');
         gradientStroke.addColorStop(1, 'red');
         var labels = [];
-        for (var i = 0; i < data.length; i++) {
-            labels.push(i + 1);
+        var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+        var todaysDay = now.getDay();
+        var arr = [];
+        var j = 0;
+        for (var i = 0; i <= 8; i++) {
+            if (todaysDay >= 0) {
+                arr.push(days[todaysDay]);
+            } else if (todaysDay == -1) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -2) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -3) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -4) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -5) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -6) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            }
+            todaysDay--;
+        }
+        for (var j = arr.length - 1; j >= 0; j--) {
+            labels.push(arr[j]);
         }
         var lineChartData = {
             labels: labels,
@@ -927,7 +946,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             }
         });
         myChart.render();
-
     }
 
     function plotEnergyConsumptionChart(data) {
@@ -937,8 +955,8 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         gradientStroke.addColorStop(0, 'green');
         gradientStroke.addColorStop(1, 'red');
         var labels = [];
-        for (var i = 0; i < $scope.data.length; i++) {
-            labels.push(i + 1);
+        for (var i = 8; i > 0; i--) {
+            labels.push(now.getHours() - i + " Hr");
         }
         $scope.myChart = new Chart(enrgyctx, {
             type: 'line',
@@ -1138,6 +1156,5 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }
 
     getStats();
-
 
 });
