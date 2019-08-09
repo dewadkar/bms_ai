@@ -42,6 +42,11 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     });
 
 
+
+
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var now = new Date();
+
     var data = [],
         totalPoints = 100;
 
@@ -600,8 +605,19 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'green');
         var labels = [];
-        for (var i = 0; i < data.length; i++) {
-            labels.push(i + 1);
+        var thisMonth = months[now.getMonth()];
+        // for (var i = 0; i < data.length; i++) {
+        //     labels.push(i + 1);
+        // }
+        // var today = new Date();
+        var d;
+        var month;
+
+        for (var i = 8; i > 0; i -= 1) {
+            d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+            month = months[d.getMonth()];
+            // console.log(month);
+            labels.push(month)
         }
         var myChart = new Chart(riskctx, {
             type: 'line',
@@ -645,9 +661,12 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                         gridLines: {
                             drawTicks: false,
                             display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'probability(%)'
                         }
-
-                    }],
+                    }, ],
                     xAxes: [{
                         gridLines: {
                             zeroLineColor: "transparent"
@@ -656,7 +675,12 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                             padding: 20,
                             fontColor: "rgba(0,0,0,0.5)",
                             fontStyle: "bold"
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Months'
                         }
+
                     }]
                 }
             }
@@ -718,6 +742,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                         gridLines: {
                             drawTicks: false,
                             display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'probability(%)'
                         }
 
                     }],
@@ -729,6 +757,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                             padding: 20,
                             fontColor: "rgba(0,0,0,0.5)",
                             fontStyle: "bold"
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Months'
                         }
                     }]
                 }
@@ -791,6 +823,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                         gridLines: {
                             drawTicks: false,
                             display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Days'
                         }
 
                     }],
@@ -802,6 +838,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                             padding: 20,
                             fontColor: "rgba(0,0,0,0.5)",
                             fontStyle: "bold"
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Last Six Months'
                         }
                     }]
                 }
