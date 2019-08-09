@@ -16,7 +16,7 @@ app.factory('Scopes', function ($rootScope) {
 
 
 app.run(function ($rootScope) {
-    $rootScope.$on('scope.stored', function (event, data) {});
+    $rootScope.$on('scope.stored', function (event, data) { });
 });
 
 app.controller("assetController", function ($scope, $http, $window, $compile, Scopes) {
@@ -302,88 +302,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         opacity: 0.8
     }).appendTo('body')
 
-    $('#line-chart').bind('plothover', function (event, pos, item) {
-
-        if (item) {
-            var x = item.datapoint[0].toFixed(2),
-                y = item.datapoint[1].toFixed(2)
-
-            $('#line-chart-tooltip').html(item.series.label + ' of ' + x + ' = ' + y)
-                .css({
-                    top: item.pageY + 5,
-                    left: item.pageX + 5
-                })
-                .fadeIn(200)
-        } else {
-            $('#line-chart-tooltip').hide()
-        }
-
-    })
-    /* END LINE CHART */
-
-
-    //-------------
-    //- BAR CHART -
-    //-------------
-    var areaChartData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-                label: 'Electronics',
-                fillColor: 'rgba(210, 214, 222, 1)',
-                strokeColor: 'rgba(210, 214, 222, 1)',
-                pointColor: 'rgba(210, 214, 222, 1)',
-                pointStrokeColor: '#c1c7d1',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(220,220,220,1)',
-                data: [35, 39]
-            },
-            {
-                label: 'Digital Goods',
-                fillColor: 'rgba(60,141,188,0.9)',
-                strokeColor: 'rgba(60,141,188,0.8)',
-                pointColor: '#3b8bba',
-                pointStrokeColor: 'rgba(60,141,188,1)',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(60,141,188,1)',
-                data: [28, 48]
-            }
-        ]
-    }
-
-    // var barChartCanvas = $('#barChart').get(0).getContext('2d')
-    // var barChart = new Chart(barChartCanvas)
-    // var barChartData = areaChartData
-    // barChartData.datasets[1].fillColor = '#00a65a'
-    // barChartData.datasets[1].strokeColor = '#00a65a'
-    // barChartData.datasets[1].pointColor = '#00a65a'
-    var barChartOptions = {
-        //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-        scaleBeginAtZero: true,
-        //Boolean - Whether grid lines are shown across the chart
-        scaleShowGridLines: true,
-        //String - Colour of the grid lines
-        scaleGridLineColor: 'rgba(0,0,0,.05)',
-        //Number - Width of the grid lines
-        scaleGridLineWidth: 1,
-        //Boolean - Whether to show horizontal lines (except X axis)
-        scaleShowHorizontalLines: true,
-        //Boolean - Whether to show vertical lines (except Y axis)
-        scaleShowVerticalLines: true,
-        //Boolean - If there is a stroke on each bar
-        barShowStroke: true,
-        //Number - Pixel width of the bar stroke
-        barStrokeWidth: 2,
-        //Number - Spacing between each of the X value sets
-        barValueSpacing: 5,
-        //Number - Spacing between data sets within X values
-        barDatasetSpacing: 1,
-        //String - A legend template
-        legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-        //Boolean - whether to make the chart responsive
-        responsive: true,
-        maintainAspectRatio: true
-    }
-
 
     var data = [{
         "brand": "XXX",
@@ -431,70 +349,70 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         $scope.table = $(tabelID).DataTable({
             'data': $scope.tableData,
             'columns': [{
-                    title: 'Sr.Num',
-                    width: '10px',
-                    data: 'index'
-                },
-                {
-                    title: "Brand ",
-                    width: '30px',
-                    data: 'brand'
-                },
-                {
-                    title: "Model ",
-                    width: '30px',
-                    data: 'model'
-                },
-                {
-                    title: "Model Year ",
-                    width: '30px',
-                    data: 'model_year'
-                },
-                {
-                    title: "Model Number ",
-                    width: '30px',
-                    data: 'model_number'
-                },
-                {
-                    title: "Serial Number ",
-                    width: '30px',
-                    data: 'serial_number'
-                },
-                {
-                    title: "Warranty ",
-                    width: '30px',
-                    data: 'warranty'
-                },
-                {
-                    title: "Service Center Number ",
-                    width: '70px',
-                    data: 'service_center_number'
-                },
-                {
-                    title: "Last Unschedule Maintanance ",
-                    width: '30px',
-                    data: 'last_unschedule_maintanance'
-                },
-                {
-                    title: "Avg. Subsystem Risk Level ",
-                    width: '30px',
-                    data: 'average_subsystem_risk_level'
-                },
-                {
-                    title: "Avg.Exp. Subsystem Impact ",
-                    width: '30px',
-                    data: 'average_exp_subsystem_impact'
-                },
-                {
-                    title: "High Exp Subsystem Impact ",
-                    width: '30px',
-                    data: 'high_exp_subsystem_impact'
-                },
-                {
-                    title: "Location ",
-                    width: '30px',
-                    data: 'location'
-                },
+                title: 'Sr.Num',
+                width: '10px',
+                data: 'index'
+            },
+            {
+                title: "Brand ",
+                width: '30px',
+                data: 'brand'
+            },
+            {
+                title: "Model ",
+                width: '30px',
+                data: 'model'
+            },
+            {
+                title: "Model Year ",
+                width: '30px',
+                data: 'model_year'
+            },
+            {
+                title: "Model Number ",
+                width: '30px',
+                data: 'model_number'
+            },
+            {
+                title: "Serial Number ",
+                width: '30px',
+                data: 'serial_number'
+            },
+            {
+                title: "Warranty ",
+                width: '30px',
+                data: 'warranty'
+            },
+            {
+                title: "Service Center Number ",
+                width: '70px',
+                data: 'service_center_number'
+            },
+            {
+                title: "Last Unschedule Maintanance ",
+                width: '30px',
+                data: 'last_unschedule_maintanance'
+            },
+            {
+                title: "Avg. Subsystem Risk Level ",
+                width: '30px',
+                data: 'average_subsystem_risk_level'
+            },
+            {
+                title: "Avg.Exp. Subsystem Impact ",
+                width: '30px',
+                data: 'average_exp_subsystem_impact'
+            },
+            {
+                title: "High Exp Subsystem Impact ",
+                width: '30px',
+                data: 'high_exp_subsystem_impact'
+            },
+            {
+                title: "Location ",
+                width: '30px',
+                data: 'location'
+            },
 
             ],
             createdRow: function (row, data, dataIndex) {
@@ -547,76 +465,76 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         $scope.selectedDevicetable = $(selectedDeviceTabelID).DataTable({
             'data': $scope.deviceTableData,
             'columns': [{
-                    title: 'Block ID',
-                    width: '12px',
-                    data: 'block_id'
-                },
-                {
-                    title: 'Device ID',
-                    width: '12px',
-                    data: 'device_id'
-                },
-                {
-                    title: "Device ",
-                    width: '10px',
-                    data: 'device'
-                },
-                {
-                    title: "Status ",
-                    width: '50px',
-                    data: 'status'
-                },
-                {
-                    title: "Description ",
-                    width: '30px',
-                    data: 'description'
-                },
-                {
-                    title: "Remaining Useful Life (Days)",
-                    width: '20px',
-                    data: 'rul'
-                },
-                {
-                    title: "Risk ",
-                    width: '30px',
-                    data: 'risk'
-                },
-                // { title: "Risk History ", width: '30px', data: 'risk_history' },
-                {
-                    title: "Nominal Impact ",
-                    width: '30px',
-                    data: 'nominal_impact'
-                },
-                {
-                    title: "Expected Impact ",
-                    width: '30px',
-                    data: 'expected_impact'
-                },
-                {
-                    title: "Average Subsystem Risk Level ",
-                    width: '30px',
-                    data: 'average_subsystem_risk_level'
-                },
-                {
-                    title: "Last Unschedule Maintanance ",
-                    width: '30px',
-                    data: 'last_unscheduled_maintenance'
-                },
-                {
-                    title: "Max Subsystem Risk Level ",
-                    width: '30px',
-                    data: 'max_subsystem_risk_level'
-                },
-                {
-                    title: "Average Exp Subsystem Impact",
-                    width: '30px',
-                    data: 'average_exp_subsystem_impact'
-                },
-                {
-                    title: "High Exp Subsystem Impact ",
-                    width: '30px',
-                    data: 'high_exp_subsystem_impact'
-                },
+                title: 'Block ID',
+                width: '12px',
+                data: 'block_id'
+            },
+            {
+                title: 'Device ID',
+                width: '12px',
+                data: 'device_id'
+            },
+            {
+                title: "Device ",
+                width: '10px',
+                data: 'device'
+            },
+            {
+                title: "Status ",
+                width: '50px',
+                data: 'status'
+            },
+            {
+                title: "Description ",
+                width: '30px',
+                data: 'description'
+            },
+            {
+                title: "Remaining Useful Life (Days)",
+                width: '20px',
+                data: 'rul'
+            },
+            {
+                title: "Risk ",
+                width: '30px',
+                data: 'risk'
+            },
+            // { title: "Risk History ", width: '30px', data: 'risk_history' },
+            {
+                title: "Nominal Impact ",
+                width: '30px',
+                data: 'nominal_impact'
+            },
+            {
+                title: "Expected Impact ",
+                width: '30px',
+                data: 'expected_impact'
+            },
+            {
+                title: "Average Subsystem Risk Level ",
+                width: '30px',
+                data: 'average_subsystem_risk_level'
+            },
+            {
+                title: "Last Unschedule Maintanance ",
+                width: '30px',
+                data: 'last_unscheduled_maintenance'
+            },
+            {
+                title: "Max Subsystem Risk Level ",
+                width: '30px',
+                data: 'max_subsystem_risk_level'
+            },
+            {
+                title: "Average Exp Subsystem Impact",
+                width: '30px',
+                data: 'average_exp_subsystem_impact'
+            },
+            {
+                title: "High Exp Subsystem Impact ",
+                width: '30px',
+                data: 'high_exp_subsystem_impact'
+            },
 
             ],
             createdRow: function (row, data, dataIndex) {
@@ -679,7 +597,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         gradientStroke.addColorStop(0, 'red');
         gradientStroke.addColorStop(1, 'green');
         var labels = [];
-
         var d;
         var month;
 
@@ -695,25 +612,25 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                        borderColor: gradientStroke,
-                        pointBorderColor: gradientStroke,
-                        pointBackgroundColor: gradientStroke,
-                        pointHoverBackgroundColor: gradientStroke,
-                        pointHoverBorderColor: gradientStroke,
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 5,
-                        pointHoverBorderWidth: 1,
-                        pointRadius: 3,
-                        fill: false,
-                        borderWidth: 4,
-                        data: data.slice(0, data.length - 1),
-                        label: "Risk History"
-                    },
-                    {
-                        borderColor: "red",
-                        data: data.slice(0, data.length),
-                        label: "Prediction"
-                    }
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data.slice(0, data.length - 1),
+                    label: "Risk History"
+                },
+                {
+                    borderColor: "red",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
                 ]
             },
             options: {
@@ -737,7 +654,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                             display: true,
                             labelString: 'probability(%)'
                         }
-                    }, ],
+                    },],
                     xAxes: [{
                         gridLines: {
                             zeroLineColor: "transparent"
@@ -785,25 +702,25 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                        borderColor: gradientStroke,
-                        pointBorderColor: gradientStroke,
-                        pointBackgroundColor: gradientStroke,
-                        pointHoverBackgroundColor: gradientStroke,
-                        pointHoverBorderColor: gradientStroke,
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 5,
-                        pointHoverBorderWidth: 1,
-                        pointRadius: 3,
-                        fill: false,
-                        borderWidth: 4,
-                        data: data.slice(0, data.length - 1),
-                        label: "Histry of Health "
-                    },
-                    {
-                        borderColor: "red",
-                        data: data.slice(0, data.length),
-                        label: "Prediction"
-                    }
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data.slice(0, data.length - 1),
+                    label: "Histry of Health "
+                },
+                {
+                    borderColor: "red",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
                 ]
             },
             options: {
@@ -874,25 +791,25 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                        borderColor: gradientStroke,
-                        pointBorderColor: gradientStroke,
-                        pointBackgroundColor: gradientStroke,
-                        pointHoverBackgroundColor: gradientStroke,
-                        pointHoverBorderColor: gradientStroke,
-                        pointBorderWidth: 5,
-                        pointHoverRadius: 5,
-                        pointHoverBorderWidth: 1,
-                        pointRadius: 3,
-                        fill: false,
-                        borderWidth: 4,
-                        data: data.slice(0, data.length - 1),
-                        label: "History RUL"
-                    },
-                    {
-                        borderColor: "red",
-                        data: data.slice(0, data.length),
-                        label: "Prediction"
-                    }
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data.slice(0, data.length - 1),
+                    label: "History RUL"
+                },
+                {
+                    borderColor: "red",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
                 ]
             },
             options: {
@@ -992,17 +909,17 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             options: {
                 scales: {
                     yAxes: [{
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            id: 'y-axis-1',
-                        },
-                        {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            id: 'y-axis-2',
-                        },
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-axis-1',
+                    },
+                    {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        id: 'y-axis-2',
+                    },
                     ],
                     xAxes: [{
                         gridLines: {
@@ -1078,14 +995,19 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'red');
         var labels = [];
-        for (var i = 0; i < data.length; i++) {
-            labels.push(i + 1);
+        var d;
+        var month;
+
+        for (var i = 8; i > 0; i--) {
+            labels.push(now.getHours() - i + 'Hr');
         }
+
         var myChart = new Chart(enrgyctx, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
+                    label: "Hours",
                     borderColor: gradientStroke,
                     pointBorderColor: gradientStroke,
                     pointBackgroundColor: gradientStroke,
@@ -1116,6 +1038,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                         gridLines: {
                             drawTicks: false,
                             display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Energy Consumption (Watt/Hr)'
                         }
 
                     }],
