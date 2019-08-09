@@ -16,8 +16,7 @@ app.factory('Scopes', function ($rootScope) {
 
 
 app.run(function ($rootScope) {
-    $rootScope.$on('scope.stored', function (event, data) {
-    });
+    $rootScope.$on('scope.stored', function (event, data) {});
 });
 
 app.controller("assetController", function ($scope, $http, $window, $compile, Scopes) {
@@ -44,7 +43,9 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
 
 
-    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    // var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
     var now = new Date();
 
     var data = [],
@@ -173,14 +174,14 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 this.g.lineWidth = this.lineWidth;
 
                 this.o.cursor &&
-                (sat = eat - 0.3) &&
-                (eat = eat + 0.3);
+                    (sat = eat - 0.3) &&
+                    (eat = eat + 0.3);
 
                 if (this.o.displayPrevious) {
                     ea = this.startAngle + this.angle(this.value);
                     this.o.cursor &&
-                    (sa = ea - 0.3) &&
-                    (ea = ea + 0.3);
+                        (sa = ea - 0.3) &&
+                        (ea = ea + 0.3);
                     this.g.beginPath();
                     this.g.strokeStyle = this.previousColor;
                     this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
@@ -251,15 +252,15 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     var areaChartData = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
-            label: 'Electronics',
-            fillColor: 'rgba(210, 214, 222, 1)',
-            strokeColor: 'rgba(210, 214, 222, 1)',
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [35, 39]
-        },
+                label: 'Electronics',
+                fillColor: 'rgba(210, 214, 222, 1)',
+                strokeColor: 'rgba(210, 214, 222, 1)',
+                pointColor: 'rgba(210, 214, 222, 1)',
+                pointStrokeColor: '#c1c7d1',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(220,220,220,1)',
+                data: [35, 39]
+            },
             {
                 label: 'Digital Goods',
                 fillColor: 'rgba(60,141,188,0.9)',
@@ -356,10 +357,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         $scope.table = $(tabelID).DataTable({
             'data': $scope.tableData,
             'columns': [{
-                title: 'Sr.Num',
-                width: '10px',
-                data: 'index'
-            },
+                    title: 'Sr.Num',
+                    width: '10px',
+                    data: 'index'
+                },
                 {
                     title: "Brand ",
                     width: '30px',
@@ -472,10 +473,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         $scope.selectedDevicetable = $(selectedDeviceTabelID).DataTable({
             'data': $scope.deviceTableData,
             'columns': [{
-                title: 'Block ID',
-                width: '12px',
-                data: 'block_id'
-            },
+                    title: 'Block ID',
+                    width: '12px',
+                    data: 'block_id'
+                },
                 {
                     title: 'Device ID',
                     width: '12px',
@@ -602,42 +603,38 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         var riskctx = document.getElementById('risk-chart').getContext("2d");
         var gradientStroke = riskctx.createLinearGradient(500, 0, 100, 0);
         gradientStroke.addColorStop(0, 'red');
-        // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'green');
         var labels = [];
-        var thisMonth = months[now.getMonth()];
-        // for (var i = 0; i < data.length; i++) {
-        //     labels.push(i + 1);
-        // }
-        // var today = new Date();
+
         var d;
         var month;
 
         for (var i = 8; i > 0; i -= 1) {
             d = new Date(now.getFullYear(), now.getMonth() - i, 1);
             month = months[d.getMonth()];
-            // console.log(month);
+            month = month + '' + d.getFullYear().toString().substr(2, 2);
             labels.push(month)
         }
+
         var myChart = new Chart(riskctx, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
-                    borderColor: gradientStroke,
-                    pointBorderColor: gradientStroke,
-                    pointBackgroundColor: gradientStroke,
-                    pointHoverBackgroundColor: gradientStroke,
-                    pointHoverBorderColor: gradientStroke,
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBorderWidth: 1,
-                    pointRadius: 3,
-                    fill: false,
-                    borderWidth: 4,
-                    data: data.slice(0, data.length - 1),
-                    label: "Risk History"
-                },
+                        borderColor: gradientStroke,
+                        pointBorderColor: gradientStroke,
+                        pointBackgroundColor: gradientStroke,
+                        pointHoverBackgroundColor: gradientStroke,
+                        pointHoverBorderColor: gradientStroke,
+                        pointBorderWidth: 5,
+                        pointHoverRadius: 5,
+                        pointHoverBorderWidth: 1,
+                        pointRadius: 3,
+                        fill: false,
+                        borderWidth: 4,
+                        data: data.slice(0, data.length - 1),
+                        label: "Risk History"
+                    },
                     {
                         borderColor: "red",
                         data: data.slice(0, data.length),
@@ -697,28 +694,37 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'green');
         var labels = [];
-        for (var i = 0; i < data.length; i++) {
-            labels.push(i + 1);
+
+
+        var d;
+        var month;
+
+        for (var i = 8; i > 0; i -= 1) {
+            d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+            month = months[d.getMonth()];
+            month = month + '' + d.getFullYear().toString().substr(2, 2);
+            labels.push(month)
         }
+
         var myChart = new Chart(healthctx, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
-                    borderColor: gradientStroke,
-                    pointBorderColor: gradientStroke,
-                    pointBackgroundColor: gradientStroke,
-                    pointHoverBackgroundColor: gradientStroke,
-                    pointHoverBorderColor: gradientStroke,
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBorderWidth: 1,
-                    pointRadius: 3,
-                    fill: false,
-                    borderWidth: 4,
-                    data: data.slice(0, data.length - 1),
-                    label: "Histry of Health "
-                },
+                        borderColor: gradientStroke,
+                        pointBorderColor: gradientStroke,
+                        pointBackgroundColor: gradientStroke,
+                        pointHoverBackgroundColor: gradientStroke,
+                        pointHoverBorderColor: gradientStroke,
+                        pointBorderWidth: 5,
+                        pointHoverRadius: 5,
+                        pointHoverBorderWidth: 1,
+                        pointRadius: 3,
+                        fill: false,
+                        borderWidth: 4,
+                        data: data.slice(0, data.length - 1),
+                        label: "Histry of Health "
+                    },
                     {
                         borderColor: "red",
                         data: data.slice(0, data.length),
@@ -778,28 +784,36 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'green');
         var labels = [];
-        for (var i = 0; i < data.length; i++) {
-            labels.push(i + 1);
+
+        var d;
+        var month;
+
+        for (var i = 8; i > 0; i -= 1) {
+            d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+            month = months[d.getMonth()];
+            month = month + '' + d.getFullYear().toString().substr(2, 2);
+            labels.push(month)
         }
+
         var myChart = new Chart(rulctx, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
-                    borderColor: gradientStroke,
-                    pointBorderColor: gradientStroke,
-                    pointBackgroundColor: gradientStroke,
-                    pointHoverBackgroundColor: gradientStroke,
-                    pointHoverBorderColor: gradientStroke,
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBorderWidth: 1,
-                    pointRadius: 3,
-                    fill: false,
-                    borderWidth: 4,
-                    data: data.slice(0, data.length - 1),
-                    label: "History RUL"
-                },
+                        borderColor: gradientStroke,
+                        pointBorderColor: gradientStroke,
+                        pointBackgroundColor: gradientStroke,
+                        pointHoverBackgroundColor: gradientStroke,
+                        pointHoverBorderColor: gradientStroke,
+                        pointBorderWidth: 5,
+                        pointHoverRadius: 5,
+                        pointHoverBorderWidth: 1,
+                        pointRadius: 3,
+                        fill: false,
+                        borderWidth: 4,
+                        data: data.slice(0, data.length - 1),
+                        label: "History RUL"
+                    },
                     {
                         borderColor: "red",
                         data: data.slice(0, data.length),
@@ -903,8 +917,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: lineChartData,
             options: {
                 scales: {
-                    yAxes: [
-                        {
+                    yAxes: [{
                             type: 'linear',
                             display: true,
                             position: 'left',
@@ -917,18 +930,16 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                             id: 'y-axis-2',
                         },
                     ],
-                    xAxes: [
-                        {
-                            gridLines: {
-                                zeroLineColor: "transparent"
-                            },
-                            ticks: {
-                                padding: 20,
-                                fontColor: "rgba(0,0,0,0.5)",
-                                fontStyle: "bold"
-                            }
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
                         }
-                    ]
+                    }]
 
                 },
                 legend: {
