@@ -988,18 +988,23 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         // })
     }
 
+    $scope.data = [];
+    $scope.myChart = "";
+    $scope.labels = [];
+
     function plotEnergyConsumptionChart(data) {
+        $scope.data = data;
         var enrgyctx = document.getElementById('interactive').getContext("2d");
         var gradientStroke = enrgyctx.createLinearGradient(500, 0, 100, 0);
         gradientStroke.addColorStop(0, 'green');
         // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'red');
         var labels = [];
-        for (var i = 8; i > 0; i--) {
-            labels.push(now.getHours() - i + 'Hr');
+        for (var i = 0; i < $scope.data.length; i++) {
+            labels.push(i + 1);
         }
-
-        var myChart = new Chart(enrgyctx, {
+        // $scope.labels = labels;
+        $scope.myChart = new Chart(enrgyctx, {
             type: 'line',
             data: {
                 labels: labels,
@@ -1016,7 +1021,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     pointRadius: 3,
                     fill: false,
                     borderWidth: 4,
-                    data: data
+                    data: $scope.data
                 }]
             },
             options: {
@@ -1035,11 +1040,8 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                         gridLines: {
                             drawTicks: false,
                             display: false
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Energy Consumption (Watt/Hr)'
                         }
+
                     }],
                     xAxes: [{
                         gridLines: {
@@ -1054,9 +1056,78 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 }
             }
         });
-        myChart.render();
+        $scope.myChart.render();
 
     }
+    // function plotEnergyConsumptionChart(data) {
+    //     var enrgyctx = document.getElementById('interactive').getContext("2d");
+    //     var gradientStroke = enrgyctx.createLinearGradient(500, 0, 100, 0);
+    //     gradientStroke.addColorStop(0, 'green');
+    //     // gradientStroke.addColorStop(1, '#00a9ff');
+    //     gradientStroke.addColorStop(1, 'red');
+    //     var labels = [];
+    //     for (var i = 8; i > 0; i--) {
+    //         labels.push(now.getHours() - i + 'Hr');
+    //     }
+    //
+    //     var myChart = new Chart(enrgyctx, {
+    //         type: 'line',
+    //         data: {
+    //             labels: labels,
+    //             datasets: [{
+    //                 label: "Hours",
+    //                 borderColor: gradientStroke,
+    //                 pointBorderColor: gradientStroke,
+    //                 pointBackgroundColor: gradientStroke,
+    //                 pointHoverBackgroundColor: gradientStroke,
+    //                 pointHoverBorderColor: gradientStroke,
+    //                 pointBorderWidth: 5,
+    //                 pointHoverRadius: 5,
+    //                 pointHoverBorderWidth: 1,
+    //                 pointRadius: 3,
+    //                 fill: false,
+    //                 borderWidth: 4,
+    //                 data: data
+    //             }]
+    //         },
+    //         options: {
+    //             legend: {
+    //                 position: "bottom"
+    //             },
+    //             scales: {
+    //                 yAxes: [{
+    //                     ticks: {
+    //                         fontColor: "rgba(0,0,0,0.5)",
+    //                         fontStyle: "bold",
+    //                         beginAtZero: true,
+    //                         maxTicksLimit: 10,
+    //                         padding: 20
+    //                     },
+    //                     gridLines: {
+    //                         drawTicks: false,
+    //                         display: false
+    //                     },
+    //                     scaleLabel: {
+    //                         display: true,
+    //                         labelString: 'Energy Consumption (Watt/Hr)'
+    //                     }
+    //                 }],
+    //                 xAxes: [{
+    //                     gridLines: {
+    //                         zeroLineColor: "transparent"
+    //                     },
+    //                     ticks: {
+    //                         padding: 20,
+    //                         fontColor: "rgba(0,0,0,0.5)",
+    //                         fontStyle: "bold"
+    //                     }
+    //                 }]
+    //             }
+    //         }
+    //     });
+    //     myChart.render();
+    //
+    // }
 
     function plotSimilarVsIndividualAssetChart(data) {
 
@@ -1196,4 +1267,23 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }
 
     getStats();
+
+    function randomDataSet(dataSetSize, minValue, maxValue) {
+        return new Array(dataSetSize).fill(0).map(function (n) {
+            return Math.round(Math.random() * (maxValue - minValue) + minValue);
+        });
+    }
+
+    function update() {
+        $scope.data.push(randomDataSet(1, 1, 3)[0]);
+        plotEnergyConsumptionChart($scope.data);
+        $scope.myChart.render();
+    }
+
+
+
+    setInterval(function () {
+        update()
+    }, 2000);
+
 });
