@@ -995,9 +995,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'red');
         var labels = [];
-        var d;
-        var month;
-
         for (var i = 8; i > 0; i--) {
             labels.push(now.getHours() - i + 'Hr');
         }
@@ -1043,7 +1040,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                             display: true,
                             labelString: 'Energy Consumption (Watt/Hr)'
                         }
-
                     }],
                     xAxes: [{
                         gridLines: {
@@ -1065,31 +1061,35 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     function plotSimilarVsIndividualAssetChart(data) {
 
         var similarIndividualAssetctx = document.getElementById('similar_vs_individual').getContext("2d");
-        var gradientStroke = similarIndividualAssetctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, 'green');
-        // gradientStroke.addColorStop(1, '#00a9ff');
-        gradientStroke.addColorStop(1, 'red');
         var labels = [];
-        for (var i = 0; i < data.length; i++) {
-            labels.push(i + 1);
+        var d;
+        var month;
+        for (var i = 2; i > 0; i -= 1) {
+            d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+            month = months[d.getMonth()];
+            month = month + '' + d.getFullYear().toString().substr(2, 2);
+            labels.push(month)
         }
+
         var myChart = new Chart(similarIndividualAssetctx, {
             type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
-                    borderColor: gradientStroke,
-                    pointBorderColor: gradientStroke,
-                    pointBackgroundColor: gradientStroke,
-                    pointHoverBackgroundColor: gradientStroke,
-                    pointHoverBorderColor: gradientStroke,
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBorderWidth: 1,
-                    pointRadius: 3,
+                    borderColor: "#ff6384",
+                    backgroundColor: "#36a2eb",
                     fill: false,
-                    borderWidth: 4,
-                    data: data
+                    borderWidth: 1,
+                    data: data,
+                    label: 'Similar Asset'
+                },
+                {
+                    borderColor: "#cc65fe",
+                    backgroundColor: "#37e29b",
+                    fill: false,
+                    borderWidth: 1,
+                    data: data,
+                    label: "Individual Asset"
                 }]
             },
             options: {
@@ -1108,8 +1108,11 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                         gridLines: {
                             drawTicks: false,
                             display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Average failed devices '
                         }
-
                     }],
                     xAxes: [{
                         gridLines: {
