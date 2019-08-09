@@ -16,7 +16,7 @@ app.factory('Scopes', function ($rootScope) {
 
 
 app.run(function ($rootScope) {
-    $rootScope.$on('scope.stored', function (event, data) { });
+    $rootScope.$on('scope.stored', function (event, data) {});
 });
 
 app.controller("assetController", function ($scope, $http, $window, $compile, Scopes) {
@@ -245,25 +245,25 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     var areaChartData = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
-            label: 'Electronics',
-            fillColor: 'rgba(210, 214, 222, 1)',
-            strokeColor: 'rgba(210, 214, 222, 1)',
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [35, 39]
-        },
-        {
-            label: 'Digital Goods',
-            fillColor: 'rgba(60,141,188,0.9)',
-            strokeColor: 'rgba(60,141,188,0.8)',
-            pointColor: '#3b8bba',
-            pointStrokeColor: 'rgba(60,141,188,1)',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(60,141,188,1)',
-            data: [28, 48]
-        }
+                label: 'Electronics',
+                fillColor: 'rgba(210, 214, 222, 1)',
+                strokeColor: 'rgba(210, 214, 222, 1)',
+                pointColor: 'rgba(210, 214, 222, 1)',
+                pointStrokeColor: '#c1c7d1',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(220,220,220,1)',
+                data: [35, 39]
+            },
+            {
+                label: 'Digital Goods',
+                fillColor: 'rgba(60,141,188,0.9)',
+                strokeColor: 'rgba(60,141,188,0.8)',
+                pointColor: '#3b8bba',
+                pointStrokeColor: 'rgba(60,141,188,1)',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data: [28, 48]
+            }
         ]
     }
 
@@ -304,24 +304,24 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     // barChartOptions.datasetFill = false
     // barChart.Bar(barChartData, barChartOptions)
 
-    var data = [
-        {
-            "brand": "XXX",
-            "model": "AC",
-            "model_year": "2018",
-            "model_number": "XXX2034",
-            "serial_number": "SN1243434353",
-            "warranty": "5 Year",
-            "service_center_number": "(+91) 9543535324",
-            "last_unschedule_maintanance": "No",
-            "average_subsystem_risk_level": "10 %",
-            "average_exp_subsystem_impact": "20 %",
-            "high_exp_subsystem_impact": "",
-            "location": "Pune"
+    var data = [{
+        "brand": "XXX",
+        "model": "AC",
+        "model_year": "2018",
+        "model_number": "XXX2034",
+        "serial_number": "SN1243434353",
+        "warranty": "5 Year",
+        "service_center_number": "(+91) 9543535324",
+        "last_unschedule_maintanance": "No",
+        "average_subsystem_risk_level": "10 %",
+        "average_exp_subsystem_impact": "20 %",
+        "high_exp_subsystem_impact": "",
+        "location": "Pune"
 
-        }];
+    }];
 
     $scope.table = null;
+
     function generateAssetTable(data, tabelID) {
         $scope.tableData = [];
         for (var i = 0; i < data.length; i++) {
@@ -349,20 +349,71 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         }
         $scope.table = $(tabelID).DataTable({
             'data': $scope.tableData,
-            'columns': [
-                { title: 'Sr.Num', width: '10px', data: 'index' },
-                { title: "Brand ", width: '30px', data: 'brand' },
-                { title: "Model ", width: '30px', data: 'model' },
-                { title: "Model Year ", width: '30px', data: 'model_year' },
-                { title: "Model Number ", width: '30px', data: 'model_number' },
-                { title: "Serial Number ", width: '30px', data: 'serial_number' },
-                { title: "Warranty ", width: '30px', data: 'warranty' },
-                { title: "Service Center Number ", width: '70px', data: 'service_center_number' },
-                { title: "Last Unschedule Maintanance ", width: '30px', data: 'last_unschedule_maintanance' },
-                { title: "Avg. Subsystem Risk Level ", width: '30px', data: 'average_subsystem_risk_level' },
-                { title: "Avg.Exp. Subsystem Impact ", width: '30px', data: 'average_exp_subsystem_impact' },
-                { title: "High Exp Subsystem Impact ", width: '30px', data: 'high_exp_subsystem_impact' },
-                { title: "Location ", width: '30px', data: 'location' },
+            'columns': [{
+                    title: 'Sr.Num',
+                    width: '10px',
+                    data: 'index'
+                },
+                {
+                    title: "Brand ",
+                    width: '30px',
+                    data: 'brand'
+                },
+                {
+                    title: "Model ",
+                    width: '30px',
+                    data: 'model'
+                },
+                {
+                    title: "Model Year ",
+                    width: '30px',
+                    data: 'model_year'
+                },
+                {
+                    title: "Model Number ",
+                    width: '30px',
+                    data: 'model_number'
+                },
+                {
+                    title: "Serial Number ",
+                    width: '30px',
+                    data: 'serial_number'
+                },
+                {
+                    title: "Warranty ",
+                    width: '30px',
+                    data: 'warranty'
+                },
+                {
+                    title: "Service Center Number ",
+                    width: '70px',
+                    data: 'service_center_number'
+                },
+                {
+                    title: "Last Unschedule Maintanance ",
+                    width: '30px',
+                    data: 'last_unschedule_maintanance'
+                },
+                {
+                    title: "Avg. Subsystem Risk Level ",
+                    width: '30px',
+                    data: 'average_subsystem_risk_level'
+                },
+                {
+                    title: "Avg.Exp. Subsystem Impact ",
+                    width: '30px',
+                    data: 'average_exp_subsystem_impact'
+                },
+                {
+                    title: "High Exp Subsystem Impact ",
+                    width: '30px',
+                    data: 'high_exp_subsystem_impact'
+                },
+                {
+                    title: "Location ",
+                    width: '30px',
+                    data: 'location'
+                },
 
             ],
             createdRow: function (row, data, dataIndex) {
@@ -384,6 +435,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     generateAssetTable(data, tabelID);
 
     $scope.selectedDevicetable = null;
+
     function generateDeviceTable(deviceData, selectedDeviceTabelID) {
 
         var tabledata = deviceData[0];
@@ -412,22 +464,77 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         }
         $scope.selectedDevicetable = $(selectedDeviceTabelID).DataTable({
             'data': $scope.deviceTableData,
-            'columns': [
-                { title: 'Block ID', width: '12px', data: 'block_id' },
-                { title: 'Device ID', width: '12px', data: 'device_id' },
-                { title: "Device ", width: '10px', data: 'device' },
-                { title: "Status ", width: '50px', data: 'status' },
-                { title: "Description ", width: '30px', data: 'description' },
-                { title: "Remaining Useful Life (Days)", width: '20px', data: 'rul' },
-                { title: "Risk ", width: '30px', data: 'risk' },
+            'columns': [{
+                    title: 'Block ID',
+                    width: '12px',
+                    data: 'block_id'
+                },
+                {
+                    title: 'Device ID',
+                    width: '12px',
+                    data: 'device_id'
+                },
+                {
+                    title: "Device ",
+                    width: '10px',
+                    data: 'device'
+                },
+                {
+                    title: "Status ",
+                    width: '50px',
+                    data: 'status'
+                },
+                {
+                    title: "Description ",
+                    width: '30px',
+                    data: 'description'
+                },
+                {
+                    title: "Remaining Useful Life (Days)",
+                    width: '20px',
+                    data: 'rul'
+                },
+                {
+                    title: "Risk ",
+                    width: '30px',
+                    data: 'risk'
+                },
                 // { title: "Risk History ", width: '30px', data: 'risk_history' },
-                { title: "Nominal Impact ", width: '30px', data: 'nominal_impact' },
-                { title: "Expected Impact ", width: '30px', data: 'expected_impact' },
-                { title: "Average Subsystem Risk Level ", width: '30px', data: 'average_subsystem_risk_level' },
-                { title: "Last Unschedule Maintanance ", width: '30px', data: 'last_unscheduled_maintenance' },
-                { title: "Max Subsystem Risk Level ", width: '30px', data: 'max_subsystem_risk_level' },
-                { title: "Average Exp Subsystem Impact", width: '30px', data: 'average_exp_subsystem_impact' },
-                { title: "High Exp Subsystem Impact ", width: '30px', data: 'high_exp_subsystem_impact' },
+                {
+                    title: "Nominal Impact ",
+                    width: '30px',
+                    data: 'nominal_impact'
+                },
+                {
+                    title: "Expected Impact ",
+                    width: '30px',
+                    data: 'expected_impact'
+                },
+                {
+                    title: "Average Subsystem Risk Level ",
+                    width: '30px',
+                    data: 'average_subsystem_risk_level'
+                },
+                {
+                    title: "Last Unschedule Maintanance ",
+                    width: '30px',
+                    data: 'last_unscheduled_maintenance'
+                },
+                {
+                    title: "Max Subsystem Risk Level ",
+                    width: '30px',
+                    data: 'max_subsystem_risk_level'
+                },
+                {
+                    title: "Average Exp Subsystem Impact",
+                    width: '30px',
+                    data: 'average_exp_subsystem_impact'
+                },
+                {
+                    title: "High Exp Subsystem Impact ",
+                    width: '30px',
+                    data: 'high_exp_subsystem_impact'
+                },
 
             ],
             createdRow: function (row, data, dataIndex) {
@@ -486,9 +593,9 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
         var riskctx = document.getElementById('risk-chart').getContext("2d");
         var gradientStroke = riskctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, 'green');
+        gradientStroke.addColorStop(0, 'red');
         // gradientStroke.addColorStop(1, '#00a9ff');
-        gradientStroke.addColorStop(1, 'red');
+        gradientStroke.addColorStop(1, 'green');
         var labels = [];
         for (var i = 0; i < data.length; i++) {
             labels.push(i + 1);
@@ -498,19 +605,26 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                    borderColor: gradientStroke,
-                    pointBorderColor: gradientStroke,
-                    pointBackgroundColor: gradientStroke,
-                    pointHoverBackgroundColor: gradientStroke,
-                    pointHoverBorderColor: gradientStroke,
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBorderWidth: 1,
-                    pointRadius: 3,
-                    fill: false,
-                    borderWidth: 4,
-                    data: data
-                }]
+                        borderColor: gradientStroke,
+                        pointBorderColor: gradientStroke,
+                        pointBackgroundColor: gradientStroke,
+                        pointHoverBackgroundColor: gradientStroke,
+                        pointHoverBorderColor: gradientStroke,
+                        pointBorderWidth: 5,
+                        pointHoverRadius: 5,
+                        pointHoverBorderWidth: 1,
+                        pointRadius: 3,
+                        fill: false,
+                        borderWidth: 4,
+                        data: data.slice(0, data.length - 1),
+                        label: "Risk History"
+                    },
+                    {
+                        borderColor: "red",
+                        data: data.slice(0, data.length),
+                        label: "Prediction"
+                    }
+                ]
             },
             options: {
                 legend: {
@@ -547,13 +661,14 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         myChart.render();
 
     }
+
     function plotHealthScoreChart(data) {
 
         var healthctx = document.getElementById('health-score-chart').getContext("2d");
         var gradientStroke = healthctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, 'green');
+        gradientStroke.addColorStop(0, 'red');
         // gradientStroke.addColorStop(1, '#00a9ff');
-        gradientStroke.addColorStop(1, 'red');
+        gradientStroke.addColorStop(1, 'green');
         var labels = [];
         for (var i = 0; i < data.length; i++) {
             labels.push(i + 1);
@@ -563,19 +678,26 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                    borderColor: gradientStroke,
-                    pointBorderColor: gradientStroke,
-                    pointBackgroundColor: gradientStroke,
-                    pointHoverBackgroundColor: gradientStroke,
-                    pointHoverBorderColor: gradientStroke,
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBorderWidth: 1,
-                    pointRadius: 3,
-                    fill: false,
-                    borderWidth: 4,
-                    data: data
-                }]
+                        borderColor: gradientStroke,
+                        pointBorderColor: gradientStroke,
+                        pointBackgroundColor: gradientStroke,
+                        pointHoverBackgroundColor: gradientStroke,
+                        pointHoverBorderColor: gradientStroke,
+                        pointBorderWidth: 5,
+                        pointHoverRadius: 5,
+                        pointHoverBorderWidth: 1,
+                        pointRadius: 3,
+                        fill: false,
+                        borderWidth: 4,
+                        data: data.slice(0, data.length - 1),
+                        label: "Histry of Health "
+                    },
+                    {
+                        borderColor: "red",
+                        data: data.slice(0, data.length),
+                        label: "Prediction"
+                    }
+                ]
             },
             options: {
                 legend: {
@@ -612,13 +734,14 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         myChart.render();
 
     }
+
     function plotRulChart(data) {
 
         var rulctx = document.getElementById('rul-chart').getContext("2d");
         var gradientStroke = rulctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, 'green');
+        gradientStroke.addColorStop(0, 'red');
         // gradientStroke.addColorStop(1, '#00a9ff');
-        gradientStroke.addColorStop(1, 'red');
+        gradientStroke.addColorStop(1, 'green');
         var labels = [];
         for (var i = 0; i < data.length; i++) {
             labels.push(i + 1);
@@ -628,19 +751,26 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             data: {
                 labels: labels,
                 datasets: [{
-                    borderColor: gradientStroke,
-                    pointBorderColor: gradientStroke,
-                    pointBackgroundColor: gradientStroke,
-                    pointHoverBackgroundColor: gradientStroke,
-                    pointHoverBorderColor: gradientStroke,
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBorderWidth: 1,
-                    pointRadius: 3,
-                    fill: false,
-                    borderWidth: 4,
-                    data: data
-                }]
+                        borderColor: gradientStroke,
+                        pointBorderColor: gradientStroke,
+                        pointBackgroundColor: gradientStroke,
+                        pointHoverBackgroundColor: gradientStroke,
+                        pointHoverBorderColor: gradientStroke,
+                        pointBorderWidth: 5,
+                        pointHoverRadius: 5,
+                        pointHoverBorderWidth: 1,
+                        pointRadius: 3,
+                        fill: false,
+                        borderWidth: 4,
+                        data: data.slice(0, data.length - 1),
+                        label: "History RUL"
+                    },
+                    {
+                        borderColor: "red",
+                        data: data.slice(0, data.length),
+                        label: "Prediction"
+                    }
+                ]
             },
             options: {
                 legend: {
@@ -677,6 +807,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         myChart.render();
 
     }
+
     function plotTemperatureHumidityChart(data) {
         var humidityctx = document.getElementById('temp_humidity').getContext("2d");
         var gradientStroke = humidityctx.createLinearGradient(500, 0, 100, 0);
@@ -770,6 +901,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         //     }
         // })
     }
+
     function plotEnergyConsumptionChart(data) {
         var enrgyctx = document.getElementById('interactive').getContext("2d");
         var gradientStroke = enrgyctx.createLinearGradient(500, 0, 100, 0);
@@ -834,6 +966,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         myChart.render();
 
     }
+
     function plotSimilarVsIndividualAssetChart(data) {
 
         var similarIndividualAssetctx = document.getElementById('similar_vs_individual').getContext("2d");
@@ -898,6 +1031,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         });
         myChart.render();
     }
+
     function getStats() {
         $http.get('/device/status/' + $window.appliance)
             .then(function (data) {
