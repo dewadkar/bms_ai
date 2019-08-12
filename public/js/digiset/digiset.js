@@ -21,60 +21,63 @@ app.run(function ($rootScope) {
 });
 app.controller("digisetController", function ($scope, $http, $window, $compile, Scopes) {
 
-    $scope.totalGeneratorData = [5, 8];
-    $scope.on_generators = $scope.totalGeneratorData[0];
-    $scope.off_generators = $scope.totalGeneratorData[1];
-    $scope.total_fuel = 180;
-    var data = {
-        labels: [
-            "ON",
-            "OFF"
-        ],
-        datasets: [
-            {
-                data: $scope.totalGeneratorData,
-                backgroundColor: [
-                    '#008d4c',
-                    '#d73925'
-                ],
-                hoverBackgroundColor: [
-                    "#008d4c",
-                    "#d73925"
-                ]
-            }]
-    };
+    function totalGeneratorChart() {
+        $scope.totalGeneratorData = [5, 8];
+        $scope.on_generators = $scope.totalGeneratorData[0];
+        $scope.off_generators = $scope.totalGeneratorData[1];
+        $scope.total_fuel = 180;
+        var data = {
+            labels: [
+                "ON",
+                "OFF"
+            ],
+            datasets: [
+                {
+                    data: $scope.totalGeneratorData,
+                    backgroundColor: [
+                        '#008d4c',
+                        '#d73925'
+                    ],
+                    hoverBackgroundColor: [
+                        "#008d4c",
+                        "#d73925"
+                    ]
+                }]
+        };
 
-    var totalGeneratorChart = new Chart(document.getElementById('totalGeneratorChart'), {
-        type: 'doughnut',
-        data: data,
-        options: {
-            responsive: true,
-            legend: {
-                display: false
+        var totalGeneratorChart = new Chart(document.getElementById('totalGeneratorChart'), {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                legend: {
+                    display: false
+                }
             }
-        }
-    });
+        });
 
-    Chart.pluginService.register({
-        beforeDraw: function (chart) {
-            var width = chart.chart.width,
-                height = chart.chart.height,
-                ctx = chart.chart.ctx;
+        Chart.pluginService.register({
+            beforeDraw: function (chart) {
+                var width = chart.chart.width,
+                    height = chart.chart.height,
+                    ctx = chart.chart.ctx;
 
-            ctx.restore();
-            var fontSize = (height / 70).toFixed(2);
-            ctx.font = fontSize + "em sans-serif";
-            ctx.textBaseline = "middle";
+                ctx.restore();
+                var fontSize = (height / 70).toFixed(2);
+                ctx.font = fontSize + "em sans-serif";
+                ctx.textBaseline = "middle";
 
-            var text = $scope.totalGeneratorData[0] + $scope.totalGeneratorData[1],
-                textX = Math.round((width - ctx.measureText(text).width) / 2),
-                textY = height / 2;
+                var text = $scope.totalGeneratorData[0] + $scope.totalGeneratorData[1],
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
+                    textY = height / 2;
 
-            ctx.fillText(text, textX, textY);
-            ctx.save();
-        }
-    });
+                ctx.fillText(text, textX, textY);
+                ctx.save();
+            }
+        });
 
+    }
+    totalGeneratorChart();
 
     function generateDonatChart(type, data, label, labels, title_text) {
 
