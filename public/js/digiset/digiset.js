@@ -162,19 +162,19 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
 
 
     for (var i = 0; i < run_hours_data.length; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
+        r = Math.floor(Math.random() * 400);
+        g = Math.floor(Math.random() * 100);
+        b = Math.floor(Math.random() * 300);
+        v = Math.floor(Math.random() * 200);
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
         colorSet.push(c);
         highlight.push(h);
     }
     for (var i = 0; i < energy_generated_data.length; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
+        r = Math.floor(Math.random() * 300);
+        g = Math.floor(Math.random() * 300);
+        b = Math.floor(Math.random() * 300);
         v = Math.floor(Math.random() * 500);
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
@@ -182,10 +182,10 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         highlight2.push(h);
     }
     for (var i = 0; i < fuel_used_data.length; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
+        r = Math.floor(Math.random() * 300);
+        g = Math.floor(Math.random() * 300);
+        b = Math.floor(Math.random() * 500);
+        v = Math.floor(Math.random() * 700);
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
         colorSet3.push(c);
@@ -193,19 +193,19 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     }
     for (var i = 0; i < 1; i++) {
         r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
+        g = Math.floor(Math.random() * 300);
+        b = Math.floor(Math.random() * 400);
+        v = Math.floor(Math.random() * 600);
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
         colorSet4.push(c);
         highlight4.push(h);
     }
     for (var i = 0; i < fuel_filled_data.length; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
+        r = Math.floor(Math.random() * 500);
+        g = Math.floor(Math.random() * 400);
+        b = Math.floor(Math.random() * 300);
+        v = Math.floor(Math.random() * 200);
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
         colorSet5.push(c);
