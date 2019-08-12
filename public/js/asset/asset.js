@@ -1018,8 +1018,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     }
 
-    function plotSimilarVsIndividualAssetChart(data) {
-
+    function plotSimilarVsIndividualAssetChart(data1, data2) {
         var similarIndividualAssetctx = document.getElementById('similar_vs_individual').getContext("2d");
         var labels = [];
         var d;
@@ -1040,7 +1039,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     backgroundColor: "#36a2eb",
                     fill: false,
                     borderWidth: 1,
-                    data: data,
+                    data: data1,
                     label: 'Similar Asset'
                 },
                 {
@@ -1048,7 +1047,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     backgroundColor: "#37e29b",
                     fill: false,
                     borderWidth: 1,
-                    data: data,
+                    data: data2,
                     label: "Individual Asset"
                 }]
             },
@@ -1137,7 +1136,8 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 plotRulChart(remainingUsefulLife);
                 plotTemperatureHumidityChart(temperatureHumidity, humidity);
                 plotEnergyConsumptionChart(energyConsumption);
-                plotSimilarVsIndividualAssetChart(similarIndividual);
+                var individualData2 = [40, 53, 45, 32, 57, 50, 63, 74]
+                plotSimilarVsIndividualAssetChart(similarIndividual, individualData2);
 
                 $('#risk_value').val(risk[risk.length - 2]);
                 $("#risk_value").trigger('change');
