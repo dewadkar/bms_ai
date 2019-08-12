@@ -12,4 +12,10 @@ module.exports = function (app) {
 
     require('./asset/asset')(app);
     require('./devices/status')(app);
+
+    //Water Turbines page
+    require('./water_turbines/water_turbines')(app);
+
+    //Digiset page
+    require('./digiset/digiset')(app);
 };

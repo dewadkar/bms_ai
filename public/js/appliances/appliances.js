@@ -220,28 +220,33 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
         .then(function (response) {
             origionalData = response;
             $http.get('/appliances/csvtojson')
-                .then(function (response) {
-                    var failed_data = response.data;
-
+                .then(function (resp) {
+                    var failed_data = resp.data;
+                    var failed_ids = [];
                     for (var i = 0; i < failed_data.length; i++) {
-                        for (var j = 0; j < origionalData.length; j++) {
-                            if (failed_data[i].device_id == origionalData[j].device_id) {
-                                origionalData[j].device = '<a href="/asset/' + origionalData[j].device_id + '" style="color: crimson">' + origionalData[j].device + '</a>';
-                                origionalData[j].status = "On but need repairing";
-                                origionalData[j].risk = '<span style="color:red">' + origionalData[j].risk + '</span>';
-                                origionalData[j].nominal_impact = '<span style="color:red">' + origionalData[j].nominal_impact + '</span>';
-                                origionalData[j].expected_impact = '<span style="color:red">' + origionalData[j].expected_impact + '</span>';
-                                origionalData[j].average_subsystem_risk_level = '<span style="color:red">' + origionalData[j].average_subsystem_risk_level + '</span>';
-                                origionalData[j].max_subsystem_risk_level = '<span style="color:red">' + origionalData[j].max_subsystem_risk_level + '</span>';
-                                origionalData[j].average_exp_subsystem_impact = '<span style="color:red">' + origionalData[j].average_exp_subsystem_impact + '</span>';
-                                origionalData[j].high_exp_subsystem_impact = '<span style="color:red">' + origionalData[j].high_exp_subsystem_impact + '</span>';
-                            }
+                        failed_ids.push(failed_data[i].device_id);
+                    }
+                    for (var j = 0; j < origionalData.length; j++) {
+                        if (failed_ids.includes(origionalData[j].device_id)) {
+                            origionalData[j].device = '<a href="/asset/' + origionalData[j].device_id + '" style="color: crimson">' + origionalData[j].device + '</a>';
+                            origionalData[j].status = "On but need repairing";
+                            origionalData[j].risk = '<span style="color:red">' + origionalData[j].risk + '</span>';
+                            origionalData[j].nominal_impact = '<span style="color:red">' + origionalData[j].nominal_impact + '</span>';
+                            origionalData[j].expected_impact = '<span style="color:red">' + origionalData[j].expected_impact + '</span>';
+                            origionalData[j].average_subsystem_risk_level = '<span style="color:red">' + origionalData[j].average_subsystem_risk_level + '</span>';
+                            origionalData[j].max_subsystem_risk_level = '<span style="color:red">' + origionalData[j].max_subsystem_risk_level + '</span>';
+                            origionalData[j].average_exp_subsystem_impact = '<span style="color:red">' + origionalData[j].average_exp_subsystem_impact + '</span>';
+                            origionalData[j].high_exp_subsystem_impact = '<span style="color:red">' + origionalData[j].high_exp_subsystem_impact + '</span>';
+                        } else {
+                            origionalData[j].device = '<a href="/asset/' + origionalData[j].device_id + '" >' + origionalData[j].device + '</a>';
+                            origionalData[j].status = "On";
+                            origionalData[j].risk = origionalData[j].risk;
                         }
                     }
                     return origionalData;
-                }).then(function (response) {
+                }).then(function (tableData) {
                     var tabelID = "#table-building";
-                    generateTable(response, tabelID);
+                    generateTable(tableData, tabelID);
                 })
                 .catch(function (error) {
                     console.log('Error while converting csv to json object!', error);

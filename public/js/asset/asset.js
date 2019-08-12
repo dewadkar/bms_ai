@@ -40,9 +40,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     });
 
-
-
-
     // var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -303,22 +300,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }).appendTo('body')
 
 
-    var data = [{
-        "brand": "XXX",
-        "model": "AC",
-        "model_year": "2018",
-        "model_number": "XXX2034",
-        "serial_number": "SN1243434353",
-        "warranty": "5 Year",
-        "service_center_number": "(+91) 9543535324",
-        "last_unschedule_maintanance": "No",
-        "average_subsystem_risk_level": "10 %",
-        "average_exp_subsystem_impact": "20 %",
-        "high_exp_subsystem_impact": "",
-        "location": "Pune"
-
-    }];
-
     $scope.table = null;
 
     function generateAssetTable(data, tabelID) {
@@ -430,9 +411,24 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         });
         $(tabelID).DataTable().draw();
     }
+    var assetTableData = [{
+        "brand": "XXX",
+        "model": "AC",
+        "model_year": "2018",
+        "model_number": "XXX2034",
+        "serial_number": "SN1243434353",
+        "warranty": "5 Year",
+        "service_center_number": "(+91) 9543535324",
+        "last_unschedule_maintanance": "No",
+        "average_subsystem_risk_level": "10 %",
+        "average_exp_subsystem_impact": "20 %",
+        "high_exp_subsystem_impact": "",
+        "location": "Pune"
+
+    }];
 
     var tabelID = "#table-asset-description";
-    generateAssetTable(data, tabelID);
+    generateAssetTable(assetTableData, tabelID);
 
     $scope.selectedDevicetable = null;
 
@@ -860,11 +856,32 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         var humidityctx = document.getElementById('temp_humidity').getContext("2d");
         var gradientStroke = humidityctx.createLinearGradient(500, 0, 100, 0);
         gradientStroke.addColorStop(0, 'green');
-        // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'red');
         var labels = [];
-        for (var i = 0; i < data.length; i++) {
-            labels.push(i + 1);
+        var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+        var todaysDay = now.getDay();
+        var arr = [];
+        var j = 0;
+        for (var i = 0; i <= 8; i++) {
+            if (todaysDay >= 0) {
+                arr.push(days[todaysDay]);
+            } else if (todaysDay == -1) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -2) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -3) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -4) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -5) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            } else if (todaysDay == -6) {
+                arr.push(days[Math.abs(todaysDay + 7)]);
+            }
+            todaysDay--;
+        }
+        for (var j = arr.length - 1; j >= 0; j--) {
+            labels.push(arr[j]);
         }
         var lineChartData = {
             labels: labels,
@@ -886,25 +903,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         };
         var myChart = new Chart(humidityctx, {
             type: 'line',
-            // data: {
-            //     labels: labels,
-            //     datasets: [{
-            //         borderColor: gradientStroke,
-            //         pointBorderColor: gradientStroke,
-            //         pointBackgroundColor: gradientStroke,
-            //         pointHoverBackgroundColor: gradientStroke,
-            //         pointHoverBorderColor: gradientStroke,
-            //         pointBorderWidth: 5,
-            //         pointHoverRadius: 5,
-            //         pointHoverBorderWidth: 1,
-            //         pointRadius: 3,
-            //         fill: false,
-            //         borderWidth: 4,
-            //         label: 'A',
-            //         yAxisID: 'AA',
-            //         data: data
-            //     }]
-            // },
             data: lineChartData,
             options: {
                 scales: {
@@ -913,14 +911,23 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                         display: true,
                         position: 'left',
                         id: 'y-axis-1',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Temperature (C)',
+                        }
                     },
                     {
                         type: 'linear',
                         display: true,
                         position: 'right',
                         id: 'y-axis-2',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Humidity (g/m3)',
+                        }
                     },
                     ],
+
                     xAxes: [{
                         gridLines: {
                             zeroLineColor: "transparent"
@@ -935,75 +942,22 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 },
                 legend: {
                     position: "bottom"
-                },
-                // scales: {
-                //     yAxes: [{
-                //         ticks: {
-                //             fontColor: "rgba(0,0,0,0.5)",
-                //             fontStyle: "bold",
-                //             beginAtZero: true,
-                //             maxTicksLimit: 10,
-                //             padding: 20
-                //         },
-                //         gridLines: {
-                //             drawTicks: false,
-                //             display: false
-                //         }
-                //
-                //     }],
-                //     // xAxes: []
-                // }
+                }
             }
         });
         myChart.render();
-        // $.plot('#temp_humidity', [data], {
-        //     grid: {
-        //         hoverable: true,
-        //         borderColor: '#f3f3f3',
-        //         borderWidth: 1,
-        //         tickColor: '#f3f3f3'
-        //     },
-        //     series: {
-        //         shadowSize: 2,
-        //         lines: {
-        //             show: true
-        //         },
-        //         points: {
-        //             show: true
-        //         },
-        //         color: '#3c8dbc'
-        //     },
-        //     lines: {
-        //         fill: false, //Converts the line chart to area chart
-        //         color: ['#3c8dbc', '#fc8dbc']
-        //     },
-        //     yaxis: {
-        //         min: 0,
-        //         max: 100,
-        //         show: true
-        //     },
-        //     xaxis: {
-        //         show: true
-        //     }
-        // })
     }
-
-    $scope.data = [];
-    $scope.myChart = "";
-    $scope.labels = [];
 
     function plotEnergyConsumptionChart(data) {
         $scope.data = data;
         var enrgyctx = document.getElementById('interactive').getContext("2d");
         var gradientStroke = enrgyctx.createLinearGradient(500, 0, 100, 0);
         gradientStroke.addColorStop(0, 'green');
-        // gradientStroke.addColorStop(1, '#00a9ff');
         gradientStroke.addColorStop(1, 'red');
         var labels = [];
-        for (var i = 0; i < $scope.data.length; i++) {
-            labels.push(i + 1);
+        for (var i = 8; i > 0; i--) {
+            labels.push(now.getHours() - i + " Hr");
         }
-        // $scope.labels = labels;
         $scope.myChart = new Chart(enrgyctx, {
             type: 'line',
             data: {
@@ -1040,6 +994,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                         gridLines: {
                             drawTicks: false,
                             display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Energy Consumption (Watt/Hr)'
                         }
 
                     }],
@@ -1059,7 +1017,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         $scope.myChart.render();
 
     }
-
 
     function plotSimilarVsIndividualAssetChart(data) {
 
@@ -1199,22 +1156,5 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }
 
     getStats();
-    //
-    // function randomDataSet(dataSetSize, minValue, maxValue) {
-    //     return new Array(dataSetSize).fill(0).map(function (n) {
-    //         return Math.round(Math.random() * (maxValue - minValue) + minValue);
-    //     });
-    // }
-    //
-    // function update() {
-    //     $scope.data.push(randomDataSet(1, 1, 3)[0]);
-    //     plotEnergyConsumptionChart($scope.data);
-    // }
-    //
-    //
-    //
-    // setInterval(function () {
-    //     update()
-    // }, 2000);
 
 });

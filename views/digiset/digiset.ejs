@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BMS - DG Set</title>
+    <% include ../partial/head.ejs %>
+    <script src="/js/digiset/digiset.js"></script>
+</head>
+
+<body ng-app="digiset" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
+
+    <div class="wrapper">
+        <% include ../partial/headbar.ejs %>
+        <% include ../partial/sidebar.ejs %>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    DG set
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/digiset"><i class="fa fa-home"></i>DG set</a></li>
+                </ol>
+            </section>
+
+            <section class="content" ng-controller="digisetController">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-primary" ng-cloak>
+
+                            <div class="box-body">
+                                <div class="row">
+
+
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+        <%- include ../partial/footer.ejs %>
+    </div>
+</body>
+
+</html>

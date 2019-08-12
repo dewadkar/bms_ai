@@ -600,8 +600,8 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
 
     $scope.label_total_type_d = "Electrical Meter";
     $scope.label_total_type_c = "AC Filter";
-    $scope.label_total_type_b = "Water Pump Station";
-    $scope.label_total_type_a = "DG Set";
+    $scope.label_total_type_b = "Pump";
+    $scope.label_total_type_a = "Ventilation";
 
 
     $scope.total_appliances = 0;
