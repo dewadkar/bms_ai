@@ -303,6 +303,22 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }).appendTo('body')
 
 
+    var data = [{
+        "brand": "XXX",
+        "model": "AC",
+        "model_year": "2018",
+        "model_number": "XXX2034",
+        "serial_number": "SN1243434353",
+        "warranty": "5 Year",
+        "service_center_number": "(+91) 9543535324",
+        "last_unschedule_maintanance": "No",
+        "average_subsystem_risk_level": "10 %",
+        "average_exp_subsystem_impact": "20 %",
+        "high_exp_subsystem_impact": "",
+        "location": "Pune"
+
+    }];
+
     $scope.table = null;
 
     function generateAssetTable(data, tabelID) {
@@ -414,24 +430,9 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         });
         $(tabelID).DataTable().draw();
     }
-    var assetTableData = [{
-        "brand": "XXX",
-        "model": "AC",
-        "model_year": "2018",
-        "model_number": "XXX2034",
-        "serial_number": "SN1243434353",
-        "warranty": "5 Year",
-        "service_center_number": "(+91) 9543535324",
-        "last_unschedule_maintanance": "No",
-        "average_subsystem_risk_level": "10 %",
-        "average_exp_subsystem_impact": "20 %",
-        "high_exp_subsystem_impact": "",
-        "location": "Pune"
-
-    }];
 
     var tabelID = "#table-asset-description";
-    generateAssetTable(assetTableData, tabelID);
+    generateAssetTable(data, tabelID);
 
     $scope.selectedDevicetable = null;
 
@@ -1020,7 +1021,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     pointRadius: 3,
                     fill: false,
                     borderWidth: 4,
-                    data: $scope.data
+                    data: data
                 }]
             },
             options: {
@@ -1058,6 +1059,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         $scope.myChart.render();
 
     }
+
 
     function plotSimilarVsIndividualAssetChart(data) {
 
@@ -1197,23 +1199,22 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }
 
     getStats();
-
-    function randomDataSet(dataSetSize, minValue, maxValue) {
-        return new Array(dataSetSize).fill(0).map(function (n) {
-            return Math.round(Math.random() * (maxValue - minValue) + minValue);
-        });
-    }
-
-    function update() {
-        $scope.data.push(randomDataSet(1, 1, 3)[0]);
-        plotEnergyConsumptionChart($scope.data);
-        $scope.myChart.render();
-    }
-
-
-
-    setInterval(function () {
-        update()
-    }, 2000);
+    //
+    // function randomDataSet(dataSetSize, minValue, maxValue) {
+    //     return new Array(dataSetSize).fill(0).map(function (n) {
+    //         return Math.round(Math.random() * (maxValue - minValue) + minValue);
+    //     });
+    // }
+    //
+    // function update() {
+    //     $scope.data.push(randomDataSet(1, 1, 3)[0]);
+    //     plotEnergyConsumptionChart($scope.data);
+    // }
+    //
+    //
+    //
+    // setInterval(function () {
+    //     update()
+    // }, 2000);
 
 });
