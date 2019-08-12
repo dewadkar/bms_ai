@@ -191,7 +191,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         colorSet3.push(c);
         highlight3.push(h);
     }
-    for (var i = 0; i < generator_fuels_used_data.length; i++) {
+    for (var i = 0; i < 1; i++) {
         r = Math.floor(Math.random() * 200);
         g = Math.floor(Math.random() * 200);
         b = Math.floor(Math.random() * 200);
