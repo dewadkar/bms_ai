@@ -110,6 +110,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         };
         return config;
     }
+
     var colorSet = [];
     var highlight = [];
     var colorSet2 = [];
@@ -121,56 +122,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     var colorSet5 = [];
     var highlight5 = [];
 
-    for (var i = 0; i < 4; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet.push(c);
-        highlight.push(h);
-    }
-    for (var i = 0; i < 4; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet2.push(c);
-        highlight2.push(h);
-    }
-    for (var i = 0; i < 4; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet3.push(c);
-        highlight3.push(h);
-    }
-    for (var i = 0; i < 1; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet4.push(c);
-        highlight4.push(h);
-    }
-    for (var i = 0; i < 8; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet5.push(c);
-        highlight5.push(h);
-    }
+
     var run_hours_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
     var run_hours_data = [10, 20, 30, 40];
     var run_hours_ctx = document.getElementById('run_hours').getContext('2d');
@@ -207,5 +159,57 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         fuel_filled_labels, "GENERATOR FUEL FILLED", colorSet5, highlight5);
     window.generator_fuel_used_ctx_line = new Chart(fuel_filled_ctx, config);
 
+
+
+    for (var i = 0; i < run_hours_data.length; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet.push(c);
+        highlight.push(h);
+    }
+    for (var i = 0; i < energy_generated_data.length; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet2.push(c);
+        highlight2.push(h);
+    }
+    for (var i = 0; i < fuel_used_data.length; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet3.push(c);
+        highlight3.push(h);
+    }
+    for (var i = 0; i < generator_fuels_used_data.length; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet4.push(c);
+        highlight4.push(h);
+    }
+    for (var i = 0; i < fuel_filled_data.length; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet5.push(c);
+        highlight5.push(h);
+    }
 
 });
