@@ -79,7 +79,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     }
     totalGeneratorChart();
 
-    function generateDonatChart(type, data, label, labels, title_text) {
+    function generateDonatChart(type, data, label, labels, title_text, colorSet, highlight) {
 
         var config = {
             type: type, // ddoughnut
@@ -87,20 +87,8 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
                 datasets: [{
                     data: data,// [20,30,10,10,30]
                     label: label,
-                    backgroundColor: [
-                        "#DEB887",
-                        "#A9A9A9",
-                        "#DC143C",
-                        "#F4A460",
-                        "#2E8B57"
-                    ],
-                    borderColor: [
-                        "#CDA776",
-                        "#989898",
-                        "#CB252B",
-                        "#E39371",
-                        "#1D7A46"
-                    ],
+                    backgroundColor: colorSet,
+                    borderColor: highlight,
                 }],
 
                 labels: labels
@@ -108,7 +96,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             options: {
                 responsive: true,
                 legend: {
-                    position: 'top',
+                    position: 'bottom',
                 },
                 title: {
                     display: true,
@@ -122,32 +110,101 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         };
         return config;
     }
+    var colorSet = [];
+    var highlight = [];
+    var colorSet2 = [];
+    var highlight2 = [];
+    var colorSet3 = [];
+    var highlight3 = [];
+    var colorSet4 = [];
+    var highlight4 = [];
+    var colorSet5 = [];
+    var highlight5 = [];
 
-
+    for (var i = 0; i < 4; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet.push(c);
+        highlight.push(h);
+    }
+    for (var i = 0; i < 4; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet2.push(c);
+        highlight2.push(h);
+    }
+    for (var i = 0; i < 4; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet3.push(c);
+        highlight3.push(h);
+    }
+    for (var i = 0; i < 1; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet4.push(c);
+        highlight4.push(h);
+    }
+    for (var i = 0; i < 8; i++) {
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
+        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
+        colorSet5.push(c);
+        highlight5.push(h);
+    }
+    var run_hours_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
+    var run_hours_data = [10, 20, 30, 40];
     var run_hours_ctx = document.getElementById('run_hours').getContext('2d');
-    var config = generateDonatChart('doughnut', [10, 20, 30, 40], "RUN-HOURS",
-        ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"], "ENERGY RUN HOURS");
+    var config = generateDonatChart('doughnut', run_hours_data, "RUN-HOURS",
+        run_hours_labels, "RUN-HOURS", colorSet, highlight);
     window.run_hr_donout = new Chart(run_hours_ctx, config);
 
+    var energy_generated_data = [1000, 3000, 980, 850];
+    var energy_generated_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
     var energy_generated_ctx = document.getElementById('energy_generated').getContext('2d');
-    config = generateDonatChart('doughnut', [1000, 3000, 980, 850], "ENERGY-GENERATED",
-        ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"], "ENERGY GENERATED");
+    config = generateDonatChart('doughnut', energy_generated_data, "ENERGY-GENERATED", energy_generated_labels,
+        "ENERGY GENERATED", colorSet2, highlight2);
     window.run_hr_donout = new Chart(energy_generated_ctx, config);
 
+    var fuel_used_data = [2, 5, 9, 3];
+    var fuel_used_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
     var fuel_used_ctx = document.getElementById('fuel_used').getContext('2d');
-    config = generateDonatChart('doughnut', [2, 5, 9, 3], "FUEL USED",
-        ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"], "FUEL USED");
+    config = generateDonatChart('doughnut', fuel_used_data, "FUEL USED",
+        fuel_used_labels, "FUEL USED", colorSet3, highlight3);
     window.fuel_used_donout = new Chart(fuel_used_ctx, config);
 
+    var generator_fuels_used_data = [8, 5, 4, 1, 9, 3, 2];
+    var generator_fuels_used_labels = ["1", "2", "3", "4", "5", "6", "7"];
     var generator_fuel_used_ctx = document.getElementById('generator_fuels_used').getContext('2d');
-    config = generateDonatChart('line', [8, 5, 4, 1, 9, 3, 2], "GENERATOR FUEL USED DAILY",
-        ["1", "2", "3", "4", "5", "6", "7"], "GENERATOR FUEL USED");
+    config = generateDonatChart('line', generator_fuels_used_data, "GENERATOR FUEL USED DAILY",
+        generator_fuels_used_labels, "GENERATOR FUEL USED", colorSet4, highlight4);
     window.generator_fuel_used_ctx_line = new Chart(generator_fuel_used_ctx, config);
 
 
+    var fuel_filled_data = [10, 8, 5, 6, 9, 15, 1];
+    var fuel_filled_labels = ["1", "2", "3", "4", "5", "6", "7"];
     var fuel_filled_ctx = document.getElementById('fuel_filled').getContext('2d');
-    config = generateDonatChart('bar', [10, 8, 5, 6, 9, 15, 1], "Daily Fuel Filled",
-        ["1", "2", "3", "4", "5", "6", "7"], "GENERATOR FUEL FILLED");
+    config = generateDonatChart('bar', fuel_filled_data, "Daily Fuel Filled",
+        fuel_filled_labels, "GENERATOR FUEL FILLED", colorSet5, highlight5);
     window.generator_fuel_used_ctx_line = new Chart(fuel_filled_ctx, config);
 
 
