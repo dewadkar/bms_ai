@@ -1157,4 +1157,26 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
 
     getStats();
 
+    $http.get('/appliances/csvtojson')
+        .then(function (resp) {
+            var failed_data = resp.data;
+            var failed_ids = [];
+
+            for (var i = 0; i < failed_data.length; i++) {
+                failed_ids.push(failed_data[i].device_id);
+            }
+            for (var i = 0; i < failed_ids.length; i++) {
+                debugger;
+                if ($window.appliance == failed_ids[i]) {
+                    $scope.failed_device_alert = true;
+                }
+            }
+
+        })
+        .catch(function (error) {
+            console.log('Error while showing error message on asset page!', error);
+        });
+    $scope.failed_device_alert = false;
+
+
 });
