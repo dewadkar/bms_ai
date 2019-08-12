@@ -244,7 +244,8 @@ app.controller("appliancesController", function ($scope, $http, $window, $compil
                         }
                     }
                     return origionalData;
-                }).then(function (tableData) {
+                })
+                .then(function (tableData) {
                     var tabelID = "#table-building";
                     generateTable(tableData, tabelID);
                 })

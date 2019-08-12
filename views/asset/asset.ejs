@@ -29,17 +29,18 @@
                     </li>
                 </ol>
             </section>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                        Appliance operating condition parameters are behaving abnormaly.
-                        Please check the details in the table below.
+
+            <section class="content" ng-controller="assetController">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger alert-dismissible" ng-show='failed_device_alert'>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                            Appliance operating condition parameters are behaving abnormaly.
+                            Please check the details in the table below.
+                        </div>
                     </div>
                 </div>
-            </div>
-            <section class="content" ng-controller="assetController">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box box-primary" ng-cloak>

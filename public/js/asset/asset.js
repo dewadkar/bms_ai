@@ -77,68 +77,9 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         return res
     }
 
-    var data1 = []
 
-    function getRandomData1() {
 
-        if (data1.length > 0)
-            data1 = data1.slice(1)
 
-        // Do a random walk
-        while (data1.length < totalPoints) {
-
-            var prev = data1.length > 0 ? data1[data1.length - 1] : 50,
-                y = prev + Math.random() * 100 - 50
-
-            if (y < 0) {
-                y = 0
-            } else if (y > 100) {
-                y = 100
-            }
-
-            data1.push(y)
-        }
-
-        // Zip the generated y values with the x values
-        var res1 = []
-        for (var i = 0; i < data1.length; ++i) {
-            res1.push([i, data1[i]])
-        }
-
-        return res1
-    }
-
-    var updateInterval = 500 //Fetch data ever x milliseconds
-    var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
-    // function update() {
-    //
-    //     electricity_consumption.setData([getRandomData(), getRandomData()])
-    //     temprature_humidity.setData([getRandomData1(), getRandomData1()])
-    //
-    //     // Since the axes don't change, we don't need to call plot.setupGrid()
-    //     electricity_consumption.draw()
-    //     temprature_humidity.draw()
-    //     if (realtime === 'on'){
-    //         setTimeout(update, updateInterval)
-    //     }
-    // }
-
-    //INITIALIZE REALTIME DATA FETCHING
-    // if (realtime === 'on') {
-    //     update()
-    // }
-    //REALTIME TOGGLE
-    $('#realtime .btn').click(function () {
-        if ($(this).data('toggle') === 'on') {
-            realtime = 'on'
-        } else {
-            realtime = 'off'
-        }
-        update()
-    })
-    /*
-     * END INTERACTIVE CHART
-     */
 
     /* jQueryKnob */
 
@@ -277,20 +218,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         }
     });
 
-    var sin = [],
-        cos = []
-    for (var i = 0; i < 7; i += 1) {
-        sin.push([i, Math.sin(i)])
-        cos.push([i, Math.cos(i)])
-    }
-    var line_data1 = {
-        data: sin,
-        color: '#3c8dbc'
-    }
-    var line_data2 = {
-        data: cos,
-        color: '#00c0ef'
-    }
 
     //Initialize tooltip on hover
     $('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
@@ -586,6 +513,8 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             console.log('Error while creating object', error);
         })
 
+
+
     function plotAssetRiskChart(data) {
 
         var riskctx = document.getElementById('risk-chart').getContext("2d");
@@ -603,7 +532,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             labels.push(month)
         }
 
-        var myChart = new Chart(riskctx, {
+        myChart = new Chart(riskctx, {
             type: 'line',
             data: {
                 labels: labels,
@@ -670,7 +599,6 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
             }
         });
         myChart.render();
-
     }
 
     function plotHealthScoreChart(data) {
@@ -853,36 +781,13 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }
 
     function plotTemperatureHumidityChart(data, humidity) {
-        var humidityctx = document.getElementById('temp_humidity').getContext("2d");
-        var gradientStroke = humidityctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, 'green');
-        gradientStroke.addColorStop(1, 'red');
+
         var labels = [];
-        var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-        var todaysDay = now.getDay();
-        var arr = [];
-        var j = 0;
+
         for (var i = 0; i <= 8; i++) {
-            if (todaysDay >= 0) {
-                arr.push(days[todaysDay]);
-            } else if (todaysDay == -1) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -2) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -3) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -4) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -5) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -6) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            }
-            todaysDay--;
+            labels.push(i);
         }
-        for (var j = arr.length - 1; j >= 0; j--) {
-            labels.push(arr[j]);
-        }
+
         var lineChartData = {
             labels: labels,
             datasets: [{
@@ -901,52 +806,131 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 yAxisID: 'y-axis-2'
             }]
         };
-        var myChart = new Chart(humidityctx, {
-            type: 'line',
-            data: lineChartData,
-            options: {
-                scales: {
-                    yAxes: [{
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-axis-1',
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Temperature (C)',
-                        }
-                    },
-                    {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Humidity (g/m3)',
-                        }
-                    },
-                    ],
-
-                    xAxes: [{
-                        gridLines: {
-                            zeroLineColor: "transparent"
-                        },
-                        ticks: {
-                            padding: 20,
-                            fontColor: "rgba(0,0,0,0.5)",
-                            fontStyle: "bold"
-                        }
-                    }]
-
-                },
-                legend: {
-                    position: "bottom"
-                }
-            }
-        });
-        myChart.render();
+        return lineChartData
     }
+
+    var temp_humidity_chart_data = plotTemperatureHumidityChart(data, [])
+    var humidityctx = document.getElementById('temp_humidity').getContext("2d");
+    var gradientStroke = humidityctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, 'green');
+    gradientStroke.addColorStop(1, 'red');
+    var temp_humidity_chart = new Chart(humidityctx, {
+        type: 'line',
+        data: temp_humidity_chart_data,
+        options: {
+            scales: {
+                yAxes: [{
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Temperature (C)',
+                    }
+                },
+                {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Humidity (g/m3)',
+                    }
+                },
+                ],
+
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: "transparent"
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold"
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time (Cycle)'
+
+                    }
+                }]
+
+            },
+            legend: {
+                position: "bottom"
+            }
+        }
+    });
+    temp_humidity_chart.render();
+
+
+    $scope.data = data;
+    var enrgyctx = document.getElementById('interactive').getContext("2d");
+    var gradientStroke = enrgyctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, 'green');
+    gradientStroke.addColorStop(1, 'red');
+    var labels = [];
+    for (var i = 8; i > 0; i--) {
+        labels.push(now.getHours() - i + " Hr");
+    }
+    var energyConsumption_chart = new Chart(enrgyctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Hours",
+                borderColor: gradientStroke,
+                pointBorderColor: gradientStroke,
+                pointBackgroundColor: gradientStroke,
+                pointHoverBackgroundColor: gradientStroke,
+                pointHoverBorderColor: gradientStroke,
+                pointBorderWidth: 5,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 1,
+                pointRadius: 3,
+                fill: false,
+                borderWidth: 4,
+                data: data
+            }]
+        },
+        options: {
+            legend: {
+                position: "bottom"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold",
+                        beginAtZero: true,
+                        maxTicksLimit: 10,
+                        padding: 20
+                    },
+                    gridLines: {
+                        drawTicks: false,
+                        display: false
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time (Cycle)'
+                    }
+
+                }],
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: "transparent"
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold"
+                    }
+                }]
+            }
+        }
+    });
 
     function plotEnergyConsumptionChart(data) {
         $scope.data = data;
@@ -1014,12 +998,13 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 }
             }
         });
-        $scope.myChart.render();
+        // $scope.myChart.render();
+        // $scope.myChart.draw()
+        return $scope.myChart;
 
     }
 
-    function plotSimilarVsIndividualAssetChart(data) {
-
+    function plotSimilarVsIndividualAssetChart(data1, data2) {
         var similarIndividualAssetctx = document.getElementById('similar_vs_individual').getContext("2d");
         var labels = [];
         var d;
@@ -1040,7 +1025,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     backgroundColor: "#36a2eb",
                     fill: false,
                     borderWidth: 1,
-                    data: data,
+                    data: data1,
                     label: 'Similar Asset'
                 },
                 {
@@ -1048,9 +1033,10 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     backgroundColor: "#37e29b",
                     fill: false,
                     borderWidth: 1,
-                    data: data,
+                    data: data2,
                     label: "Individual Asset"
-                }]
+                }
+                ]
             },
             options: {
                 legend: {
@@ -1137,7 +1123,8 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 plotRulChart(remainingUsefulLife);
                 plotTemperatureHumidityChart(temperatureHumidity, humidity);
                 plotEnergyConsumptionChart(energyConsumption);
-                plotSimilarVsIndividualAssetChart(similarIndividual);
+                var individualData2 = [40, 53, 45, 32, 57, 50, 63, 74]
+                plotSimilarVsIndividualAssetChart(similarIndividual, individualData2);
 
                 $('#risk_value').val(risk[risk.length - 2]);
                 $("#risk_value").trigger('change');
@@ -1156,5 +1143,77 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }
 
     getStats();
+
+    var updateInterval = 1000 //Fetch data ever x milliseconds
+    var realtime = 'on' //If == to on then fetch data every x seconds. else stop fetching
+    // var cc = plotEnergyConsumptionChart(getRandomData())
+    var precision = 100; // 2 decimals
+
+
+    function update() {
+        energyConsumption_chart.data.datasets.forEach((dataset) => {
+            if (dataset.data.length > 8) {
+                dataset.data = dataset.data.splice(1, dataset.data.length - 1)
+                var randomnum = Math.floor(Math.random() * (10 * precision - 1 * precision) + 1 * precision) / (1 * precision);
+                dataset.data.push(Math.random(1, 10));
+            } else {
+                dataset.data.push(Math.random(1, 10));
+            }
+        });;
+        energyConsumption_chart.draw()
+        energyConsumption_chart.update()
+
+
+        temp_humidity_chart.data.datasets.forEach((dataset) => {
+            if (dataset.data.length > 8) {
+                dataset.data = dataset.data.splice(1, dataset.data.length - 1)
+                var randomnum = Math.floor(Math.random() * (10 * precision - 1 * precision) + 1 * precision) / (1 * precision);
+                dataset.data.push(Math.random(1, 10));
+            } else {
+                dataset.data.push(Math.random(1, 10));
+            }
+        });;
+
+        temp_humidity_chart.draw();
+        temp_humidity_chart.update();
+        if (realtime === 'on') {
+            setTimeout(update, updateInterval)
+        }
+    }
+
+    //INITIALIZE REALTIME DATA FETCHING
+    if (realtime === 'on') {
+        update()
+    }
+    //REALTIME TOGGLE
+    $('#realtime .btn').click(function () {
+        if ($(this).data('toggle') === 'on') {
+            realtime = 'on'
+        } else {
+            realtime = 'off'
+        }
+        update()
+    })
+    /*
+     * END INTERACTIVE CHART
+     */
+    $scope.failed_device_alert = false;
+    $http.get('/appliances/csvtojson')
+        .then(function (resp) {
+            var failed_data = resp.data;
+            var failed_ids = [];
+            for (var i = 0; i < failed_data.length; i++) {
+                failed_ids.push(failed_data[i].device_id);
+            }
+            for (var j = 0; j < failed_ids.length; j++) {
+                if (failed_ids.includes($window.appliance)) {
+                    $scope.failed_device_alert = true;
+                } else {
+                    $scope.failed_device_alert = false;
+                }
+            }
+        });
+
+
 
 });
