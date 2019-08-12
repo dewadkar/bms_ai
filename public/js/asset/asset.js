@@ -783,31 +783,11 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     function plotTemperatureHumidityChart(data, humidity) {
 
         var labels = [];
-        var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-        var todaysDay = now.getDay();
-        var arr = [];
-        var j = 0;
+
         for (var i = 0; i <= 8; i++) {
-            if (todaysDay >= 0) {
-                arr.push(days[todaysDay]);
-            } else if (todaysDay == -1) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -2) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -3) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -4) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -5) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            } else if (todaysDay == -6) {
-                arr.push(days[Math.abs(todaysDay + 7)]);
-            }
-            todaysDay--;
+            labels.push(i);
         }
-        for (var j = arr.length - 1; j >= 0; j--) {
-            labels.push(arr[j]);
-        }
+
         var lineChartData = {
             labels: labels,
             datasets: [{
@@ -869,6 +849,11 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                         padding: 20,
                         fontColor: "rgba(0,0,0,0.5)",
                         fontStyle: "bold"
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time (Cycle)'
+
                     }
                 }]
 
@@ -929,7 +914,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: 'Energy Consumption (Watt/Hr)'
+                        labelString: 'Time (Cycle)'
                     }
 
                 }],
