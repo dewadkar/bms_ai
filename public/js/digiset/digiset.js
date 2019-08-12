@@ -44,7 +44,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             }]
     };
 
-    var promisedDChart = new Chart(document.getElementById('totalGeneratorChart'), {
+    var totalGeneratorChart = new Chart(document.getElementById('totalGeneratorChart'), {
         type: 'doughnut',
         data: data,
         options: {
