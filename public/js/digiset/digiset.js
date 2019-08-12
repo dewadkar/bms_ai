@@ -87,5 +87,10 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     window.generator_fuel_used_ctx_line = new Chart(generator_fuel_used_ctx, config);
 
 
+    var fuel_filled_ctx = document.getElementById('fuel_filled').getContext('2d');
+    config = generateDonatChart('bar', [10,8,5,6,9,15,1], "Daily Fuel Filled",
+        ["1", "2", "3", "4","5","6","7"], "GENERATOR FUEL FILLED");
+    window.generator_fuel_used_ctx_line = new Chart(fuel_filled_ctx, config);
+
 
 });
