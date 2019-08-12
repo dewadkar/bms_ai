@@ -781,10 +781,7 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
     }
 
     function plotTemperatureHumidityChart(data, humidity) {
-        var humidityctx = document.getElementById('temp_humidity').getContext("2d");
-        var gradientStroke = humidityctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, 'green');
-        gradientStroke.addColorStop(1, 'red');
+
         var labels = [];
         var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
         var todaysDay = now.getDay();
@@ -829,54 +826,59 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
                 yAxisID: 'y-axis-2'
             }]
         };
-        var myChart = new Chart(humidityctx, {
-            type: 'line',
-            data: lineChartData,
-            options: {
-                scales: {
-                    yAxes: [{
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            id: 'y-axis-1',
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Temperature (C)',
-                            }
-                        },
-                        {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            id: 'y-axis-2',
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Humidity (g/m3)',
-                            }
-                        },
-                    ],
-
-                    xAxes: [{
-                        gridLines: {
-                            zeroLineColor: "transparent"
-                        },
-                        ticks: {
-                            padding: 20,
-                            fontColor: "rgba(0,0,0,0.5)",
-                            fontStyle: "bold"
-                        }
-                    }]
-
-                },
-                legend: {
-                    position: "bottom"
-                }
-            }
-        });
-        myChart.render();
+        return lineChartData
     }
 
+    var temp_humidity_chart_data = plotTemperatureHumidityChart(data, [])
+    var humidityctx = document.getElementById('temp_humidity').getContext("2d");
+    var gradientStroke = humidityctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, 'green');
+    gradientStroke.addColorStop(1, 'red');
+    var temp_humidity_chart = new Chart(humidityctx, {
+        type: 'line',
+        data: temp_humidity_chart_data,
+        options: {
+            scales: {
+                yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-axis-1',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Temperature (C)',
+                        }
+                    },
+                    {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        id: 'y-axis-2',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Humidity (g/m3)',
+                        }
+                    },
+                ],
 
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: "transparent"
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold"
+                    }
+                }]
+
+            },
+            legend: {
+                position: "bottom"
+            }
+        }
+    });
+    temp_humidity_chart.render();
 
 
     $scope.data = data;
@@ -1175,6 +1177,20 @@ app.controller("assetController", function ($scope, $http, $window, $compile, Sc
         });;
         energyConsumption_chart.draw()
         energyConsumption_chart.update()
+
+
+        temp_humidity_chart.data.datasets.forEach((dataset) => {
+            if (dataset.data.length > 8) {
+                dataset.data = dataset.data.splice(1, dataset.data.length - 1)
+                var randomnum = Math.floor(Math.random() * (10 * precision - 1 * precision) + 1 * precision) / (1 * precision);
+                dataset.data.push(Math.random(1, 10));
+            } else {
+                dataset.data.push(Math.random(1, 10));
+            }
+        });;
+
+        temp_humidity_chart.draw();
+        temp_humidity_chart.update();
         if (realtime === 'on') {
             setTimeout(update, updateInterval)
         }
