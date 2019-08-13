@@ -56,25 +56,25 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             }
         });
 
-        Chart.pluginService.register({
-            beforeDraw: function (chart) {
-                var width = chart.chart.width,
-                    height = chart.chart.height,
-                    ctx = chart.chart.ctx;
+        // Chart.pluginService.register({
+        //     beforeDraw: function (chart) {
+        //         var width = chart.chart.width,
+        //             height = chart.chart.height,
+        //             ctx = chart.chart.ctx;
 
-                ctx.restore();
-                var fontSize = (height / 70).toFixed(2);
-                ctx.font = fontSize + "em sans-serif";
-                ctx.textBaseline = "middle";
+        //         ctx.restore();
+        //         var fontSize = (height / 70).toFixed(2);
+        //         ctx.font = fontSize + "em sans-serif";
+        //         ctx.textBaseline = "middle";
 
-                var text = $scope.totalGeneratorData[0] + $scope.totalGeneratorData[1],
-                    textX = Math.round((width - ctx.measureText(text).width) / 2),
-                    textY = height / 2;
+        //         var text = $scope.totalGeneratorData[0] + $scope.totalGeneratorData[1],
+        //             textX = Math.round((width - ctx.measureText(text).width) / 2),
+        //             textY = height / 2;
 
-                ctx.fillText(text, textX, textY);
-                ctx.save();
-            }
-        });
+        //         ctx.fillText(text, textX, textY);
+        //         ctx.save();
+        //     }
+        // });
 
     }
     totalGeneratorChart();
@@ -113,10 +113,6 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
 
     var colorSet = [];
     var highlight = [];
-    var colorSet2 = [];
-    var highlight2 = [];
-    var colorSet3 = [];
-    var highlight3 = [];
     var colorSet4 = [];
     var highlight4 = [];
     var colorSet5 = [];
@@ -134,14 +130,14 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     var energy_generated_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
     var energy_generated_ctx = document.getElementById('energy_generated').getContext('2d');
     config = generateDonatChart('doughnut', energy_generated_data, "ENERGY-GENERATED", energy_generated_labels,
-        "ENERGY GENERATED", colorSet2, highlight2);
+        "ENERGY GENERATED", colorSet, colorSet);
     window.run_hr_donout = new Chart(energy_generated_ctx, config);
 
     var fuel_used_data = [2, 5, 9, 3];
     var fuel_used_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
     var fuel_used_ctx = document.getElementById('fuel_used').getContext('2d');
     config = generateDonatChart('doughnut', fuel_used_data, "FUEL USED",
-        fuel_used_labels, "FUEL USED", colorSet3, highlight3);
+        fuel_used_labels, "FUEL USED", colorSet, colorSet);
     window.fuel_used_donout = new Chart(fuel_used_ctx, config);
 
     var generator_fuels_used_data = [8, 5, 4, 1, 9, 3, 2];
@@ -162,35 +158,16 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
 
 
     for (var i = 0; i < run_hours_data.length; i++) {
-        r = Math.floor(Math.random() * 400);
-        g = Math.floor(Math.random() * 100);
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
         b = Math.floor(Math.random() * 300);
-        v = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
         colorSet.push(c);
         highlight.push(h);
     }
-    for (var i = 0; i < energy_generated_data.length; i++) {
-        r = Math.floor(Math.random() * 300);
-        g = Math.floor(Math.random() * 300);
-        b = Math.floor(Math.random() * 300);
-        v = Math.floor(Math.random() * 500);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet2.push(c);
-        highlight2.push(h);
-    }
-    for (var i = 0; i < fuel_used_data.length; i++) {
-        r = Math.floor(Math.random() * 300);
-        g = Math.floor(Math.random() * 300);
-        b = Math.floor(Math.random() * 500);
-        v = Math.floor(Math.random() * 700);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet3.push(c);
-        highlight3.push(h);
-    }
+
     for (var i = 0; i < 1; i++) {
         r = Math.floor(Math.random() * 200);
         g = Math.floor(Math.random() * 300);
@@ -202,10 +179,10 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         highlight4.push(h);
     }
     for (var i = 0; i < fuel_filled_data.length; i++) {
-        r = Math.floor(Math.random() * 500);
-        g = Math.floor(Math.random() * 400);
-        b = Math.floor(Math.random() * 300);
-        v = Math.floor(Math.random() * 200);
+        r = Math.floor(Math.random() * 200);
+        g = Math.floor(Math.random() * 200);
+        b = Math.floor(Math.random() * 200);
+        v = Math.floor(Math.random() * 500);
         c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
         h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
         colorSet5.push(c);
