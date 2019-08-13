@@ -4,7 +4,10 @@
 <head>
     <title>BMS - Water Pump Station</title>
     <% include ../partial/head.ejs %>
+
     <script src="/js/water_turbines/water_turbines.js"></script>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
+
 </head>
 
 <body ng-app="waterTurbines" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
@@ -22,7 +25,6 @@
                 </ol>
             </section>
             <section class="content" ng-controller="waterTurbinesController">
-
                 <div class="row">
                     <div class="col-md-9">
                         <div class="row">
@@ -32,17 +34,24 @@
                                     <div class="box-body">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <canvas id="run_hours" width="400" height="400"
-                                                    aria-label="Hello ARIA World" role="img"></canvas>
+                                                <div class="box-body chart-responsive">
+                                                    <div class="chart" id="water_pump_chart1"
+                                                        style="height: 300px; position: relative;"></div>
+                                                </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <canvas id="energy_generated" width="400" height="400"
-                                                    aria-label="Hello ARIA World" role="img"></canvas>
+                                                <div class="box-body chart-responsive">
+                                                    <div class="chart" id="water_pump_chart2"
+                                                        style="height: 300px; position: relative;"></div>
+                                                </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <canvas id="fuel_used" width="400" height="400"
-                                                    aria-label="Hello ARIA World" role="img"></canvas>
+                                                <div class="box-body chart-responsive">
+                                                    <div class="chart" id="water_pump_chart3"
+                                                        style="height: 300px; position: relative;"></div>
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -54,9 +63,11 @@
 
                                             <div class="box-body">
                                                 <div class="row">
-                                                    <div class="col-md-12">
-                                                        <canvas id="generator_fuels_used" width="900" height="400"
-                                                            aria-label="Hello ARIA World" role="img"></canvas>
+                                                    <div class="col-md-6">
+                                                        <canvas id="guegeChart"></canvas>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <canvas class="chartjs-gauge"></canvas>
                                                     </div>
                                                 </div>
                                             </div>
