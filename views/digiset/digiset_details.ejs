@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BMS -Digiset Details</title>
+    <% include ../partial/head.ejs %>
+    <script>
+        var digiset_id = '<%- generator_id %>';
+    </script>
+
+    <script src="/js/digiset/digiset_details.js"></script>
+
+</head>
+
+<body ng-app="digisetDetails" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
+
+    <div class="wrapper">
+        <% include ../partial/headbar.ejs %>
+        <% include ../partial/sidebar.ejs %>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    Digiset Details
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+                    <li class="active">
+                        Details
+                    </li>
+                </ol>
+            </section>
+
+            <section class="content" ng-controller="digisetDetailsController">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger alert-dismissible" ng-show='failed_digiset_alert'>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                            Digiset operating condition parameters are behaving abnormaly.
+                            Please check the details in the table below.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-primary" ng-cloak>
+                            <div class="box-header with-border" data-widget="collapse">
+                                <h3 class="box-title">Device Information</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                            class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="box-body collapse">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table id="table-selected-device" class="table table-condensed table-hover"
+                                                style="width: 100%;">
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+
+
+
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                    <%- include ../digiset/digiset_description_table.ejs %>
+                </div>
+            </section>
+        </div>
+        <%- include ../partial/footer.ejs %>
+    </div>
+</body>
+
+</html>
