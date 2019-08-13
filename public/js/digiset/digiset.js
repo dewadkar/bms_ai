@@ -16,8 +16,7 @@ app.factory('Scopes', function ($rootScope) {
 
 
 app.run(function ($rootScope) {
-    $rootScope.$on('scope.stored', function (event, data) {
-    });
+    $rootScope.$on('scope.stored', function (event, data) {});
 });
 app.controller("digisetController", function ($scope, $http, $window, $compile, Scopes) {
 
@@ -31,18 +30,20 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
                 "ON",
                 "OFF"
             ],
-            datasets: [
-                {
-                    data: $scope.totalGeneratorData,
-                    backgroundColor: [
-                        '#008d4c',
-                        '#d73925'
-                    ],
-                    hoverBackgroundColor: [
-                        "#008d4c",
-                        "#d73925"
-                    ]
-                }]
+            datasets: [{
+                data: $scope.totalGeneratorData,
+                backgroundColor: [
+                    // '#008d4c',
+                    // '#d73925'
+                    "#CDCAF3",
+                    "#F1E3F5"
+
+                ],
+                hoverBackgroundColor: [
+                    "#CDCAF3",
+                    "#F1E3F5"
+                ]
+            }]
         };
 
         var totalGeneratorChart = new Chart(document.getElementById('totalGeneratorChart'), {
@@ -53,29 +54,27 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
                 legend: {
                     display: false
                 }
-            }
+            },
+            plugins: [{
+                beforeDraw: function (chart) {
+                    var width = chart.chart.width,
+                        height = chart.chart.height,
+                        ctx = chart.chart.ctx;
+
+                    ctx.restore();
+                    var fontSize = (height / 70).toFixed(2);
+                    ctx.font = fontSize + "em sans-serif";
+                    ctx.textBaseline = "middle";
+
+                    var text = $scope.totalGeneratorData[0] + $scope.totalGeneratorData[1],
+                        textX = Math.round((width - ctx.measureText(text).width) / 2),
+                        textY = height / 2;
+
+                    ctx.fillText(text, textX, textY);
+                    ctx.save();
+                }
+            }]
         });
-
-        // Chart.pluginService.register({
-        //     beforeDraw: function (chart) {
-        //         var width = chart.chart.width,
-        //             height = chart.chart.height,
-        //             ctx = chart.chart.ctx;
-
-        //         ctx.restore();
-        //         var fontSize = (height / 70).toFixed(2);
-        //         ctx.font = fontSize + "em sans-serif";
-        //         ctx.textBaseline = "middle";
-
-        //         var text = $scope.totalGeneratorData[0] + $scope.totalGeneratorData[1],
-        //             textX = Math.round((width - ctx.measureText(text).width) / 2),
-        //             textY = height / 2;
-
-        //         ctx.fillText(text, textX, textY);
-        //         ctx.save();
-        //     }
-        // });
-
     }
     totalGeneratorChart();
 
@@ -85,7 +84,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             type: type, // ddoughnut
             data: {
                 datasets: [{
-                    data: data,// [20,30,10,10,30]
+                    data: data, // [20,30,10,10,30]
                     label: label,
                     backgroundColor: colorSet,
                     borderColor: highlight,
@@ -111,8 +110,11 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         return config;
     }
 
-    var colorSet = ['#4a8af0', '#3ecf43', '#ebb434', '#f23565'];
-    var highlight = ['#4a8af0', '#3ecf43', '#ebb434', '#f23565'];
+    // var colorSet = ['#f6d55c', '#f6a55c', '#f6faac', '#f6ff65'];
+    // var highlight = ['#f6d55c', '#f6a55c', '#f6faac', '#f6ff65'];
+    var colorSet = ['#F1E3F5', '#E5DAF5', '#CDCAF3', '#989CED'];
+    var highlight = ['#F1E3F5', '#E5DAF5', '#CDCAF3', '#989CED'];
+
 
     var run_hours_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
     var run_hours_data = [10, 20, 30, 40];

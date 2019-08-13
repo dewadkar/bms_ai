@@ -49,15 +49,32 @@
                                             Generators</span>
                                         <!-- </div> -->
                                     </div>
+                                    <style>
+                                        .btn-dgset-on {
+                                            border-radius: 3px;
+                                            -webkit-box-shadow: none;
+                                            box-shadow: none;
+                                            border: 1px solid transparent;
+                                            background-color: #CDCAF3;
+                                        }
+
+                                        .btn-dgset-off {
+                                            border-radius: 3px;
+                                            -webkit-box-shadow: none;
+                                            box-shadow: none;
+                                            border: 1px solid transparent;
+                                            background-color: #F1E3F5;
+                                        }
+                                    </style>
                                     <div class="col-md-7">
                                         <div class="col-md-3" style="margin-top:10px;">
-                                            <span class="btn btn-success btn-sm">ON </span> <b
-                                                style="margin-left: 10px"> {{on_generators}}</b>
+                                            <span class="btn-dgset-on btn-sm">ON </span> <b style="margin-left: 10px">
+                                                {{on_generators}}</b>
 
                                         </div>
                                         <div class="col-md-3" style="margin-top:10px">
 
-                                            <span class="btn btn-danger btn-sm">OFF </span> <b
+                                            <span class="btn-dgset-off btn-danger btn-sm">OFF </span> <b
                                                 style="margin-left: 10px">{{off_generators}}</b>
                                         </div>
                                         <div class="col-md-6">
