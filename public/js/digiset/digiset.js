@@ -16,7 +16,7 @@ app.factory('Scopes', function ($rootScope) {
 
 
 app.run(function ($rootScope) {
-    $rootScope.$on('scope.stored', function (event, data) {});
+    $rootScope.$on('scope.stored', function (event, data) { });
 });
 app.controller("digisetController", function ($scope, $http, $window, $compile, Scopes) {
 
@@ -152,7 +152,251 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         fuel_filled_labels, "GENERATOR FUEL FILLED", "#00a65a", "#142f23");
     window.generator_fuel_used_ctx_line = new Chart(fuel_filled_ctx, config);
 
+    $scope.generator_data = [
 
+        {
+            id: 'G-1',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-2',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-3',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-4',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-5',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-6',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-7',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-8',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-9',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-10',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-11',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-12',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-13',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-14',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-15',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-16',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-17',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-18',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-19',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-20',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-21',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-22',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-23',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-24',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-25',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-26',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-27',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-28',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-29',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-30',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-31',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-32',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-33',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-34',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-35',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-36',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-37',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-38',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-39',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'G-40',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+
+
+    ];
 
 
 

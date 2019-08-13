@@ -38,87 +38,85 @@
             <section class="content" ng-controller="digisetController">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="box box-primary" ng-cloak>
-
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <!-- <div class="col-md-12"> -->
-                                        <img src="/images/generator.png" height="60" width="50">
-                                        <span style="font-size: 25px; margin-top:30px; font-weight: bold">Total
-                                            Generators</span>
-                                        <!-- </div> -->
-                                    </div>
-                                    <style>
-                                        .btn-dgset-on {
-                                            border-radius: 3px;
-                                            -webkit-box-shadow: none;
-                                            box-shadow: none;
-                                            border: 1px solid transparent;
-                                            background-color: #CDCAF3;
-                                        }
-
-                                        .btn-dgset-off {
-                                            border-radius: 3px;
-                                            -webkit-box-shadow: none;
-                                            box-shadow: none;
-                                            border: 1px solid transparent;
-                                            background-color: #F1E3F5;
-                                        }
-                                    </style>
-                                    <div class="col-md-7">
-                                        <div class="col-md-3" style="margin-top:10px;">
-                                            <span class="btn-dgset-on btn-sm">ON </span> <b style="margin-left: 10px">
-                                                {{on_generators}}</b>
-
-                                        </div>
-                                        <div class="col-md-3" style="margin-top:10px">
-
-                                            <span class="btn-dgset-off btn-danger btn-sm">OFF </span> <b
-                                                style="margin-left: 10px">{{off_generators}}</b>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="col-md-12">
-                                                <canvas id="totalGeneratorChart"></canvas>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="box box-primary" ng-cloak>
-                            <div class="box-header with-border">
-                                <h4 class="box-title" style="font-weight: bold">AVAILABLE FUEL </h4>
-                            </div>
-                            <div class="box-body">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-6 col-xs-12">
-
-                                        <div>
-                                            <img src="/images/fuel_pump.png" height="60" width="40">
-                                            <span
-                                                style="font-size: 30px; margin-left: 30px; font-weight: bold; color: darkgoldenrod; ">{{total_fuel}}
-                                                gal</span>
-                                        </div>
-
-
-
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-9">
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="box box-primary" ng-cloak>
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <!-- <div class="col-md-12"> -->
+                                                <img src="/images/generator.png" height="60" width="50">
+                                                <span style="font-size: 25px; margin-top:30px; font-weight: bold">Total
+                                                    Generators</span>
+                                                <!-- </div> -->
+                                            </div>
+                                            <style>
+                                                .btn-dgset-on {
+                                                    border-radius: 3px;
+                                                    -webkit-box-shadow: none;
+                                                    box-shadow: none;
+                                                    border: 1px solid transparent;
+                                                    background-color: #CDCAF3;
+                                                }
+
+                                                .btn-dgset-off {
+                                                    border-radius: 3px;
+                                                    -webkit-box-shadow: none;
+                                                    box-shadow: none;
+                                                    border: 1px solid transparent;
+                                                    background-color: #F1E3F5;
+                                                }
+                                            </style>
+                                            <div class="col-md-7">
+                                                <div class="col-md-3" style="margin-top:10px;">
+                                                    <span class="btn-dgset-on btn-sm">ON </span> <b
+                                                        style="margin-left: 10px">
+                                                        {{on_generators}}</b>
+
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:10px">
+
+                                                    <span class="btn-dgset-off btn-danger btn-sm">OFF </span> <b
+                                                        style="margin-left: 10px">{{off_generators}}</b>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="col-md-12">
+                                                        <canvas id="totalGeneratorChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <style>
+                                .users-list>li {
+                                    width: 10%;
+                                    float: left;
+                                    padding: 8px;
+                                    text-align: center;
+                                }
+                            </style>
+                            <div class="col-md-12">
+                                <div class="box box-primary" ng-cloak>
+                                    <div class="box-body">
+                                        <ul class="users-list ">
+                                            <li ng-repeat="generator in generator_data">
+                                                <div
+                                                    style="height:45px; width:100%; margin: auto; padding: auto; background-color: #949090;">
+
+                                                    <a href="#" class="text-center"
+                                                        style="font-weight: bold; font-size: 15px; padding: auto; color: rgb(255, 255, 255)">
+                                                        {{generator.id}} <br><i class="fa fa-arrow-circle-right"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="box box-primary" ng-cloak>
 
@@ -140,40 +138,58 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-12">
-                                        <div class="box box-primary" ng-cloak>
 
-                                            <div class="box-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <canvas id="generator_fuels_used" width="900" height="400"
-                                                            aria-label="Hello ARIA World" role="img"></canvas>
-                                                    </div>
-                                                </div>
+                            <div class="col-md-12">
+                                <div class="box box-primary" ng-cloak>
+
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <canvas id="generator_fuels_used" width="900" height="400"
+                                                    aria-label="Hello ARIA World" role="img"></canvas>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="box box-primary" ng-cloak>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="box box-primary" ng-cloak>
 
-                                            <div class="box-body">
-                                                <div class="row">
-                                                    <canvas id="fuel_filled" width="900" height="400"
-                                                        aria-label="Hello ARIA World" role="img"></canvas>
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <canvas id="fuel_filled" width="900" height="400"
+                                                    aria-label="Hello ARIA World" role="img"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box box-primary" ng-cloak>
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title" style="font-weight: bold">AVAILABLE FUEL </h4>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-6 col-xs-12">
+                                                <div>
+                                                    <img src="/images/fuel_pump.png" height="60" width="40">
+                                                    <span
+                                                        style="font-size: 30px; margin-left: 30px; font-weight: bold; color: darkgoldenrod; ">{{total_fuel}}
+                                                        gal</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="row">
                             <div class="col-md-12">
                                 <div class="box box-primary" ng-cloak>
                                     <div class="box-header with-border">
