@@ -54,31 +54,6 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
         hideHover: 'auto'
     });
 
-    // var ctx = document.getElementById('guegeChart').getContext('2d');
-    // var chart = new Chart(ctx, {
-    //     // The type of chart we want to create
-    //     type: 'doughnut',
-
-    //     // The data for our dataset
-    //     data: {
-    //         labels: ["January", "February", "March", "April", "May"],
-    //         datasets: [{
-    //             label: "My First dataset",
-    //             backgroundColor: ['rgb(0, 99, 132)', 'green', 'red', 'yellow', 'orange'],
-    //             borderColor: '#fff',
-    //             data: [5, 10, 5, 2, 20],
-    //         }]
-    //     },
-
-    //     // Configuration options go here
-    //     options: {
-    //         circumference: 1 * Math.PI,
-    //         rotation: 1 * Math.PI,
-    //         cutoutPercentage: 70
-    //     }
-    // });
-
-
 
     // Create chart
     var guageChart1 = document.getElementsByClassName("chartjs-gauge");
@@ -88,10 +63,9 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
             labels: ["Red", "Blue"],
             datasets: [{
                 label: "Gauge",
-                data: [10, 30],
+                data: [40, 300],
                 backgroundColor: [
-                    "#4287f5",
-                    "#85aded",
+                    "#cf343b",
                     "#546278"
                 ]
             }]
@@ -102,8 +76,8 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
             cutoutPercentage: 75, // precent
             plugins: {
                 datalabels: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    borderColor: '#ffffff',
+                    backgroundColor: '#d7faeb',
+                    borderColor: 'blue',
                     color: function (context) {
                         return context.dataset.backgroundColor;
                     },
@@ -115,8 +89,8 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
                     },
                     align: 'start',
                     anchor: 'start',
-                    offset: 20,
-                    borderRadius: 4,
+                    offset: 10,
+                    borderRadius: 5,
                     borderWidth: 1,
                     formatter: function (value, context) {
                         var i = context.dataIndex;
@@ -136,8 +110,6 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
             }
         }
     });
-
-
     // DEMO Code: not relevant to example
     function change_gauge(chart, label, data) {
         chart.data.datasets.forEach((dataset) => {
@@ -147,7 +119,6 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
         });
         chart.update();
     }
-
     var accelerating = false;
     function accelerate() {
         accelerating = false;
@@ -170,8 +141,10 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
         $window.setTimeout(function () {
             change_gauge(chart, "Gauge", [250, 50])
         }, 5000);
+        $window.setTimeout(function () {
+            change_gauge(chart, "Gauge", [300, 0])
+        }, 6000);
     }
-
     // Start sequence
     accelerate();
     $window.setInterval(function () {
