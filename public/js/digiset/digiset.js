@@ -114,7 +114,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     var colorSet = ['#4a8af0', '#3ecf43', '#ebb434', '#f23565'];
     var highlight = ['#4a8af0', '#3ecf43', '#ebb434', '#f23565'];
 
-    var run_hours_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
+    var run_hours_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
     var run_hours_data = [10, 20, 30, 40];
     var run_hours_ctx = document.getElementById('run_hours').getContext('2d');
     var config = generateDonatChart('doughnut', run_hours_data, "RUN-HOURS",
@@ -122,14 +122,14 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     window.run_hr_donout = new Chart(run_hours_ctx, config);
 
     var energy_generated_data = [1000, 3000, 980, 850];
-    var energy_generated_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
+    var energy_generated_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
     var energy_generated_ctx = document.getElementById('energy_generated').getContext('2d');
     config = generateDonatChart('doughnut', energy_generated_data, "ENERGY-GENERATED", energy_generated_labels,
         "ENERGY GENERATED", colorSet, colorSet);
     window.run_hr_donout = new Chart(energy_generated_ctx, config);
 
     var fuel_used_data = [2, 5, 9, 3];
-    var fuel_used_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
+    var fuel_used_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
     var fuel_used_ctx = document.getElementById('fuel_used').getContext('2d');
     config = generateDonatChart('doughnut', fuel_used_data, "FUEL USED",
         fuel_used_labels, "FUEL USED", colorSet, colorSet);
