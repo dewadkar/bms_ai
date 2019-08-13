@@ -31,6 +31,9 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
         ],
         hideHover: 'auto'
     });
+    $('#water_pump_chart1').resize(function () { donut1.redraw(); });
+    $("#water_pump_chart1").css("height", "150");
+
     var donut2 = new Morris.Donut({
         element: 'water_pump_chart2',
         resize: true,
@@ -42,6 +45,9 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
         ],
         hideHover: 'auto'
     });
+    $('#water_pump_chart2').resize(function () { donut2.redraw(); });
+    $("#water_pump_chart2").css("height", "150");
+
     var donut3 = new Morris.Donut({
         element: 'water_pump_chart3',
         resize: true,
@@ -53,6 +59,8 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
         ],
         hideHover: 'auto'
     });
+    $('#water_pump_chart3').resize(function () { donut3.redraw(); });
+    $("#water_pump_chart3").css("height", "150");
 
 
     // Create chart
@@ -153,6 +161,7 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
             accelerate();
         }
     }, 6000);
+
 
 
 });

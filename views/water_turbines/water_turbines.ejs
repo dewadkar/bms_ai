@@ -12,6 +12,15 @@
             height: auto;
             padding: 5px;
         }
+
+        .chart-donut {
+            position: relative;
+
+        }
+
+        svg:not(:root) {
+            height: 100% !important;
+        }
     </style>
     <script src="/scripts/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js"></script>
     <script src="/js/water_turbines/water_turbines.js"></script>
@@ -44,21 +53,18 @@
                                     <div class="box-body">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <div class="box-body chart-responsive">
-                                                    <div class="chart" id="water_pump_chart1"
-                                                        style="height: 300px; position: relative;"></div>
+                                                <div class="box-body ">
+                                                    <div class="chart chart-donut" id="water_pump_chart1"></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="box-body chart-responsive">
-                                                    <div class="chart" id="water_pump_chart2"
-                                                        style="height: 300px; position: relative;"></div>
+                                                <div class="box-body chart-responsive chart-donut">
+                                                    <div class="chart" id="water_pump_chart2"></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="box-body chart-responsive">
-                                                    <div class="chart" id="water_pump_chart3"
-                                                        style="height: 300px; position: relative;"></div>
+                                                <div class="box-body chart-responsive chart-donut">
+                                                    <div class="chart" id="water_pump_chart3"></div>
                                                 </div>
                                             </div>
 
