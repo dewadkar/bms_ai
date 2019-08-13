@@ -111,13 +111,8 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         return config;
     }
 
-    var colorSet = [];
-    var highlight = [];
-    var colorSet4 = [];
-    var highlight4 = [];
-    var colorSet5 = [];
-    var highlight5 = [];
-
+    var colorSet = ['#4a8af0', '#3ecf43', '#ebb434', '#f23565'];
+    var highlight = ['#4a8af0', '#3ecf43', '#ebb434', '#f23565'];
 
     var run_hours_labels = ["1st Hr", "2nd Hr", "3rd Hr", "5th Hr"];
     var run_hours_data = [10, 20, 30, 40];
@@ -144,7 +139,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     var generator_fuels_used_labels = ["1", "2", "3", "4", "5", "6", "7"];
     var generator_fuel_used_ctx = document.getElementById('generator_fuels_used').getContext('2d');
     config = generateDonatChart('line', generator_fuels_used_data, "GENERATOR FUEL USED DAILY",
-        generator_fuels_used_labels, "GENERATOR FUEL USED", colorSet4, highlight4);
+        generator_fuels_used_labels, "GENERATOR FUEL USED", ["#476dd8"], ["#2e4882"]);
     window.generator_fuel_used_ctx_line = new Chart(generator_fuel_used_ctx, config);
 
 
@@ -152,41 +147,13 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     var fuel_filled_labels = ["1", "2", "3", "4", "5", "6", "7"];
     var fuel_filled_ctx = document.getElementById('fuel_filled').getContext('2d');
     config = generateDonatChart('bar', fuel_filled_data, "Daily Fuel Filled",
-        fuel_filled_labels, "GENERATOR FUEL FILLED", colorSet5, highlight5);
+        fuel_filled_labels, "GENERATOR FUEL FILLED", "#00a65a", "#142f23");
     window.generator_fuel_used_ctx_line = new Chart(fuel_filled_ctx, config);
 
 
 
-    for (var i = 0; i < run_hours_data.length; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 300);
-        v = Math.floor(Math.random() * 500);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet.push(c);
-        highlight.push(h);
-    }
 
-    for (var i = 0; i < 1; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 300);
-        b = Math.floor(Math.random() * 400);
-        v = Math.floor(Math.random() * 600);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet4.push(c);
-        highlight4.push(h);
-    }
-    for (var i = 0; i < fuel_filled_data.length; i++) {
-        r = Math.floor(Math.random() * 200);
-        g = Math.floor(Math.random() * 200);
-        b = Math.floor(Math.random() * 200);
-        v = Math.floor(Math.random() * 500);
-        c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-        h = 'rgb(' + (r + 20) + ', ' + (g + 20) + ', ' + (b + 20) + ')';
-        colorSet5.push(c);
-        highlight5.push(h);
-    }
+
+
 
 });
