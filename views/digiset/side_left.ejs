@@ -1,0 +1,61 @@
+<style>
+    canvas {
+        background: #fff;
+    }
+</style>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <i class="fa fa-bar-chart-o"></i>
+        <h3 class="box-title">Failure Risk </h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-6 col-md-4 text-center">
+                <input type="text" class="knob" ng-value="risk_value" id="risk_value" data-min="1" data-max="100"
+                    data-width="90" data-height="90" data-fgColor="#f56954">
+                <!-- <div class="knob-label">Risk</div> -->
+            </div>
+            <div class="col-xs-6 col-md-8 text-center">
+                <!--                <div id="risk-chart" style="height: 100px;"></div>-->
+                <canvas style="height: 100px;" id="risk-chart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <i class="fa fa-bar-chart-o"></i>
+        <h3 class="box-title">Health Score (%)</h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-6 col-md-4 text-center">
+                <input type="text" class="knob" ng-value="health_score" id="health_score" data-min="1" data-max="100"
+                    data-width="90" data-height="90" data-fgColor="#f56954">
+
+                <!-- <div class="knob-label">Health Score (%)</div> -->
+            </div>
+            <div class="col-xs-6 col-md-8 text-center">
+                <canvas id="health-score-chart" style="height: 100px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <i class="fa fa-bar-chart-o"></i>
+        <h3 class="box-title">Remaining Useful Life (Days) </h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-6 col-md-4 text-center">
+                <input type="text" class="knob" ng-value="rul_score" id="rul_score" data-min="1" data-max="365"
+                    data-width="90" data-height="90" data-fgColor="#3c8dbc">
+                <!-- <div class="knob-label">Remaining Useful Life(Days)</div> -->
+            </div>
+            <div class="col-xs-6 col-md-8 text-center">
+                <canvas id="rul-chart" style="height: 100px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
