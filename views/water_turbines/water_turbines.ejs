@@ -4,9 +4,16 @@
 <head>
     <title>BMS - Water Pump Station</title>
     <% include ../partial/head.ejs %>
-
+    <style>
+        .chartjs-wrapper {
+            margin: 0 auto;
+            width: 20vw;
+            height: auto;
+            padding: 10px;
+        }
+    </style>
     <script src="/js/water_turbines/water_turbines.js"></script>
-    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
+
 
 </head>
 
@@ -63,11 +70,16 @@
 
                                             <div class="box-body">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <!-- <div class="col-md-6">
                                                         <canvas id="guegeChart"></canvas>
+                                                    </div> -->
+                                                    <div class="col-md-6">
+                                                        <div class="chartjs-wrapper">
+                                                            <canvas class="chartjs-gauge"></canvas>
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <canvas class="chartjs-gauge"></canvas>
+                                                        <div id="chart-container"></div>
                                                     </div>
                                                 </div>
                                             </div>
