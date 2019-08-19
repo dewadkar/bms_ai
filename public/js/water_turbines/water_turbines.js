@@ -62,6 +62,8 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
     $('#water_pump_chart3').resize(function () { donut3.redraw(); });
     $("#water_pump_chart3").css("height", "150");
 
+    $scope.water_volume = 80;
+    $scope.show_water_volume = true;
 
     // Create chart
     var guageChart1 = document.getElementsByClassName("chartjs-gauge");
@@ -71,7 +73,7 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
             labels: ["Red", "Blue"],
             datasets: [{
                 label: "Gauge",
-                data: [40, 300],
+                data: [$scope.water_volume, 900],
                 backgroundColor: [
                     "#cf343b",
                     "#546278"
@@ -98,7 +100,7 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
                     align: 'start',
                     anchor: 'start',
                     offset: 10,
-                    borderRadius: 5,
+                    borderRadius: 2,
                     borderWidth: 1,
                     formatter: function (value, context) {
                         var i = context.dataIndex;
@@ -106,7 +108,7 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
                         if (i == len) {
                             return null;
                         }
-                        return value + ' mph';
+                        return value + ' Ltr';
                     }
                 }
             },
@@ -131,27 +133,27 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
     function accelerate() {
         accelerating = false;
         $window.setTimeout(function () {
-            change_gauge(chart, "Gauge", [50, 250])
+            change_gauge(chart, "Gauge", [$scope.water_volume, 900])
         }, 1000);
 
-        $window.setTimeout(function () {
-            change_gauge(chart, "Gauge", [100, 200])
-        }, 2000);
+        // $window.setTimeout(function () {
+        //     change_gauge(chart, "Gauge", [100, 200])
+        // }, 2000);
 
-        $window.setTimeout(function () {
-            change_gauge(chart, "Gauge", [150, 150])
-        }, 3000);
+        // $window.setTimeout(function () {
+        //     change_gauge(chart, "Gauge", [150, 150])
+        // }, 3000);
 
-        $window.setTimeout(function () {
-            change_gauge(chart, "Gauge", [200, 100])
-        }, 4000);
+        // $window.setTimeout(function () {
+        //     change_gauge(chart, "Gauge", [200, 100])
+        // }, 4000);
 
-        $window.setTimeout(function () {
-            change_gauge(chart, "Gauge", [250, 50])
-        }, 5000);
-        $window.setTimeout(function () {
-            change_gauge(chart, "Gauge", [300, 0])
-        }, 6000);
+        // $window.setTimeout(function () {
+        //     change_gauge(chart, "Gauge", [250, 50])
+        // }, 5000);
+        // $window.setTimeout(function () {
+        //     change_gauge(chart, "Gauge", [300, 0])
+        // }, 6000);
     }
     // Start sequence
     accelerate();
@@ -170,10 +172,12 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
     $scope.show_water_level_down = false;
     $scope.show_water_level_overflow = false;
 
-    $scope.water_level = 130;
-    if ($scope.water_level < 0) {
+    $scope.water_level = 69;
+    if ($scope.water_level <= 0) {
         $scope.show_water_level_down = true;
         water_level_down.classList.add("below_water_level");
+        $scope.water_level = "Invalid Data";
+
     } else if ($scope.water_level > 100) {
         $scope.show_water_level_overflow = true;
         water_level_overflow.classList.add("overflow_water_level");
@@ -183,183 +187,190 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
         $scope.show_water_level_up = false;
         water_level_down.classList.add("below_water_level");
     }
-    else if ($scope.water_level > 25 && $scope.water_level <= 90) {
+    else if ($scope.water_level > 25 && $scope.water_level <= 50) {
+        $scope.show_water_level_up = true;
+        water_level_up.classList.add("level_water");
+    }
+    else if ($scope.water_level > 50 && $scope.water_level <= 80) {
         $scope.show_water_level_up = true;
         water_level_up.classList.add("normal_water_level");
     }
-    else if ($scope.water_level > 90 && $scope.water_level <= 100) {
-        $scope.show_water_level_down = true;
-        water_level_down.classList.add("overflow_water_level");
+    else if ($scope.water_level > 80 && $scope.water_level <= 94) {
+        $scope.show_water_level_up = true;
+        water_level_up.classList.add("semi_overflow_water_level");
     }
-    $scope.water_volume = 90;
-    $scope.show_water_volume = true;
+    else if ($scope.water_level > 94 && $scope.water_level <= 100) {
+        $scope.show_water_level_up = true;
+        water_level_up.classList.add("overflow_water_level");
+    }
+
 
     $scope.water_pump_data = [
 
         {
-            id: 'W-PUMP-1',
+            id: 'WP-1',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-2',
+            id: 'WP-2',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-3',
+            id: 'WP-3',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-4',
+            id: 'WP-4',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-5',
+            id: 'WP-5',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-6',
+            id: 'WP-6',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-7',
+            id: 'WP-7',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-8',
+            id: 'WP-8',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-9',
+            id: 'WP-9',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-10',
+            id: 'WP-10',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-11',
+            id: 'WP-11',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-12',
+            id: 'WP-12',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-13',
+            id: 'WP-13',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-14',
+            id: 'WP-14',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-15',
+            id: 'WP-15',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-16',
+            id: 'WP-16',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-17',
+            id: 'WP-17',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-18',
+            id: 'WP-18',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-19',
+            id: 'WP-19',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-20',
+            id: 'WP-20',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-21',
+            id: 'WP-21',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-22',
+            id: 'WP-22',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-23',
+            id: 'WP-23',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-24',
+            id: 'WP-24',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-25',
+            id: 'WP-25',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-26',
+            id: 'WP-26',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-27',
+            id: 'WP-27',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
             status: ''
         },
         {
-            id: 'W-PUMP-28',
+            id: 'WP-28',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
             status: ''
