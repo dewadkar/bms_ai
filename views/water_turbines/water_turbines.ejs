@@ -21,6 +21,13 @@
         svg:not(:root) {
             height: 100% !important;
         }
+
+        .users-list>li {
+            width: 10%;
+            float: left;
+            padding: 8px;
+            text-align: center;
+        }
     </style>
     <script src="/scripts/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js"></script>
     <script src="/js/water_turbines/water_turbines.js"></script>
@@ -47,7 +54,7 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12" ng-show="show_guage_graph">
                                 <div class="box box-primary" ng-cloak>
 
                                     <div class="box-body">
@@ -69,6 +76,13 @@
                                             </div>
 
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" ng-show="show_risk_graph">
+                                <div class="box box-primary">
+                                    <div class="box-body">
+
                                     </div>
                                 </div>
                             </div>
@@ -113,16 +127,20 @@
                             background-color: rgb(59, 97, 62);
                         }
 
-                        .over_water_level {
-                            background-color: rgb(255, 0, 76);
-                        }
-
                         .below_water_level {
                             background-color: rgb(202, 17, 41);
                         }
 
                         .overflow_water_level {
                             background-color: rgb(202, 17, 41);
+                        }
+
+                        .semi_overflow_water_level {
+                            background-color: rgb(243, 116, 94);
+                        }
+
+                        .level_water {
+                            background-color: rgb(212, 147, 49);
                         }
                     </style>
 
@@ -146,8 +164,8 @@
                                                     <img src="/images/water-overflow.png" height="50" width="40"
                                                         ng-show="show_water_level_overflow" class="overflow_water_level"
                                                         id="water_level_overflow">
-                                                    <span
-                                                        style="font-size: 30px; margin-left: 30px; font-weight: bold; color: darkgoldenrod; ">{{water_level}}
+                                                    <span style="font-size: 30px; margin-left: 30px; 
+                                                        font-weight: bold; color: darkgoldenrod; ">{{water_level}}
                                                         %</span>
                                                 </div>
                                             </div>
