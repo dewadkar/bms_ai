@@ -16,8 +16,6 @@ module.exports = function (app) {
     //Water Turbines page
     require('./water_turbines/water_turbines')(app);
 
-    //Digiset page
+    //Digi-set page
     require('./digiset/digiset')(app);
-
-
 };

@@ -21,6 +21,7 @@ module.exports = function (app) {
     this.view = function (request, response) {
         var loc = location + 'view';
 
+        // if(request.session)
         // log.debug(loc, "Render to BMS Home Page");
         response.render('dashboard/dashboard', {
             title: "Smart BMS "
