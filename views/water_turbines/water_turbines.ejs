@@ -28,6 +28,13 @@
             padding: 8px;
             text-align: center;
         }
+
+        .guege_chart {
+            margin: auto;
+            width: 18vw;
+            height: auto;
+            padding: 5px;
+        }
     </style>
     <script src="/scripts/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js"></script>
     <script src="/js/water_turbines/water_turbines.js"></script>
@@ -54,6 +61,54 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="box box-primary">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="box ">
+                                                    <div class="box-header text-center"
+                                                        style="background-color: rgb(215, 215, 250)">
+                                                        <h3 class="box-title">Trap Status</h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="guege_chart">
+                                                            <canvas class="trap-status-gauge"></canvas>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="box">
+                                                    <div class="box-header text-center"
+                                                        style="background-color: rgb(245, 216, 122)">
+                                                        <h3 class="box-title">Lost Energy Cost</h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="guege_chart">
+                                                            <canvas class="lost-energy-gauge"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="box">
+                                                    <div class="box-header text-center"
+                                                        style="background-color: rgb(151, 252, 151)">
+                                                        <h3 class="box-title">Emissions Lost </h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="guege_chart">
+                                                            <canvas class="emissions-gauge"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-12" ng-show="show_guage_graph">
                                 <div class="box box-primary" ng-cloak>
 
@@ -82,7 +137,23 @@
                             <div class="col-md-12" ng-show="show_risk_graph">
                                 <div class="box box-primary">
                                     <div class="box-body">
-
+                                        <div class="row">
+                                            <div class="col-xs-6 col-md-4 text-center">
+                                                <input type="text" class="knob" ng-value="risk_value" id="risk_value"
+                                                    data-min="1" data-max="100" data-width="90" data-height="90"
+                                                    data-fgColor="#f56954">
+                                            </div>
+                                            <div class="col-xs-6 col-md-4 text-center">
+                                                <input type="text" class="knob" ng-value="health_score"
+                                                    id="health_score" data-min="1" data-max="100" data-width="90"
+                                                    data-height="90" data-fgColor="#f56954">
+                                            </div>
+                                            <div class="col-xs-6 col-md-4 text-center">
+                                                <input type="text" class="knob" ng-value="rul_score" id="rul_score"
+                                                    data-min="1" data-max="365" data-width="90" data-height="90"
+                                                    data-fgColor="#3c8dbc">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -108,18 +179,19 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="box box-primary" ng-cloak>
+                                <div class="box box-primary">
+
                                     <div class="box-body">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="chartjs-wrapper">
-                                                    <canvas class="chartjs-gauge"></canvas>
-                                                </div>
+                                            <div class="col-md-12">
+                                                <canvas class="stacked_bar_chart"></canvas>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <style>
