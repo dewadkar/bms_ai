@@ -13,7 +13,7 @@ module.exports = function (app) {
     this.view = function (request, response) {
         // var loc = location + 'view';
 
-        if(request.session){
+        if(request.session.user_name){
             response.render('asset/asset', { title: "Asset",  appliance_id:request.params.id });
         }else{
             response.redirect('/');

@@ -14,7 +14,7 @@ module.exports = function (app) {
      */
     this.view = function (request, response) {
         // var loc = location + 'view';
-        if(request.session){
+        if(request.session.user_name){
             response.render('water_turbines/water_turbines', { title: "Water Turbines" });
         }else{
             response.redirect('/');

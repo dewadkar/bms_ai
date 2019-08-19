@@ -18,4 +18,6 @@ module.exports = function (app) {
 
     //Digi-set page
     require('./digiset/digiset')(app);
+    // Logout
+    require('./user/logout')(app);
 };
