@@ -163,5 +163,210 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
     }, 6000);
 
 
+    var water_level_up = document.getElementById("water_level_up");
+    var water_level_down = document.getElementById("water_level_down");
+    var water_level_overflow = document.getElementById("water_level_overflow");
+    $scope.show_water_level_up = false;
+    $scope.show_water_level_down = false;
+    $scope.show_water_level_overflow = false;
+
+    $scope.water_level = 130;
+    if ($scope.water_level < 0) {
+        $scope.show_water_level_down = true;
+        water_level_down.classList.add("below_water_level");
+    } else if ($scope.water_level > 100) {
+        $scope.show_water_level_overflow = true;
+        water_level_overflow.classList.add("overflow_water_level");
+    }
+    if ($scope.water_level > 0 && $scope.water_level <= 25) {
+        $scope.show_water_level_down = true;
+        $scope.show_water_level_up = false;
+        water_level_down.classList.add("below_water_level");
+    }
+    else if ($scope.water_level > 25 && $scope.water_level <= 90) {
+        $scope.show_water_level_up = true;
+        water_level_up.classList.add("normal_water_level");
+    }
+    else if ($scope.water_level > 90 && $scope.water_level <= 100) {
+        $scope.show_water_level_down = true;
+        water_level_down.classList.add("overflow_water_level");
+    }
+    $scope.water_volume = 90;
+    $scope.show_water_volume = true;
+
+    $scope.water_pump_data = [
+
+        {
+            id: 'W-PUMP-1',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-2',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-3',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-4',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-5',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-6',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-7',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-8',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-9',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-10',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-11',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-12',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-13',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-14',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-15',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-16',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-17',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-18',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-19',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-20',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-21',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-22',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-23',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-24',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-25',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-26',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-27',
+            icon: 'fas fa-fan',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+        {
+            id: 'W-PUMP-28',
+            icon: 'fas fa-battery-three-quarters',
+            color: 'rgb(255, 255, 255)',
+            status: ''
+        },
+
+    ];
+
+
 
 });
