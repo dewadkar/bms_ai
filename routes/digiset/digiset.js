@@ -26,7 +26,11 @@ module.exports = function (app) {
      */
     this.digisetDetailsView = function (request, response) {
         // var loc = location + 'digisetDetailsView';
-        response.render('digiset/digiset_details', { title: "Digiset Details", generator_id: request.params.id });
+        if(request.session){
+            response.render('digiset/digiset_details', { title: "Digiset Details", generator_id: request.params.id });
+        }else{
+            response.redirect('/');
+        }
     };
 
     // Digiset Page

@@ -23,6 +23,13 @@ module.exports = function (app) {
 
         // if(request.session)
         // log.debug(loc, "Render to BMS Home Page");
+        if(request.session){
+            response.render('dashboard/dashboard', {
+                title: "Smart BMS "
+            });
+        }else{
+            response.redirect('/');
+        }
         response.render('dashboard/dashboard', {
             title: "Smart BMS "
         });

@@ -14,7 +14,11 @@ module.exports = function (app) {
      */
     this.view = function (request, response) {
         // var loc = location + 'view';
-        response.render('appliances/appliances', { title: "Appliances"});
+        if(request.session){
+            response.render('appliances/appliances', { title: "Appliances"});
+        }else{
+            response.redirect('/');
+        }
     };
 
     this.readCsvData = function (request, response) {

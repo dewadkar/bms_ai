@@ -14,7 +14,11 @@ module.exports = function (app) {
      */
     this.view = function (request, response) {
         // var loc = location + 'view';
-        response.render('water_turbines/water_turbines', { title: "Water Turbines" });
+        if(request.session){
+            response.render('water_turbines/water_turbines', { title: "Water Turbines" });
+        }else{
+            response.redirect('/');
+        }
     };
 
     // Digiset Page
