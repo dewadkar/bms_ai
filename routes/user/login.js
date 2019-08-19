@@ -11,7 +11,6 @@ module.exports = function (app) {
         var data = request.body;
         var status = false;
         var response_data = {};
-        console.log(data);
         for (var i = 0; i < users_list.length; i++) {
             if (data.user_name === users_list[i].user_name && data.password === users_list[i].password) {
                 status = true;
@@ -26,6 +25,8 @@ module.exports = function (app) {
             }
         }
         if (status) {
+            request.session.user_name = response_data.user_name;
+            request.session.full_name = response_data.full_name;
             response.send(response_data);
         } else {
             response.send({

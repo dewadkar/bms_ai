@@ -27,12 +27,24 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+    extended: false
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scripts', express.static(path.join(__dirname, '/node_modules')));
+app.use(session({
+    secret: 'thisisasecretkey',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
+
+require('./routes/login')(app);
+
+app.all("/*", requireLogin, function (req, res, next) {
+    next();
+});
 
 // API routes
 require('./routes/routes.js')(app);
@@ -44,11 +56,23 @@ require('./routes/routes.js')(app);
 // });
 
 if (config.app.env === 'development') {
-  // Start server for development environment
-  http.createServer(app).listen(app.get('port'), function () {
-    // log.info(userInfo, '/app', 'Express server listening on port ' + app.get('port'));
-    console.log('/app', 'Express server listening on port ' + app.get('port'));
-  });
+    // Start server for development environment
+    http.createServer(app).listen(app.get('port'), function () {
+        // log.info(userInfo, '/app', 'Express server listening on port ' + app.get('port'));
+        console.log('/app', 'Express server listening on port ' + app.get('port'));
+    });
 }
+
+function requireLogin(request, response, next) {
+    if (request.session) {
+        if (request.session.user_name) {
+            next();
+        } else {
+            response.redirect("/");
+        }
+    } else {
+        response.redirect("/");
+    }
+};
 
 module.exports = app;
