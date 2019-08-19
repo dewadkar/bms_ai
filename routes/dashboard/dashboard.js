@@ -30,6 +30,6 @@ module.exports = function (app) {
 
 
     // Render to BMS Home Page
-    app.get('/', this.view);
+    app.get('/dashboard', this.view);
 
 };

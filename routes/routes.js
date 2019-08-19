@@ -18,4 +18,7 @@ module.exports = function (app) {
 
     //Digiset page
     require('./digiset/digiset')(app);
+
+    // Login routes
+    require('./user/login')(app);
 };
