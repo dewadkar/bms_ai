@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BMS -Water Turbines Details</title>
+    <% include ../partial/head.ejs %>
+    <script>
+        var id = '<%- id %>';
+    </script>
+
+    <script src="/js/water_turbines/water_turbines_details.js"></script>
+
+</head>
+
+<body ng-app="waterTurbinesDetails" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
+
+    <div class="wrapper">
+        <% include ../partial/headbar.ejs %>
+        <% include ../partial/sidebar.ejs %>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    Water Turbines Details
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/waterTurbines"><i class="fa fa-home"></i>Water Turbines </a></li>
+                    <li class="active">
+                        Details
+                    </li>
+                </ol>
+            </section>
+
+            <section class="content" ng-controller="WTDetailsController">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger alert-dismissible" ng-show='failed_digiset_alert'>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                            DG operating condition parameters are behaving abnormaly.
+                            Please check the details in the table below.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-primary" ng-cloak>
+                            <div class="box-header with-border" data-widget="collapse">
+                                <h3 class="box-title">Turbines Information</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                            class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- /.box-header -->
+
+                            <div class="box-body collapse">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table id="table-selected-device" class="table table-condensed table-hover"
+                                                style="width: 100%;">
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <%- include ../water_turbines/side_left.ejs %>
+                    </div>
+                    <div class="col-md-6">
+                        <%- include ../water_turbines/side_right.ejs %>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+        <%- include ../partial/footer.ejs %>
+    </div>
+</body>
+
+</html>
