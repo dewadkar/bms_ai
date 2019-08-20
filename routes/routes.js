@@ -20,4 +20,8 @@ module.exports = function (app) {
     require('./digiset/digiset')(app);
     // Logout
     require('./user/logout')(app);
+
+    // Generator Data
+    
+
 };

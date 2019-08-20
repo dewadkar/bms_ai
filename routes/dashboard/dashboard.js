@@ -28,7 +28,7 @@ module.exports = function (app) {
                 title: "Smart BMS "
             });
         }else{
-            response.redirect('/');
+           return response.redirect('/');
         }
 
     };
