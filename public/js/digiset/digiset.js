@@ -20,8 +20,8 @@ app.run(function ($rootScope) {
 });
 app.controller("digisetController", function ($scope, $http, $window, $compile, Scopes) {
 
-    function totalGeneratorChart() {
-        $scope.totalGeneratorData = [5, 8];
+    function totalGeneratorChart(on_generators, off_generators) {
+        $scope.totalGeneratorData = [on_generators, off_generators];
         $scope.on_generators = $scope.totalGeneratorData[0];
         $scope.off_generators = $scope.totalGeneratorData[1];
         $scope.total_fuel = 180;
@@ -76,7 +76,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             }]
         });
     }
-    totalGeneratorChart();
+
 
     function generateDonatChart(type, data, label, labels, title_text, colorSet, highlight) {
 
@@ -151,6 +151,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     config = generateDonatChart('bar', fuel_filled_data, "Daily Fuel Filled",
         fuel_filled_labels, "GENERATOR FUEL FILLED", "#00a65a", "#142f23");
     window.generator_fuel_used_ctx_line = new Chart(fuel_filled_ctx, config);
+
 
     $scope.generator_data = [
 
@@ -398,6 +399,23 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
 
     ];
 
+
+    $http.get("/digiset/generate")
+        .then(function (response) {
+            var failed_data = response.data;
+            var failed_ids = [];
+            for (var i = 0; i < failed_data.length; i++) {
+                failed_ids.push(failed_data[i].generator_id);
+            }
+            for (var j = 0; j < $scope.generator_data.length; j++) {
+                if (failed_ids.includes($scope.generator_data[j].id)) {
+                    $scope.generator_data[j].color = '#db4040';
+                }
+            }
+            var on_generators = $scope.generator_data.length - failed_ids.length;
+            var off_generators = failed_ids.length;
+            totalGeneratorChart(on_generators, off_generators);
+        });
 
 
 

@@ -62,21 +62,20 @@
                                         <div class="row">
                                             <div class="col-md-1">
                                                 <img src="/images/generator.png" height="60" width="60">
-
                                             </div>
                                             <div class="col-md-4" style="margin-top:15px">
-                                                <span style="font-size: 25px;font-weight: bold;">Total
-                                                    Generators</span>
+                                                <span style="font-size: 25px;font-weight: bold;">
+                                                    Total Generators</span>
                                             </div>
                                             <div class="col-md-7">
                                                 <div class="col-md-3" style="margin-top:15px;">
                                                     <span class="btn-dgset-on btn-success btn-sm">ON </span> <b
-                                                        style="margin-left: 15px;font-size: 20px;color: green">
+                                                        style="margin-left: 5px;font-size: 20px;color: green">
                                                         {{on_generators}}</b>
                                                 </div>
                                                 <div class=" col-md-3" style="margin-top:15px">
                                                     <span class="btn-dgset-off btn-danger btn-sm">OFF </span> <b
-                                                        style="margin-left: 15px; font-size: 20px; color: red">{{off_generators}}</b>
+                                                        style="margin-left: 5px; font-size: 20px; color: red">{{off_generators}}</b>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="col-md-12">
@@ -100,7 +99,8 @@
                                                     style="height:45px; width:100%; margin: auto; padding: auto; background-color: #949090;">
 
                                                     <a href="/digiset/details/{{generator.id}}" class="text-center"
-                                                        style="font-weight: bold; font-size: 15px; padding: auto; color: rgb(255, 255, 255)">
+                                                        style="font-weight: bold; font-size: 15px; padding: auto; "
+                                                        ng-style="{'color':generator.color}">
                                                         {{generator.id}} <br><i class="fa fa-arrow-circle-right"></i>
                                                     </a>
                                                 </div>
