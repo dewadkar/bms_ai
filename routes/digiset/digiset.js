@@ -46,7 +46,7 @@ module.exports = function (app) {
         })
     };
 
-    this.getGeneratorDetails = function () {
+    this.getGeneratorDetails = function (request, response) {
         var id = request.params.id;
         status.getGeneratorDetails(id)
             .then(function (data) {
@@ -56,15 +56,20 @@ module.exports = function (app) {
                 response.send(err);
             })
     };
+    this.getRunningStatus = function (request, response) {
+        status.getRunningStatus()
+            .then(function (data) {
+                response.send(data);
+            })
+            .catch(function (err) {
+                response.send(err);
+            })
+    };
 
 
-    // Digiset Page
     app.get('/digiset', this.view);
-
-    // Digiset Details Page
     app.get('/digiset/details/:id', this.digisetDetailsView);
-
+    app.get('/digiset/running/status', this.getRunningStatus);
     app.get('/digiset/generate', this.generateData);
     app.get('/digiset/generator/:id', this.getGeneratorDetails);
-
 };
