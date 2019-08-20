@@ -150,6 +150,394 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
         }
     });
 
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var now = new Date();
 
+    function plotRiskChart(data) {
+        var riskctx = document.getElementById('risk-chart').getContext("2d");
+        var gradientStroke = riskctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, '#00a9ff');
+        gradientStroke.addColorStop(1, 'green');
+        var labels = [];
+        var d;
+        var month;
+
+        for (var i = 8; i > 0; i -= 1) {
+            d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+            month = months[d.getMonth()];
+            month = month + '' + d.getFullYear().toString().substr(2, 2);
+            labels.push(month)
+        }
+
+        riskChart = new Chart(riskctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: true,
+                    borderWidth: 4,
+                    data: data.slice(0, data.length - 1),
+                    label: "Risk History"
+                },
+                {
+                    borderColor: "#00a9ff",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
+                ]
+            },
+            options: {
+                legend: {
+                    position: "bottom"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'probability(%)'
+                        }
+                    },],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Months'
+                        }
+
+                    }]
+                }
+            }
+        });
+        riskChart.render();
+    }
+    function plotHealthScoreChart(data) {
+
+        var healthctx = document.getElementById('health-score-chart').getContext("2d");
+        var gradientStroke = healthctx.createLinearGradient(500, 0, 100, 0);
+        // gradientStroke.addColorStop(0, 'red');
+        gradientStroke.addColorStop(0, '#00a9ff');
+        gradientStroke.addColorStop(1, 'green');
+        var labels = [];
+
+
+        var d;
+        var month;
+
+        for (var i = 8; i > 0; i -= 1) {
+            d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+            month = months[d.getMonth()];
+            month = month + '' + d.getFullYear().toString().substr(2, 2);
+            labels.push(month)
+        }
+
+        var healthChart = new Chart(healthctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: true,
+                    borderWidth: 4,
+                    data: data.slice(0, data.length - 1),
+                    label: "Histry of Health "
+                },
+                {
+                    borderColor: "#00a9ff",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
+                ]
+            },
+            options: {
+                legend: {
+                    position: "bottom"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'probability(%)'
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Months'
+                        }
+                    }]
+                }
+            }
+        });
+        healthChart.render();
+
+    }
+    function plotRulChart(data) {
+
+        var rulctx = document.getElementById('rul-chart').getContext("2d");
+        var gradientStroke = rulctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, '#00a9ff');
+
+        gradientStroke.addColorStop(1, 'green');
+        var labels = [];
+
+        var d;
+        var month;
+
+        for (var i = 8; i > 0; i -= 1) {
+            d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+            month = months[d.getMonth()];
+            month = month + '' + d.getFullYear().toString().substr(2, 2);
+            labels.push(month)
+        }
+
+        var rulChart = new Chart(rulctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: true,
+                    borderWidth: 4,
+                    data: data.slice(0, data.length - 1),
+                    label: "History RUL"
+                },
+                {
+                    borderColor: "#00a9ff",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
+                ]
+            },
+            options: {
+                legend: {
+                    position: "bottom"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Days'
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Last Eight Months'
+                        }
+                    }]
+                }
+            }
+        });
+        rulChart.render();
+
+    }
+    function plotEnergyConsumptionChart(data) {
+        $scope.data = data;
+        var enrgyctx = document.getElementById('interactive').getContext("2d");
+        var gradientStroke = enrgyctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, 'green');
+        // gradientStroke.addColorStop(1, 'red');
+        var labels = [];
+        for (var i = 8; i > 0; i--) {
+            labels.push(i);
+        }
+        $scope.myChart = new Chart(enrgyctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Time (Cycle)",
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 5,
+                    pointHoverRadius: 5,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 3,
+                    fill: false,
+                    borderWidth: 4,
+                    data: data
+                }]
+            },
+            options: {
+                legend: {
+                    position: "bottom"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 10,
+                            padding: 20
+                        },
+                        gridLines: {
+                            drawTicks: false,
+                            display: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Wh (Normalized)'
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent"
+                        },
+                        ticks: {
+                            padding: 20,
+                            fontColor: "rgba(0,0,0,0.5)",
+                            fontStyle: "bold"
+                        }
+                    }]
+                }
+            }
+        });
+        // $scope.myChart.render();
+        // $scope.myChart.draw()
+        return $scope.myChart;
+
+    }
+
+    function getStats() {
+        $http.get('/waterTurbines/status/' + $window.id)
+            .then(function (data) {
+                var riskData = data["data"][""].failure_risk[""].split(";");
+                var risk = [];
+                for (var i = 0; i < 8; i++) {
+                    risk.push(parseInt(riskData[i]));
+                }
+
+                var healthScoreData = data["data"][""].health_score[""].split(";");
+                var healthScore = [];
+                for (var i = 0; i < 8; i++) {
+                    healthScore.push(parseInt(healthScoreData[i]));
+                }
+                var remainingUsefulLifeData = data["data"][""].remaining_useful_life[""].split(";");
+                var remainingUsefulLife = [];
+                for (var i = 0; i < 8; i++) {
+                    remainingUsefulLife.push(parseInt(remainingUsefulLifeData[i]));
+                }
+
+                var energyConsumptionData = data["data"][""].energy_consumption[""].split(";");
+                var energyConsumption = [];
+                for (var i = 0; i < 8; i++) {
+                    energyConsumption.push(parseInt(energyConsumptionData[i]));
+                }
+
+                $scope.risk_value = 0;
+                $scope.health_score = 0;
+                $scope.rul_score = 0;
+
+                plotRiskChart(risk);
+                plotHealthScoreChart(healthScore);
+                plotRulChart(remainingUsefulLife);
+                plotEnergyConsumptionChart(energyConsumption);
+
+
+                $('#risk_value').val(risk[risk.length - 2]);
+                $("#risk_value").trigger('change');
+
+                $("#health_score").val(healthScore[healthScore.length - 2]);
+                $("#health_score").trigger('change');
+
+                $("#rul_score").val(remainingUsefulLife[remainingUsefulLife.length - 2]);
+                $("#rul_score").trigger('change');
+
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+    getStats();
 
 });

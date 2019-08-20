@@ -4,7 +4,6 @@
 <head>
     <title>BMS - Water Pump Station</title>
     <% include ../partial/head.ejs %>
-
     <style>
         .chartjs-wrapper {
             margin: 0 auto;
@@ -36,11 +35,9 @@
             padding: 5px;
         }
     </style>
+
     <script src="/scripts/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js"></script>
     <script src="/js/water_turbines/water_turbines.js"></script>
-
-
-
 </head>
 
 <body ng-app="waterTurbines" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
@@ -109,54 +106,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12" ng-show="show_guage_graph">
-                                <div class="box box-primary" ng-cloak>
-
-                                    <div class="box-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="box-body ">
-                                                    <div class="chart chart-donut" id="water_pump_chart1"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="box-body chart-responsive chart-donut">
-                                                    <div class="chart" id="water_pump_chart2"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="box-body chart-responsive chart-donut">
-                                                    <div class="chart" id="water_pump_chart3"></div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12" ng-show="show_risk_graph">
-                                <div class="box box-primary">
-                                    <div class="box-body">
-                                        <div class="row">
-                                            <div class="col-xs-6 col-md-4 text-center">
-                                                <input type="text" class="knob" ng-value="risk_value" id="risk_value"
-                                                    data-min="1" data-max="100" data-width="90" data-height="90"
-                                                    data-fgColor="#f56954">
-                                            </div>
-                                            <div class="col-xs-6 col-md-4 text-center">
-                                                <input type="text" class="knob" ng-value="health_score"
-                                                    id="health_score" data-min="1" data-max="100" data-width="90"
-                                                    data-height="90" data-fgColor="#f56954">
-                                            </div>
-                                            <div class="col-xs-6 col-md-4 text-center">
-                                                <input type="text" class="knob" ng-value="rul_score" id="rul_score"
-                                                    data-min="1" data-max="365" data-width="90" data-height="90"
-                                                    data-fgColor="#3c8dbc">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-12">
                                 <div class="box box-primary">
                                     <div class="box-header with-border" data-widget="collapse">
@@ -170,7 +119,7 @@
 
                                                     <a href="/waterTurbines/details/{{pumps.id}}" class="text-center"
                                                         style="font-size: 15px; font-weight: bold; padding: auto; color: white">
-                                                        {{pumps.id}} <br><i style="font-size: 20px;" class="fa fa-cogs"
+                                                        {{pumps.id}} <br><i style="font-size: 17px;" class="fa fa-cogs"
                                                             ng-style="{'color':pumps.color}"></i>
                                                     </a>
                                                 </div>
@@ -192,7 +141,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <style>

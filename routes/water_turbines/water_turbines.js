@@ -40,7 +40,7 @@ module.exports = function (app) {
         })
     };
 
-    this.getTurbineDetails = function () {
+    this.getTurbineDetails = function (request, response) {
         var id = request.params.id;
         status.getTurbineDetails(id)
             .then(function (data) {
