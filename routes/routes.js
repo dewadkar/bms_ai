@@ -22,6 +22,5 @@ module.exports = function (app) {
     require('./user/logout')(app);
 
     // Generator Data
-    
 
 };
