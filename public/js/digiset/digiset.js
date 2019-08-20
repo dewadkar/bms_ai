@@ -16,7 +16,8 @@ app.factory('Scopes', function ($rootScope) {
 
 
 app.run(function ($rootScope) {
-    $rootScope.$on('scope.stored', function (event, data) { });
+    $rootScope.$on('scope.stored', function (event, data) {
+    });
 });
 app.controller("digisetController", function ($scope, $http, $window, $compile, Scopes) {
 
@@ -110,32 +111,18 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
         return config;
     }
 
-    // var colorSet = ['#f6d55c', '#f6a55c', '#f6faac', '#f6ff65'];
-    // var highlight = ['#f6d55c', '#f6a55c', '#f6faac', '#f6ff65'];
-    var colorSet = ['#F1E3F5', '#E5DAF5', '#CDCAF3', '#989CED'];
-    var highlight = ['#F1E3F5', '#E5DAF5', '#CDCAF3', '#989CED'];
+    var colorSet = ['#f6d55c', '#f6a55c', '#f6faac', '#f6ff65'];
+    var highlight = ['#f6d55c', '#f6a55c', '#f6faac', '#f6ff65'];
 
 
-    var run_hours_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
-    var run_hours_data = [10, 20, 30, 40];
-    var run_hours_ctx = document.getElementById('run_hours').getContext('2d');
-    var config = generateDonatChart('doughnut', run_hours_data, "RUN-HOURS",
-        run_hours_labels, "RUN-HOURS", colorSet, highlight);
-    window.run_hr_donout = new Chart(run_hours_ctx, config);
+    // var energy_generated_data = [1000, 3000, 980, 850];
+    // var energy_generated_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
+    // var energy_generated_ctx = document.getElementById('energy_generated').getContext('2d');
+    // config = generateDonatChart('doughnut', energy_generated_data, "ENERGY-GENERATED", energy_generated_labels,
+    //     "ENERGY GENERATED", colorSet, colorSet);
+    // window.run_hr_donout = new Chart(energy_generated_ctx, config);
 
-    var energy_generated_data = [1000, 3000, 980, 850];
-    var energy_generated_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
-    var energy_generated_ctx = document.getElementById('energy_generated').getContext('2d');
-    config = generateDonatChart('doughnut', energy_generated_data, "ENERGY-GENERATED", energy_generated_labels,
-        "ENERGY GENERATED", colorSet, colorSet);
-    window.run_hr_donout = new Chart(energy_generated_ctx, config);
 
-    var fuel_used_data = [2, 5, 9, 3];
-    var fuel_used_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
-    var fuel_used_ctx = document.getElementById('fuel_used').getContext('2d');
-    config = generateDonatChart('doughnut', fuel_used_data, "FUEL USED",
-        fuel_used_labels, "FUEL USED", colorSet, colorSet);
-    window.fuel_used_donout = new Chart(fuel_used_ctx, config);
 
     var generator_fuels_used_data = [8, 5, 4, 1, 9, 3, 2];
     var generator_fuels_used_labels = ["1", "2", "3", "4", "5", "6", "7"];
@@ -402,6 +389,10 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
 
     $http.get("/digiset/generate")
         .then(function (response) {
+
+            return response;
+        })
+        .then(function (response) {
             var failed_data = response.data;
             var failed_ids = [];
             for (var i = 0; i < failed_data.length; i++) {
@@ -415,9 +406,42 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             var on_generators = $scope.generator_data.length - failed_ids.length;
             var off_generators = failed_ids.length;
             totalGeneratorChart(on_generators, off_generators);
+            return $http.get('/digiset/running/status');
+        })
+        .then(function(data){
+            var running_json = data.data;
+            var colorSet = ['#F1E3F5', '#E5DAF5', '#CDCAF3', '#989CED'];
+            var highlight = ['#F1E3F5', '#E5DAF5', '#CDCAF3', '#989CED'];
+
+
+            var run_hours_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
+            var run_hours_data = [Math.ceil(running_json.length/8), Math.ceil(running_json.length/5), Math.ceil(running_json.length/3), Math.ceil(running_json.length/2)];
+            var run_hours_ctx = document.getElementById('run_hours').getContext('2d');
+            var config = generateDonatChart('doughnut', run_hours_data, "RUN-HOURS",
+                run_hours_labels, "RUN-HOURS", colorSet, highlight);
+            window.run_hr_donout = new Chart(run_hours_ctx, config);
+
+            var energy_generated_data = [];
+            var fuel_used_data = [];
+            for(var i=0;i<run_hours_data.length;i++){
+                energy_generated_data.push(run_hours_data[i]*1000);
+                fuel_used_data.push(run_hours_data[i]*3)
+            }
+            var energy_generated_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
+            var energy_generated_ctx = document.getElementById('energy_generated').getContext('2d');
+            config = generateDonatChart('doughnut', energy_generated_data, "ENERGY-GENERATED", energy_generated_labels,
+                "ENERGY GENERATED", colorSet, colorSet);
+            window.run_hr_donout = new Chart(energy_generated_ctx, config);
+
+            // var fuel_used_data = [2, 5, 9, 3];
+            var fuel_used_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
+            var fuel_used_ctx = document.getElementById('fuel_used').getContext('2d');
+            config = generateDonatChart('doughnut', fuel_used_data, "FUEL USED",
+                fuel_used_labels, "FUEL USED", colorSet, colorSet);
+            window.fuel_used_donout = new Chart(fuel_used_ctx, config);
+
+            console.log(running_json);
         });
-
-
 
 
 });
