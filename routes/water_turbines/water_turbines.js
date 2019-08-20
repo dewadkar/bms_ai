@@ -21,7 +21,7 @@ module.exports = function (app) {
         }
     };
 
-    this.getTurbinesDetails = function (request, response) {
+    this.viewTurbinesDetails = function (request, response) {
         // var loc = location + 'view';
         if (request.session.user_name) {
             response.render('water_turbines/water_turbines_details', { title: "Water Turbines", id: request.params.id });
@@ -40,20 +40,20 @@ module.exports = function (app) {
         })
     };
 
-    this.getTurbines = function () {
+    this.getTurbineDetails = function () {
         var id = request.params.id;
-        status.getTurbines(id)
+        status.getTurbineDetails(id)
             .then(function (data) {
                 response.send(data);
             })
             .catch(function (err) {
                 response.send(err);
-            })
+            });
     };
 
     // Digiset Page
     app.get('/waterTurbines', this.view);
-    app.get('/waterTurbines/details/:id', this.getTurbinesDetails);
+    app.get('/waterTurbines/details/:id', this.viewTurbinesDetails);
     app.get('/waterTurbines/generate', this.generateData);
-    app.get('/waterTurbines/status/:id', this.getTurbines);
+    app.get('/waterTurbines/status/:id', this.getTurbineDetails);
 };

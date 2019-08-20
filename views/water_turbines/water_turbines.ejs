@@ -166,11 +166,12 @@
                                         <ul class="users-list ">
                                             <li ng-repeat="pumps in water_pump_data">
                                                 <div
-                                                    style="height:45px; width:100%; margin: auto; padding: auto; background-color: #6fa7f0;">
+                                                    style="height:45px; width:100%; margin: auto; padding: auto; background-color: #5a88c5;">
 
                                                     <a href="/waterTurbines/details/{{pumps.id}}" class="text-center"
-                                                        style="font-weight: bold; font-size: 15px; padding: auto; color: rgb(255, 255, 255)">
-                                                        {{pumps.id}} <br><i class="fa fa-arrow-circle-right"></i>
+                                                        style="font-size: 15px; font-weight: bold; padding: auto; color: white">
+                                                        {{pumps.id}} <br><i style="font-size: 20px;" class="fa fa-cogs"
+                                                            ng-style="{'color':pumps.color}"></i>
                                                     </a>
                                                 </div>
                                             </li>
