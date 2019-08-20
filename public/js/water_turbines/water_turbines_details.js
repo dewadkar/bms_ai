@@ -29,16 +29,11 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
                     r = true;
 
                 this.g.lineWidth = this.lineWidth;
-
-                this.o.cursor &&
-                    (sat = eat - 0.3) &&
-                    (eat = eat + 0.3);
+                this.o.cursor && (sat = eat - 0.3) && (eat = eat + 0.3);
 
                 if (this.o.displayPrevious) {
                     ea = this.startAngle + this.angle(this.value);
-                    this.o.cursor &&
-                        (sa = ea - 0.3) &&
-                        (ea = ea + 0.3);
+                    this.o.cursor && (sa = ea - 0.3) && (ea = ea + 0.3);
                     this.g.beginPath();
                     this.g.strokeStyle = this.previousColor;
                     this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
@@ -152,6 +147,8 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
 
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var now = new Date();
+    var data = [],
+        totalPoints = 100;
 
     function plotRiskChart(data) {
         var riskctx = document.getElementById('risk-chart').getContext("2d");
@@ -166,7 +163,7 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
             d = new Date(now.getFullYear(), now.getMonth() - i, 1);
             month = months[d.getMonth()];
             month = month + '' + d.getFullYear().toString().substr(2, 2);
-            labels.push(month)
+            labels.push(month);
         }
 
         riskChart = new Chart(riskctx, {
@@ -254,7 +251,7 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
             d = new Date(now.getFullYear(), now.getMonth() - i, 1);
             month = months[d.getMonth()];
             month = month + '' + d.getFullYear().toString().substr(2, 2);
-            labels.push(month)
+            labels.push(month);
         }
 
         var healthChart = new Chart(healthctx, {
@@ -480,11 +477,164 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
                 }
             }
         });
-        // $scope.myChart.render();
-        // $scope.myChart.draw()
         return $scope.myChart;
 
     }
+    function plotTemperatureHumidityChart(data, humidity) {
+
+        var labels = [];
+
+        for (var i = 0; i <= 8; i++) {
+            labels.push(i);
+        }
+
+        var lineChartData = {
+            labels: labels,
+            datasets: [{
+                label: 'Temperature',
+                borderColor: '#00a9ff',
+                backgroundColor: '#00a9ff',
+                fill: false,
+                data: data,
+                yAxisID: 'y-axis-1',
+            }, {
+                label: 'Humidity',
+                borderColor: 'blue',
+                backgroundColor: 'blue',
+                fill: false,
+                data: humidity,
+                yAxisID: 'y-axis-2'
+            }]
+        };
+        return lineChartData;
+    }
+
+    var temp_humidity_chart_data = plotTemperatureHumidityChart(data, []);
+    var humidityctx = document.getElementById('temp_humidity').getContext("2d");
+    var gradientStroke = humidityctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, 'green');
+    gradientStroke.addColorStop(1, '#00a9ff');
+    var temp_humidity_chart = new Chart(humidityctx, {
+        type: 'line',
+        data: temp_humidity_chart_data,
+        options: {
+            scales: {
+                yAxes: [{
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Temperature (C)',
+                    }
+                },
+                {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Humidity (g/m3)',
+                    }
+                },
+                ],
+
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: "transparent"
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold"
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time (Cycle)'
+
+                    }
+                }]
+
+            },
+            legend: {
+                position: "bottom"
+            }
+        }
+    });
+    temp_humidity_chart.render();
+    $scope.data = data;
+    var enrgyctx = document.getElementById('interactive').getContext("2d");
+    gradientStroke = enrgyctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, 'green');
+
+
+    var labels = [];
+    for (var i = 8; i > 0; i--) {
+        labels.push(i);
+    }
+
+    var energyConsumption_chart = new Chart(enrgyctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Time",
+                borderColor: gradientStroke,
+                pointBorderColor: gradientStroke,
+                pointBackgroundColor: gradientStroke,
+                pointHoverBackgroundColor: gradientStroke,
+                pointHoverBorderColor: gradientStroke,
+                pointBorderWidth: 5,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 1,
+                pointRadius: 3,
+                fill: true,
+                borderWidth: 4,
+                data: data
+            }]
+        },
+        options: {
+            legend: {
+                position: "bottom"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold",
+                        beginAtZero: true,
+                        maxTicksLimit: 10,
+                        padding: 20
+                    },
+                    gridLines: {
+                        drawTicks: false,
+                        display: false
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Wh (Normalized)'
+                    }
+
+                }],
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: "transparent"
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold"
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time (Cycle)'
+                    }
+                }]
+            }
+        }
+    });
 
     function getStats() {
         $http.get('/waterTurbines/status/' + $window.id)
@@ -512,6 +662,17 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
                     energyConsumption.push(parseInt(energyConsumptionData[i]));
                 }
 
+                var temperatureHumidityData = data["data"][""].temperature_humidity[""].split(";");
+                var temperatureHumidity = [];
+                for (var i = 0; i < 8; i++) {
+                    temperatureHumidity.push(parseInt(temperatureHumidityData[i]));
+                }
+                var humidityData = data["data"][""].humidity[""].split(";");
+                var humidity = [];
+                for (var i = 0; i < 8; i++) {
+                    humidity.push(parseInt(humidityData[i]));
+                }
+
                 $scope.risk_value = 0;
                 $scope.health_score = 0;
                 $scope.rul_score = 0;
@@ -520,6 +681,7 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
                 plotHealthScoreChart(healthScore);
                 plotRulChart(remainingUsefulLife);
                 plotEnergyConsumptionChart(energyConsumption);
+                plotTemperatureHumidityChart(temperatureHumidity, humidity);
 
 
                 $('#risk_value').val(risk[risk.length - 2]);
@@ -536,8 +698,48 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
             })
             .catch(function (error) {
                 console.log(error);
-            })
+            });
     }
     getStats();
+
+    var updateInterval = 1000; //Fetch data ever x milliseconds
+    var realtime = 'on'; //If == to on then fetch data every x seconds. else stop fetching
+    var precision = 100; // 2 decimals
+
+    function update() {
+        energyConsumption_chart.data.datasets.forEach((dataset) => {
+            if (dataset.data.length > 8) {
+                dataset.data = dataset.data.splice(1, dataset.data.length - 1);
+                var randomnum = Math.floor(Math.random() * (10 * precision - 1 * precision) + 1 * precision) / (1 * precision);
+                dataset.data.push(Math.random(1, 10));
+            } else {
+                dataset.data.push(Math.random(1, 10));
+            }
+        });;
+        energyConsumption_chart.draw();
+        energyConsumption_chart.update();
+
+
+        temp_humidity_chart.data.datasets.forEach((dataset) => {
+            if (dataset.data.length > 8) {
+                dataset.data = dataset.data.splice(1, dataset.data.length - 1);
+                var randomnum = Math.floor(Math.random() * (10 * precision - 1 * precision) + 1 * precision) / (1 * precision);
+                dataset.data.push(Math.random(1, 10));
+            } else {
+                dataset.data.push(Math.random(1, 10));
+            }
+        });
+
+        temp_humidity_chart.draw();
+        temp_humidity_chart.update();
+        if (realtime === 'on') {
+            setTimeout(update, updateInterval);
+        }
+    }
+
+    //INITIALIZE REALTIME DATA FETCHING
+    if (realtime === 'on') {
+        update();
+    }
 
 });
