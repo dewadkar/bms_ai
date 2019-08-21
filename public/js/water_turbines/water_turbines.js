@@ -408,21 +408,26 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
 
     ];
 
-    $http.get("/waterTurbines/generate")
-        .then(function (response) {
+    $scope.simulate = function () {
 
-            var failed_data = response.data;
-            var failed_ids = [];
-            for (var i = 0; i < failed_data.length; i++) {
-                failed_ids.push(failed_data[i].id);
-            }
-            for (var j = 0; j < $scope.water_pump_data.length; j++) {
-                if (failed_ids.includes($scope.water_pump_data[j].id)) {
-                    $scope.water_pump_data[j].color = '#CC0000';
+        $http.get("/waterTurbines/generate")
+            .then(function (response) {
+
+                var failed_data = response.data;
+                var failed_ids = [];
+                for (var i = 0; i < failed_data.length; i++) {
+                    failed_ids.push(failed_data[i].id);
                 }
-            }
+                for (var j = 0; j < $scope.water_pump_data.length; j++) {
+                    if (failed_ids.includes($scope.water_pump_data[j].id)) {
+                        $scope.water_pump_data[j].color = '#CC0000';
+                    }
+                }
 
-        });
+            });
+
+    };
+
 
 
 });

@@ -45,16 +45,17 @@
     <div class="wrapper">
         <% include ../partial/headbar.ejs %>
         <% include ../partial/sidebar.ejs %>
-        <div class="content-wrapper">
+        <div class="content-wrapper" ng-controller="waterTurbinesController">
             <section class="content-header">
                 <h1>
-                    Water Pump Station
+                    Water Pump Station<button style="margin-left:20px" class="btn btn-primary"
+                        ng-click="simulate()">Simulate</button>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="/waterTurbines"><i class="fa fa-home"></i>Water Pump Station</a></li>
                 </ol>
             </section>
-            <section class="content" ng-controller="waterTurbinesController">
+            <section class="content">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="row">
