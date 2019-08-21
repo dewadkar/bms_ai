@@ -16,30 +16,6 @@ app.factory('Scopes', function ($rootScope) {
 
 app.controller("waterTurbinesController", function ($scope, $http, $window, $compile, Scopes) {
 
-    // var donut1 = new Morris.Donut({
-    //     element: 'water_pump_chart1',
-    //     half: true,
-    //     resize: true,
-    //     colors: ["#4287f5", "#85aded", "#546278"],
-    //     data: [
-    //         { label: "Download Sales", value: 12 },
-    //         { label: "In-Store Sales", value: 30 },
-    //         { label: "Mail-Order Sales", value: 20 }
-    //     ],
-    //     hideHover: 'auto'
-    // });
-    // $('#water_pump_chart1').resize(function () { donut1.redraw(); });
-    // $("#water_pump_chart1").css("height", "150");
-    // donut1.options.data.forEach(function (label, i) {
-    //     var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
-    //     legendItem.find('span')
-    //         .css('backgroundColor', donut1.options.colors[i])
-    //         .css('width', '20px')
-    //         .css('display', 'inline-block')
-    //         .css('margin', '5px');
-    //     $('#legend').append(legendItem)
-    // });
-
 
     $scope.water_level = 69;
     $scope.water_volume = 80;
@@ -58,23 +34,27 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
         data: {
             labels: ["A", "B", "C"],
             datasets: [{
-                label: label,
                 data: [$scope.water_volume, 70, 90],
                 backgroundColor: [
-                    "#63B8FF", "#7D9EC0", "#539DC2"
+                    "#BCD2EE", "#6495ED", "#5971AD"
                 ]
             }]
         },
         options: {
+
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    fontColor: 'black'
+                }
+            },
+
             cutoutPercentage: 60,
             rotation: 0.9 * Math.PI,
             circumference: 1.2 * Math.PI,
-            legend: {
-                display: true,
-                position: 'bottom'
-            },
             tooltips: {
-                enabled: false
+                enabled: true
             }
         }
     });
@@ -87,7 +67,7 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
                 label: label,
                 data: [$scope.water_volume, 100, 200],
                 backgroundColor: [
-                    "#63B8FF", "#7D9EC0", "#539DC2"
+                    "#BCD2EE", "#6495ED", "#5971AD"
                 ]
             }]
         },
@@ -97,10 +77,13 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
             circumference: 1.2 * Math.PI,
             legend: {
                 display: true,
-                position: "bottom"
+                position: "bottom",
+                labels: {
+                    fontColor: 'black'
+                }
             },
             tooltips: {
-                enabled: false
+                enabled: true
             }
         }
     });
@@ -113,7 +96,7 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
                 label: label,
                 data: [$scope.water_volume, 900],
                 backgroundColor: [
-                    "#63B8FF", "#7D9EC0", "#539DC2"
+                    "#BCD2EE", "#6495ED", "#5971AD"
                 ]
             }]
         },
@@ -123,10 +106,13 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
             circumference: 1.2 * Math.PI,
             legend: {
                 position: 'bottom',
-                display: true
+                display: true,
+                labels: {
+                    fontColor: 'black'
+                }
             },
             tooltips: {
-                enabled: false
+                enabled: true
             }
         }
     });
@@ -138,8 +124,10 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
                 label: 'Dataset 1',
                 data: [50, 100, 150],
                 backgroundColor: [
-                    "#63B8FF", "#7D9EC0", "#539DC2"
-                ]
+                    "#BCD2EE", "#6495ED", "#5971AD"
+                ],
+                // color: '#162252'
+
             },
             {
                 label: 'Dataset 2',
@@ -157,13 +145,11 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
             }]
         },
         options: {
-            // legend: {
-            //     position: 'bottom',
-            //     display: true
-            // },
-            // tooltips: {
-            //     enabled: false
-            // },
+            legend: {
+                labels: {
+                    fontColor: 'black'
+                }
+            },
             scales: {
                 xAxes: [{
                     stacked: true,
@@ -176,35 +162,36 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
                         display: true,
                         labelString: 'X axis legend'
                     }
-
                 }],
                 yAxes: [{
-
                     stacked: true,
                     ticks: {
-                        callback: function (value, index, values) {
-                            return value + " %";
-                        }
+                        max: 600,
+                        min: 0,
+                        stepSize: 100
                     },
                     scaleLabel: {
                         display: true,
                         labelString: 'Y axis legend'
                     }
-
                 },
                 {
                     position: 'right',
                     stacked: true,
-                    ticks: {},
-
+                    ticks: {
+                        max: 600,
+                        min: 0,
+                        stepSize: 100
+                    },
                     scaleLabel: {
                         display: true,
                         labelString: 'Y axis legend'
                     }
-
                 }
                 ]
             }
+
+
         }
     });
 
