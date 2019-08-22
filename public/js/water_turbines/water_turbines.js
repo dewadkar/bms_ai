@@ -421,6 +421,8 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
                 for (var j = 0; j < $scope.water_pump_data.length; j++) {
                     if (failed_ids.includes($scope.water_pump_data[j].id)) {
                         $scope.water_pump_data[j].color = '#CC0000';
+                    } else {
+                        $scope.water_pump_data[j].color = '#fffff';
                     }
                 }
 
@@ -428,6 +430,5 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
 
     };
 
-
-
+    $scope.simulate();
 });
