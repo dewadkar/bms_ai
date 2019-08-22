@@ -1,4 +1,4 @@
-var app = angular.module('waterTurbines', []);
+var app = angular.module('waterPump', []);
 
 app.factory('Scopes', function ($rootScope) {
     var mem = {};
@@ -14,7 +14,7 @@ app.factory('Scopes', function ($rootScope) {
     };
 });
 
-app.controller("waterTurbinesController", function ($scope, $http, $window, $compile, Scopes) {
+app.controller("waterPumpController", function ($scope, $http, $window, $compile, Scopes) {
 
 
     $scope.water_level = 69;
@@ -410,7 +410,7 @@ app.controller("waterTurbinesController", function ($scope, $http, $window, $com
 
     $scope.simulate = function () {
 
-        $http.get("/waterTurbines/generate")
+        $http.get("/waterPump/generate")
             .then(function (response) {
 
                 var failed_data = response.data;

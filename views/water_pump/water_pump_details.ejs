@@ -8,11 +8,11 @@
         var id = '<%- id %>';
     </script>
 
-    <script src="/js/water_turbines/water_turbines_details.js"></script>
+    <script src="/js/water_pump/water_pump_details.js"></script>
 
 </head>
 
-<body ng-app="waterTurbinesDetails" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
+<body ng-app="waterPumpDetails" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
 
     <div class="wrapper">
         <% include ../partial/headbar.ejs %>
@@ -20,17 +20,17 @@
         <div class="content-wrapper">
             <section class="content-header">
                 <h1>
-                    Water Turbines Details
+                    Water Pump Details
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="/waterTurbines"><i class="fa fa-home"></i>Water Turbines </a></li>
+                    <li><a href="/waterPump"><i class="fa fa-home"></i>Water Turbines </a></li>
                     <li class="active">
                         Details
                     </li>
                 </ol>
             </section>
 
-            <section class="content" ng-controller="WTDetailsController">
+            <section class="content" ng-controller="WPDetailsController">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-danger alert-dismissible" ng-show='failed_digiset_alert'>
@@ -69,10 +69,10 @@
                     </div> -->
 
                     <div class="col-md-6">
-                        <%- include ../water_turbines/side_left.ejs %>
+                        <%- include ../water_pump/side_left.ejs %>
                     </div>
                     <div class="col-md-6">
-                        <%- include ../water_turbines/side_right.ejs %>
+                        <%- include ../water_pump/side_right.ejs %>
                     </div>
 
                 </div>

@@ -37,22 +37,22 @@
     </style>
 
     <script src="/scripts/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js"></script>
-    <script src="/js/water_turbines/water_turbines.js"></script>
+    <script src="/js/water_pump/water_pump.js"></script>
 </head>
 
-<body ng-app="waterTurbines" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
+<body ng-app="waterPump" class="hold-transition skin-purple fixed sidebar-mini" ng-cloak>
 
     <div class="wrapper">
         <% include ../partial/headbar.ejs %>
         <% include ../partial/sidebar.ejs %>
-        <div class="content-wrapper" ng-controller="waterTurbinesController">
+        <div class="content-wrapper" ng-controller="waterPumpController">
             <section class="content-header">
                 <h1>
                     Water Pump Station<button style="margin-left:20px" class="btn btn-primary"
                         ng-click="simulate()">Simulate</button>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="/waterTurbines"><i class="fa fa-home"></i>Water Pump Station</a></li>
+                    <li><a href="/waterPump"><i class="fa fa-home"></i>Water Pump Station</a></li>
                 </ol>
             </section>
             <section class="content">
@@ -118,7 +118,7 @@
                                                 <div
                                                     style="height:45px; width:100%; margin: auto; padding: auto; background-color: #5a88c5;">
 
-                                                    <a href="/waterTurbines/details/{{pumps.id}}" class="text-center"
+                                                    <a href="/waterPump/details/{{pumps.id}}" class="text-center"
                                                         style="font-size: 15px; font-weight: bold; padding: auto; color: white">
                                                         {{pumps.id}} <br><i style="font-size: 17px;" class="fa fa-cogs"
                                                             ng-style="{'color':pumps.color}"></i>
@@ -198,7 +198,7 @@
                             <div class="col-md-12">
                                 <div class="box box-primary" ng-cloak>
                                     <div class="box-header with-border">
-                                        <h4 class="box-title" style="font-weight: bold">WATER VOLUME </h4>
+                                        <h4 class="box-title" style="font-weight: bold">WATER PRESSURE </h4>
                                     </div>
                                     <div class="box-body">
                                         <div>
@@ -206,7 +206,7 @@
                                                 ng-show="show_water_volume" id="water_volume" alt="water volume"
                                                 tooltip="water volume">
                                             <span
-                                                style="font-size: 30px; margin-left: 30px; font-weight: bold; color: darkgoldenrod; ">{{water_volume}}
+                                                style="font-size: 30px; margin-left: 30px; font-weight: bold; color: darkgoldenrod; ">{{water_pressure}}
                                                 Ltr</span>
                                         </div>
                                     </div>

@@ -1,4 +1,4 @@
-exports.water_turbines_data =
+exports.water_pump_data =
     [
         {
             id: "WP-1",

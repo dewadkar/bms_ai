@@ -1,4 +1,4 @@
-var status = require('../../lib/water_turbines_status');
+var status = require('../../lib/water_pump_status');
 
 
 var location = '/routes/digiset/digiset';
@@ -15,7 +15,7 @@ module.exports = function (app) {
     this.view = function (request, response) {
         // var loc = location + 'view';
         if (request.session.user_name) {
-            response.render('water_turbines/water_turbines', { title: "Water Turbines" });
+            response.render('water_pump/water_pump', { title: "Water Turbines" });
         } else {
             response.redirect('/');
         }
@@ -24,7 +24,7 @@ module.exports = function (app) {
     this.viewTurbinesDetails = function (request, response) {
         // var loc = location + 'view';
         if (request.session.user_name) {
-            response.render('water_turbines/water_turbines_details', { title: "Water Turbines", id: request.params.id });
+            response.render('water_pump/water_pump_details', { title: "Water Turbines", id: request.params.id });
         } else {
             response.redirect('/');
         }
@@ -52,8 +52,8 @@ module.exports = function (app) {
     };
 
     // Digiset Page
-    app.get('/waterTurbines', this.view);
-    app.get('/waterTurbines/details/:id', this.viewTurbinesDetails);
-    app.get('/waterTurbines/generate', this.generateData);
-    app.get('/waterTurbines/status/:id', this.getTurbineDetails);
+    app.get('/waterPump', this.view);
+    app.get('/waterPump/details/:id', this.viewTurbinesDetails);
+    app.get('/waterPump/generate', this.generateData);
+    app.get('/waterPump/status/:id', this.getTurbineDetails);
 };

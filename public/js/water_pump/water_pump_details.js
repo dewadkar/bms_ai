@@ -1,4 +1,4 @@
-var app = angular.module('waterTurbinesDetails', []);
+var app = angular.module('waterPumpDetails', []);
 app.factory('Scopes', function ($rootScope) {
     var mem = {};
 
@@ -13,7 +13,7 @@ app.factory('Scopes', function ($rootScope) {
     };
 });
 
-app.controller("WTDetailsController", function ($scope, $http, $window, $compile, Scopes) {
+app.controller("WPDetailsController", function ($scope, $http, $window, $compile, Scopes) {
 
     $(".knob").knob({
         draw: function () {
@@ -637,7 +637,7 @@ app.controller("WTDetailsController", function ($scope, $http, $window, $compile
     });
 
     function getStats() {
-        $http.get('/waterTurbines/status/' + $window.id)
+        $http.get('/waterPump/status/' + $window.id)
             .then(function (data) {
                 var riskData = data["data"][""].failure_risk[""].split(";");
                 var risk = [];
