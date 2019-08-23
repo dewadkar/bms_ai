@@ -37,25 +37,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'A1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'A2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'A3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'A4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -65,26 +65,26 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'B1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'B2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
 
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'B3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'B4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -94,25 +94,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'C1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'C2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'C3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'C4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -122,25 +122,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'D1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'D2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'D3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'D4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -150,25 +150,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'E1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'E2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'E3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'E4',
             color: 'rgb(255, 255, 255)',
             icon: 'fab fa-safari',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -178,25 +178,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'F1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'F2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
-            id: 'F4',
+            id: 'F3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'F4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -206,25 +206,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'G1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -234,25 +234,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'H1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'H2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'H3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'H4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -262,25 +262,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'I1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'I2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'I3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'I4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -290,25 +290,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'J1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'J2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'J3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'J4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -318,25 +318,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'K1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'K2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'K3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'K4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -346,25 +346,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'L1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'L2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'L3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'L4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -374,25 +374,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'M1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'M2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'M3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'M4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -402,25 +402,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'N1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'N2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'N3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'N4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -430,25 +430,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'O1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'O2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
-            id: 'O4',
+            id: 'O3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'O4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -458,25 +458,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'P1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'P2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'P3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'P4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -486,25 +486,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'Q1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'Q2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'Q3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'Q4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -514,25 +514,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'R1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'R2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'R3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'R4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -542,25 +542,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'S1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'S2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'S3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'S4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -570,25 +570,25 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             id: 'T1',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'T2',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'T3',
             icon: 'fas fa-hourglass-half',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'T4',
             icon: 'fab fa-safari',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         }
         ]
     },
@@ -677,6 +677,61 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
     };
 
     setInterval($scope.getFailure(), 10000);
+
+    $scope.table = null;
+    function generateAdvisoryTable(data, tabelID) {
+        // console.log(data)
+        $scope.tableData = [];
+        for (var i = 0; i < data.length; i++) {
+            var listData = {};
+            listData.device_id = data[i].device_id;
+            listData.status = data[i].status;
+            listData.alert = data[i].alert;
+            listData.advise = data[i].advise;
+        }
+
+        if ($scope.table !== null) {
+            $(tabelID).DataTable().destroy();
+            $(tabelID).empty();
+            $scope.table = null;
+        }
+        $scope.table = $(tabelID).DataTable({
+            'data': $scope.tableData,
+            'columns': [
+                { title: 'Block ID', width: '12px', data: 'block_id' },
+                { title: "Device ", width: '10px', data: 'device' },
+                { title: "Status ", width: '50px', data: 'status' },
+                { title: "Description ", width: '30px', data: 'description' },
+                { title: "Remaining Useful Life (Days)", width: '20px', data: 'rul' },
+                { title: "Risk ", width: '30px', data: 'risk' },
+                // { title: "Risk History ", width: '30px', data: 'risk_history' },
+                { title: "Nominal Impact ", width: '30px', data: 'nominal_impact' },
+                { title: "Expected Impact ", width: '30px', data: 'expected_impact' },
+                { title: "Last Unschedule Maintanance ", width: '30px', data: 'last_unscheduled_maintenance' },
+                { title: "Max Subsystem Risk Level ", width: '30px', data: 'max_subsystem_risk_level' },
+                { title: "High Exp Subsystem Impact ", width: '30px', data: 'high_exp_subsystem_impact' },
+
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $compile(angular.element(row).contents())($scope);
+            },
+            'retrieve': true,
+            'destroy': true,
+            'paging': true,
+            'lengthChange': true,
+            'searching': true,
+            'ordering': true,
+            'info': false,
+            'autoWidth': true,
+            "scrollX": true,
+            aaSorting: [[2, 'desc']],
+        });
+        // $(tabelID).DataTable().order([2, 'desc']).draw();
+        $(tabelID).DataTable().draw();
+    }
+    var tableID = '#alert_advisory_table';
+    var alert_advisory_data = '';
+    generateAdvisoryTable(tableID, alert_advisory_data);
 
     // getFailure();
 });
