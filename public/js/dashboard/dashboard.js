@@ -717,11 +717,8 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
                         if (failed_ids.includes($scope.building_data[i].devices[j].id)) {
                             listData.id = $scope.building_data[i].devices[j].id;
                             listData.status = '<span style="color:red">Need Repairing</span>';
-                            // listData.status = $scope.building_data[i].devices[j].status;
                             listData.alert = 'Monthly Maintanace';
-                            // listData.alert = $scope.building_data[i].devices[j].alert;
                             listData.advise = 'Servicing Required';
-                            // listData.advise = $scope.building_data[i].devices[j].advise;
                             alert_advisory_data.push(listData);
                         } else {
                             listData.status = '<span>Needs Repairing</span>';
