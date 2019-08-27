@@ -22,42 +22,44 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
     $scope.show_water_volume = true;
     $scopeshow_risk_graph = true;
     // Create chart
-    var trapStatusGuageChart = document.getElementsByClassName("trap-status-gauge");
+    var pumpStatusGuageChart = document.getElementsByClassName("pump-status-gauge");
     var lostEnergyGauge = document.getElementsByClassName("lost-energy-gauge");
     var emissionsGauge = document.getElementsByClassName("emissions-gauge");
     var barChart = document.getElementsByClassName("stacked_bar_chart");
-    var label = ['Trap Status', 'Lost Energy Costs', 'Emissions Lost', 'Bar Chart'];
+    var label = ['Pump Status', 'Lost Energy Costs', 'Emissions Lost', 'Bar Chart'];
+    function plot_pump_status_chart() {
+        var pump_status_chart = new Chart(pumpStatusGuageChart, {
 
-    var TS_chart = new Chart(trapStatusGuageChart, {
-
-        type: "doughnut",
-        data: {
-            labels: ["A", "B", "C"],
-            datasets: [{
-                data: [$scope.water_volume, 70, 90],
-                backgroundColor: [
-                    "#BCD2EE", "#6495ED", "#5971AD"
-                ]
-            }]
-        },
-        options: {
-
-            legend: {
-                display: true,
-                position: 'bottom',
-                labels: {
-                    fontColor: 'black'
-                }
+            type: "doughnut",
+            data: {
+                labels: ["Functional", "Non Functional", "Need Repair"],
+                datasets: [{
+                    data: [40, 10, $scope.need_repair],
+                    backgroundColor: [
+                        "#33CC00", "#FF3333", "#FFCC33"
+                    ]
+                }]
             },
+            options: {
 
-            cutoutPercentage: 60,
-            rotation: 0.9 * Math.PI,
-            circumference: 1.2 * Math.PI,
-            tooltips: {
-                enabled: true
+                legend: {
+                    display: false,
+                    position: 'bottom',
+                    labels: {
+                        fontColor: 'black'
+                    }
+                },
+
+                cutoutPercentage: 60,
+                rotation: 0.9 * Math.PI,
+                circumference: 1.2 * Math.PI,
+                tooltips: {
+                    enabled: true
+                }
             }
-        }
-    });
+        });
+    }
+
     var LE_chart = new Chart(lostEnergyGauge, {
 
         type: "doughnut",
@@ -241,172 +243,208 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
             id: 'WP-1',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-2',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-3',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-4',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-5',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-6',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-7',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-8',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-9',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-10',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-11',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-12',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-13',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-14',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-15',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-16',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-17',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-18',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-19',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-20',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-21',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-22',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-23',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-24',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-25',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-26',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-27',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'WP-28',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
 
     ];
+
+    function generateAdvisoryTable(tabelID, data1) {
+        if ($.fn.DataTable.isDataTable(tabelID)) {
+            $(tabelID).DataTable().destroy();
+        }
+        if ($scope.table !== null) {
+            $(tabelID).DataTable().destroy();
+            $(tabelID).tabelIDempty();
+            $scope.table = null;
+        }
+        $scope.table = $(tabelID).DataTable({
+            'data': data1,
+            'columns': [
+                { title: 'DEVICE ID', width: '12px', data: 'id' },
+                { title: "STATUS ", width: '50px', data: 'status' },
+                { title: "ALERT ", width: '30px', data: 'alert' },
+                { title: "ADVISE ", width: '30px', data: 'advise' }
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $compile(angular.element(row).contents())($scope);
+            },
+            'destroy': true,
+            'retrieve': true,
+            'paging': false,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': false,
+            'info': false,
+            'autoWidth': true,
+            "scrollX": true,
+        });
+
+        $(tabelID).DataTable().draw();
+
+    }
+
 
     $scope.simulate = function () {
 
@@ -414,6 +452,8 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
             .then(function (response) {
 
                 var failed_data = response.data;
+                $scope.need_repair = failed_data.length;
+                console.log($scope.need_repair);
                 var failed_ids = [];
                 for (var i = 0; i < failed_data.length; i++) {
                     failed_ids.push(failed_data[i].id);
@@ -425,7 +465,31 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
                         $scope.water_pump_data[j].color = '#fffff';
                     }
                 }
+                plot_pump_status_chart();
 
+                $scope.table = null;
+                var alert_advisory_data = [];
+                for (var j = 0; j < $scope.water_pump_data.length; j++) {
+                    var listData = {};
+                    if (failed_ids.includes($scope.water_pump_data[j].id)) {
+                        listData.id = $scope.water_pump_data[j].id;
+                        listData.status = '<span style="color:red">Need Repairing</span>';
+                        listData.alert = 'Monthly Maintanace';
+                        listData.advise = 'Servicing Required';
+                        alert_advisory_data.push(listData);
+                    } else {
+                        listData.status = '<span>Needs Repairing</span>';
+                    }
+                }
+
+                return alert_advisory_data;
+            })
+            .then(function (alert_advisory_data) {
+                var tableID = '#alert-advisory-table';
+                generateAdvisoryTable(tableID, alert_advisory_data);
+            })
+            .catch(function (error) {
+                console.log(error);
             });
 
     };

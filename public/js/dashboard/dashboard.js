@@ -640,7 +640,7 @@ app.controller("homeController", function ($scope, $http, $window, $compile, Sco
             'data': data1,
             'columns': [
                 { title: 'DEVICE ID', width: '12px', data: 'id' },
-                { title: "Status ", width: '50px', data: 'status' },
+                { title: "STATUS ", width: '50px', data: 'status' },
                 { title: "ALERT ", width: '30px', data: 'alert' },
                 { title: "ADVISE ", width: '30px', data: 'advise' }
             ],
