@@ -387,11 +387,42 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
     ];
 
 
-    $http.get("/digiset/generate")
-        .then(function (response) {
+    function generateAdvisoryTable(tabelID, data1) {
+        if ($.fn.DataTable.isDataTable(tabelID)) {
+            $(tabelID).DataTable().destroy();
+        }
+        if ($scope.table !== null) {
+            $(tabelID).DataTable().destroy();
+            $(tabelID).tabelIDempty();
+            $scope.table = null;
+        }
+        $scope.table = $(tabelID).DataTable({
+            'data': data1,
+            'columns': [
+                { title: 'DEVICE ID', width: '12px', data: 'id' },
+                { title: "STATUS ", width: '50px', data: 'status' },
+                { title: "ALERT ", width: '30px', data: 'alert' },
+                { title: "ADVISE ", width: '30px', data: 'advise' }
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $compile(angular.element(row).contents())($scope);
+            },
+            'destroy': true,
+            'retrieve': true,
+            'paging': false,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': false,
+            'info': false,
+            'autoWidth': true,
+            "scrollX": true,
+        });
 
-            return response;
-        })
+        $(tabelID).DataTable().draw();
+
+    }
+    $http.get("/digiset/generate")
+
         .then(function (response) {
             var failed_data = response.data;
             var failed_ids = [];
@@ -406,16 +437,40 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             var on_generators = $scope.generator_data.length - failed_ids.length;
             var off_generators = failed_ids.length;
             totalGeneratorChart(on_generators, off_generators);
-            return $http.get('/digiset/running/status');
+
+            $scope.table = null;
+            var alert_advisory_data = [];
+            for (var j = 0; j < $scope.generator_data.length; j++) {
+                var listData = {};
+                if (failed_ids.includes($scope.generator_data[j].id)) {
+                    listData.id = $scope.generator_data[j].id;
+                    listData.status = '<span style="color:red">Need Repairing</span>';
+                    listData.alert = 'Monthly Maintanace';
+                    listData.advise = 'Servicing Required';
+                    alert_advisory_data.push(listData);
+                } else {
+                    listData.status = '<span>Needs Repairing</span>';
+                }
+            }
+
+            return alert_advisory_data;
         })
-        .then(function(data){
+        .then(function (alert_advisory_data) {
+            var tableID = '#alert-advisory-table';
+            generateAdvisoryTable(tableID, alert_advisory_data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    $http.get('/digiset/running/status')
+        .then(function (data) {
             var running_json = data.data;
             var colorSet = ['#F1E3F5', '#E5DAF5', '#CDCAF3', '#989CED'];
             var highlight = ['#F1E3F5', '#E5DAF5', '#CDCAF3', '#989CED'];
 
 
             var run_hours_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
-            var run_hours_data = [Math.ceil(running_json.length/8), Math.ceil(running_json.length/5), Math.ceil(running_json.length/3), Math.ceil(running_json.length/2)];
+            var run_hours_data = [Math.ceil(running_json.length / 8), Math.ceil(running_json.length / 5), Math.ceil(running_json.length / 3), Math.ceil(running_json.length / 2)];
             var run_hours_ctx = document.getElementById('run_hours').getContext('2d');
             var config = generateDonatChart('doughnut', run_hours_data, "RUN-HOURS",
                 run_hours_labels, "RUN-HOURS", colorSet, highlight);
@@ -423,9 +478,9 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
 
             var energy_generated_data = [];
             var fuel_used_data = [];
-            for(var i=0;i<run_hours_data.length;i++){
-                energy_generated_data.push(run_hours_data[i]*1000);
-                fuel_used_data.push(run_hours_data[i]*3)
+            for (var i = 0; i < run_hours_data.length; i++) {
+                energy_generated_data.push(run_hours_data[i] * 1000);
+                fuel_used_data.push(run_hours_data[i] * 3)
             }
             var energy_generated_labels = ["1st Hr", "2nd Hr", "3rd Hr", "4th Hr"];
             var energy_generated_ctx = document.getElementById('energy_generated').getContext('2d');
@@ -440,7 +495,7 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
                 fuel_used_labels, "FUEL USED", colorSet, colorSet);
             window.fuel_used_donout = new Chart(fuel_used_ctx, config);
 
-            console.log(running_json);
+            // console.log(running_json);
         });
 
 

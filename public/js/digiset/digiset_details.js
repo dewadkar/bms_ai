@@ -349,11 +349,11 @@ app.controller("digisetDetailsController", function ($scope, $http, $window, $co
                     data: data.slice(0, data.length - 1),
                     label: "Risk History"
                 },
-                    {
-                        borderColor: "#00a9ff",
-                        data: data.slice(0, data.length),
-                        label: "Prediction"
-                    }
+                {
+                    borderColor: "#00a9ff",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
                 ]
             },
             options: {
@@ -437,11 +437,11 @@ app.controller("digisetDetailsController", function ($scope, $http, $window, $co
                     data: data.slice(0, data.length - 1),
                     label: "Histry of Health "
                 },
-                    {
-                        borderColor: "#00a9ff",
-                        data: data.slice(0, data.length),
-                        label: "Prediction"
-                    }
+                {
+                    borderColor: "#00a9ff",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
                 ]
             },
             options: {
@@ -525,11 +525,11 @@ app.controller("digisetDetailsController", function ($scope, $http, $window, $co
                     data: data.slice(0, data.length - 1),
                     label: "History RUL"
                 },
-                    {
-                        borderColor: "#00a9ff",
-                        data: data.slice(0, data.length),
-                        label: "Prediction"
-                    }
+                {
+                    borderColor: "#00a9ff",
+                    data: data.slice(0, data.length),
+                    label: "Prediction"
+                }
                 ]
             },
             options: {
@@ -693,16 +693,16 @@ app.controller("digisetDetailsController", function ($scope, $http, $window, $co
                         labelString: 'Temperature (C)',
                     }
                 },
-                    {
-                        type: 'linear',
+                {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+                    scaleLabel: {
                         display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Humidity (g/m3)',
-                        }
-                    },
+                        labelString: 'Humidity (g/m3)',
+                    }
+                },
                 ],
 
                 xAxes: [{
