@@ -1,20 +1,8 @@
 var app = angular.module('waterPump', []);
 
-app.factory('Scopes', function ($rootScope) {
-    var mem = {};
 
-    return {
-        store: function (key, value) {
-            $rootScope.$emit('scope.stored', key);
-            mem[key] = value;
-        },
-        get: function (key) {
-            return mem[key];
-        }
-    };
-});
 
-app.controller("waterPumpController", function ($scope, $http, $window, $compile, Scopes) {
+app.controller("waterPumpController", function ($scope, $http, $window, $compile) {
 
 
     $scope.water_level = 69;
@@ -27,16 +15,17 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
     var emissionsGauge = document.getElementsByClassName("emissions-gauge");
     var barChart = document.getElementsByClassName("stacked_bar_chart");
     var label = ['Pump Status', 'Lost Energy Costs', 'Emissions Lost', 'Bar Chart'];
+
     function plot_pump_status_chart() {
         var pump_status_chart = new Chart(pumpStatusGuageChart, {
 
             type: "doughnut",
             data: {
-                labels: ["Functional", "Non Functional", "Need Repair"],
+                labels: ["Functional", "Need Repair"],
                 datasets: [{
-                    data: [40, 10, $scope.need_repair],
+                    data: [$scope.on_wp, $scope.need_repair],
                     backgroundColor: [
-                        "#33CC00", "#FF3333", "#FFCC33"
+                        "#00A86B", "#F8DE7E"
                     ]
                 }]
             },
@@ -60,64 +49,83 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
         });
     }
 
-    var LE_chart = new Chart(lostEnergyGauge, {
+    function plot_lost_energy_chart() {
+        var LE_chart = new Chart(lostEnergyGauge, {
 
-        type: "doughnut",
-        data: {
-            labels: ["A", "B", "C"],
-            datasets: [{
-                label: label,
-                data: [$scope.water_volume, 100, 200],
-                backgroundColor: [
-                    "#BCD2EE", "#6495ED", "#5971AD"
-                ]
-            }]
-        },
-        options: {
-            cutoutPercentage: 60,
-            rotation: 0.9 * Math.PI,
-            circumference: 1.2 * Math.PI,
-            legend: {
-                display: true,
-                position: "bottom",
-                labels: {
-                    fontColor: 'black'
-                }
+            type: "doughnut",
+            data: {
+                labels: ["Lost Energy - $"],
+                datasets: [{
+                    data: [$scope.lost_energy_cost],
+                    backgroundColor: [
+                        "#FEDC56"
+                        // "#BCD2EE", "#6495ED", "#5971AD"
+                    ]
+                }]
             },
-            tooltips: {
-                enabled: true
-            }
-        }
-    });
-    var Emission_chart = new Chart(emissionsGauge, {
+            options: {
+                cutoutPercentage: 60,
+                rotation: 0.9 * Math.PI,
+                circumference: 1.2 * Math.PI,
+                legend: {
+                    display: false,
+                    position: "bottom",
+                    labels: {
+                        fontColor: 'black'
+                    }
+                },
+                tooltips: {
+                    callbacks: {
+                        labelColor: function (tooltipItem, chart) {
+                            return {
+                                borderColor: 'rgb(255, 0, 0)',
+                                backgroundColor: '#FEDC56'
+                            };
+                        },
+                        labelTextColor: function (tooltipItem, chart) {
+                            return '#ffffff';
+                        }
+                    }
 
-        type: "doughnut",
-        data: {
-            labels: ["A", "B"],
-            datasets: [{
-                label: label,
-                data: [$scope.water_volume, 900],
-                backgroundColor: [
-                    "#BCD2EE", "#6495ED", "#5971AD"
-                ]
-            }]
-        },
-        options: {
-            cutoutPercentage: 60,
-            rotation: 0.9 * Math.PI,
-            circumference: 1.2 * Math.PI,
-            legend: {
-                position: 'bottom',
-                display: true,
-                labels: {
-                    fontColor: 'black'
                 }
-            },
-            tooltips: {
-                enabled: true
             }
-        }
-    });
+        });
+
+    }
+
+    function plot_emission_lost_chart() {
+        var Emission_chart = new Chart(emissionsGauge, {
+
+            type: "doughnut",
+            data: {
+                labels: ["Emission Lost"],
+                datasets: [{
+                    label: label,
+                    data: [$scope.emission_lost],
+                    backgroundColor: [
+                        '#9dc183'
+                        // "#BCD2EE", "#6495ED", "#5971AD"
+                    ]
+                }]
+            },
+            options: {
+                cutoutPercentage: 60,
+                rotation: 0.9 * Math.PI,
+                circumference: 1.2 * Math.PI,
+                legend: {
+                    position: 'bottom',
+                    display: false,
+                    labels: {
+                        fontColor: 'black'
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
+        });
+    }
+
     var Bar_chart = new Chart(barChart, {
         type: "bar",
         data: {
@@ -445,7 +453,6 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
 
     }
 
-
     $scope.simulate = function () {
 
         $http.get("/waterPump/generate")
@@ -453,11 +460,15 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
 
                 var failed_data = response.data;
                 $scope.need_repair = failed_data.length;
-                console.log($scope.need_repair);
+                $scope.on_wp = $scope.water_pump_data.length - $scope.need_repair;
+
                 var failed_ids = [];
                 for (var i = 0; i < failed_data.length; i++) {
                     failed_ids.push(failed_data[i].id);
                 }
+                $scope.lost_energy_cost = Math.floor(failed_ids.length * 1245);
+                $scope.emission_lost = Math.floor(failed_ids.length * 219);
+
                 for (var j = 0; j < $scope.water_pump_data.length; j++) {
                     if (failed_ids.includes($scope.water_pump_data[j].id)) {
                         $scope.water_pump_data[j].color = '#CC0000';
@@ -466,6 +477,8 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
                     }
                 }
                 plot_pump_status_chart();
+                plot_lost_energy_chart();
+                plot_emission_lost_chart();
 
                 $scope.alert_array = [];
                 var alert_list = [" - Water Pump stop operating due to discontinue power supply", " - Water Pump getting sparks", " - Water Pump performance get reducing", " - Water Pump has starting problem ", " - Water Pump getting heated", " - Water Pump has working stop"];

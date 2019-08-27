@@ -504,7 +504,6 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
                 fuel_used_labels, "FUEL USED", colorSet, colorSet);
             window.fuel_used_donout = new Chart(fuel_used_ctx, config);
 
-            // console.log(running_json);
         });
 
     var d = new Date();
