@@ -146,241 +146,241 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             id: 'G-1',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-2',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-3',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-4',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-5',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-6',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-7',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-8',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-9',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-10',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-11',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-12',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-13',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-14',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-15',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-16',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-17',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-18',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-19',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-20',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-21',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-22',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-23',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-24',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-25',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-26',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-27',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-28',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-29',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-30',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-31',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-32',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-33',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-34',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-35',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-36',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-37',
             icon: 'fas fa-fan',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-38',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-39',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
         {
             id: 'G-40',
             icon: 'fas fa-battery-three-quarters',
             color: 'rgb(255, 255, 255)',
-            status: ''
+            status: '', alert: '', advise: ''
         },
 
 
@@ -437,6 +437,12 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             var on_generators = $scope.generator_data.length - failed_ids.length;
             var off_generators = failed_ids.length;
             totalGeneratorChart(on_generators, off_generators);
+            $scope.alert_array = [];
+            var alert_list = [" - Digiset stop operating due to discontinue fuel supply", " - Digiset getting sparks", " - Digiset performance get reducing", " - Digiset power generation getting lower ", " - Digiset getting heated", " - Digiset has not starting"];
+            var rand = alert_list[Math.floor(Math.random() * alert_list.length)];
+            for (var i = 0; i < failed_ids.length; i++) {
+                $scope.alert_array.push(failed_ids[i] + alert_list[Math.floor(Math.random() * alert_list.length)]);
+            }
 
             $scope.table = null;
             var alert_advisory_data = [];
@@ -447,6 +453,9 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
                     listData.status = '<span style="color:red">Need Repairing</span>';
                     listData.alert = 'Monthly Maintanace';
                     listData.advise = 'Servicing Required';
+                    $scope.generator_data[j].status = '<span style="color:red">Need Repairing</span>';
+                    $scope.generator_data[j].alert = 'Monthly Maintanace';
+                    $scope.generator_data[j].advise = 'Servicing Required';
                     alert_advisory_data.push(listData);
                 } else {
                     listData.status = '<span>Needs Repairing</span>';
@@ -498,5 +507,10 @@ app.controller("digisetController", function ($scope, $http, $window, $compile, 
             // console.log(running_json);
         });
 
+    var d = new Date();
+    var seconds = d.getSeconds();
+    $scope.fuel_volume_update_time = Math.abs(seconds - 5);
+    $scope.fuel_level_update_time = Math.abs(seconds - 10);
+    $scope.fuel_available_update_time = Math.abs(seconds - 34);
 
 });

@@ -147,6 +147,7 @@
                                                     <span
                                                         style="font-size: 30px; margin-left: 30px; font-weight: bold; color: darkgoldenrod; ">{{total_fuel}}
                                                         gal</span>
+                                                    <br>Last updated {{fuel_available_update_time}} minute ago
                                                 </div>
                                             </div>
                                         </div>
@@ -166,7 +167,7 @@
                                                     style="margin-top:30px;font-size: 30px;margin-left: 30px; font-weight: bold; color:darkgoldenrod">
                                                     65 CM
                                                 </span>
-                                                <br>Last updated 1 minute ago
+                                                <br>Last updated {{fuel_level_update_time}} minute ago
                                             </div>
 
                                         </div>
@@ -186,7 +187,7 @@
                                                     style="font-size: 30px; margin-top:30px;margin-left:30px; font-weight: bold; color:darkgoldenrod">
                                                     430 gal
                                                 </span>
-                                                <br>Last updated 1 minute ago
+                                                <br>Last updated {{fuel_volume_update_time}} minute ago
                                             </div>
                                         </div>
                                     </div>
@@ -199,31 +200,12 @@
                                     </div>
                                     <div class="box-body">
                                         <div class="row">
-                                            <div class="navbar-custom-menu">
-                                                <ul class="nav navbar-nav">
-                                                    <ul class="menu">
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class=""></i>
-                                                                Alert 1
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class=" "></i>
-                                                                Alert 2
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <i class=""></i>Alert 3
-                                                            </a>
-                                                        </li>
-
-                                                    </ul>
-
-                                                </ul>
-                                            </div>
+                                            <ul class="menu" ng-repeat="alert in alert_array">
+                                                <a href="#" style="color: rgb(255, 115, 0)">
+                                                    <i class="fa fa-warning"></i>
+                                                    {{alert}}
+                                                </a>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

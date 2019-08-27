@@ -467,6 +467,13 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
                 }
                 plot_pump_status_chart();
 
+                $scope.alert_array = [];
+                var alert_list = [" - Water Pump stop operating due to discontinue power supply", " - Water Pump getting sparks", " - Water Pump performance get reducing", " - Water Pump has starting problem ", " - Water Pump getting heated", " - Water Pump has working stop"];
+                var rand = alert_list[Math.floor(Math.random() * alert_list.length)];
+                for (var i = 0; i < failed_ids.length; i++) {
+                    $scope.alert_array.push(failed_ids[i] + alert_list[Math.floor(Math.random() * alert_list.length)]);
+                }
+
                 $scope.table = null;
                 var alert_advisory_data = [];
                 for (var j = 0; j < $scope.water_pump_data.length; j++) {
