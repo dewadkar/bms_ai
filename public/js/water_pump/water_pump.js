@@ -43,31 +43,17 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
         var water_level = document.getElementById("water_level");
         var water_level_color = document.getElementById("water_level_color");
         $scope.water_level = Math.floor(Math.random() * Math.floor(101));
-        if ($scope.water_level <= 0) {
-            water_level.style.backgroundColor = "rgb(212, 147, 49);";
-            water_level_color.style.color = "rgb(212, 147, 49)";
-            $scope.water_level = "Invalid Data";
-        } else if ($scope.water_level > 100) {
+
+        if ($scope.water_level < 50) {
             water_level.style.backgroundColor = "rgb(202, 17, 41)";
             water_level_color.style.color = "rgb(202, 17, 41)";
         }
-        if ($scope.water_level > 0 && $scope.water_level <= 25) {
-            water_level.style.backgroundColor = "rgb(202, 17, 41)";
-            water_level_color.style.color = "rgb(202, 17, 41)";
-        }
-        else if ($scope.water_level > 25 && $scope.water_level <= 50) {
-            water_level.style.backgroundColor = "rgb(212, 147, 49)";
-            water_level_color.style.color = "rgb(212, 147, 49)";
-        }
-        else if ($scope.water_level > 50 && $scope.water_level <= 80) {
+
+        else if ($scope.water_level >= 50 && $scope.water_level <= 80) {
             water_level.style.backgroundColor = "#00A86B";
             water_level_color.style.color = "#00A86B";
         }
-        else if ($scope.water_level > 80 && $scope.water_level <= 94) {
-            water_level.style.backgroundColor = "rgb(243, 116, 94)";
-            water_level_color.style.color = "rgb(243, 116, 94)";
-        }
-        else if ($scope.water_level > 94 && $scope.water_level <= 100) {
+        else if ($scope.water_level > 98) {
             water_level.style.backgroundColor = "rgb(202, 17, 41)";
             water_level_color.style.color = "rgb(202, 17, 41)";
         }
@@ -75,22 +61,13 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
     function waterFlowDataGenerator() {
         $scope.water_flow = Math.floor(Math.random() * Math.floor(100) + 1);
         var water_flow_indicator = document.getElementById("water_flow_indicator");
-        if ($scope.water_flow > 0 && $scope.water_flow <= 20) {
+        if ($scope.water_flow < 30) {
             water_flow_indicator.style.color = "red";
             $scope.water_flow_status = 'Low Pressure';
-        } else if ($scope.water_flow > 20 && $scope.water_flow <= 30) {
-            water_flow_indicator.style.color = "#B22222";
-            $scope.water_flow_status = 'Semi Low Pressure';
-        } else if ($scope.water_flow > 30 && $scope.water_flow <= 40) {
+        } else if ($scope.water_flow >= 30 && $scope.water_flow <= 40) {
             water_flow_indicator.style.color = "rgb(212, 147, 49)";
             $scope.water_flow_status = 'Medium Pressure';
-        } else if ($scope.water_flow > 40 && $scope.water_flow <= 50) {
-            water_flow_indicator.style.color = "#00A86B";
-            $scope.water_flow_status = 'Normal Pressure';
-        } else if ($scope.water_flow > 50 && $scope.water_flow <= 60) {
-            water_flow_indicator.style.color = "rgb(202, 17, 41)";
-            $scope.water_flow_status = 'Semi High Pressure';
-        } else if ($scope.water_flow > 60) {
+        } else if ($scope.water_flow > 40) {
             water_flow_indicator.style.color = "red";
             $scope.water_flow_status = 'High Pressure';
         }
@@ -542,10 +519,10 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
         $scope.table = $(tabelID).DataTable({
             'data': data1,
             'columns': [
-                { title: 'DEVICE ID', width: '12px', data: 'id' },
-                { title: "STATUS ", width: '50px', data: 'status' },
-                { title: "ALERT ", width: '30px', data: 'alert' },
-                { title: "RECOMMENDED ACTION ", width: '30px', data: 'recommended_action' }
+                { title: 'DEVICE ID', width: '5px', data: 'id' },
+                { title: "STATUS ", width: '5px', data: 'status' },
+                { title: "ALERT ", width: '150px', data: 'alert' },
+                { title: "RECOMMENDED ACTION ", width: '50px', data: 'recommended_action' }
             ],
             createdRow: function (row, data, dataIndex) {
                 $compile(angular.element(row).contents())($scope);
@@ -566,7 +543,6 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
     }
 
     $scope.simulate = function () {
-
 
         waterLevelDataGenerator();
         waterFlowDataGenerator();
@@ -610,7 +586,7 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
                     alertObj.id = failed_ids[i];
                     alertObj.alert = alert_list[Math.floor(Math.random() * alert_list.length)];
                     alertObj.recommended_action = recommended_action_list[Math.floor(Math.random() * recommended_action_list.length)];
-                    alertObj.status = '<span style="color:red">Need Repairing</span>';
+                    alertObj.status = '<span style="color:red">ON</span>';
                     $scope.alert_array.push(alertObj);
                 }
 
