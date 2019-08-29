@@ -3,12 +3,99 @@ var app = angular.module('waterPump', []);
 
 
 app.controller("waterPumpController", function ($scope, $http, $window, $compile) {
+    $scope.show_water_level_up = false;
+    $scope.show_water_level_down = false;
+    $scope.show_water_level_overflow = false;
 
 
-    $scope.water_level = 69;
-    $scope.water_volume = 80;
-    $scope.show_water_volume = true;
-    $scopeshow_risk_graph = true;
+    function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateMinPeakHourData() {
+        $scope.min_peak_hour_pressure = getRndInteger(0, 60);
+
+    }
+    function generateMaxPeakHourData() {
+        $scope.max_peak_hour_pressure = getRndInteger(60, 500);
+
+    }
+    function generateWaterPressureData() {
+        var water_pressure_img = document.getElementById("water_pressure_img");
+        var water_pressure_value = document.getElementById("water_pressure_value");
+        $scope.water_pressure = getRndInteger(20, 30);
+        if ($scope.water_pressure <= 0) {
+            water_pressure_img.style.backgroundColor = "rgb(202, 17, 41);";
+            water_pressure_value.style.color = "rgb(202, 17, 41);";
+        } else if ($scope.water_pressure > 0 && $scope.water_pressure <= 20) {
+            water_pressure_img.style.backgroundColor = "rgb(212, 147, 49);";
+            water_pressure_value.style.color = "rgb(212, 147, 49);";
+        } else if ($scope.water_pressure > 20 && $scope.water_pressure <= 30) {
+            water_pressure_img.style.backgroundColor = "#00A86B";
+            water_pressure_value.style.color = "#00A86B";
+        } else if ($scope.water_pressure > 30) {
+            water_pressure_img.style.backgroundColor = "rgb(202, 17, 41);";
+            water_pressure_value.style.color = "rgb(202, 17, 41);";
+        }
+
+    }
+    function waterLevelDataGenerator() {
+        var water_level = document.getElementById("water_level");
+        var water_level_color = document.getElementById("water_level_color");
+        $scope.water_level = Math.floor(Math.random() * Math.floor(101));
+        if ($scope.water_level <= 0) {
+            water_level.style.backgroundColor = "rgb(212, 147, 49);";
+            water_level_color.style.color = "rgb(212, 147, 49)";
+            $scope.water_level = "Invalid Data";
+        } else if ($scope.water_level > 100) {
+            water_level.style.backgroundColor = "rgb(202, 17, 41)";
+            water_level_color.style.color = "rgb(202, 17, 41)";
+        }
+        if ($scope.water_level > 0 && $scope.water_level <= 25) {
+            water_level.style.backgroundColor = "rgb(202, 17, 41)";
+            water_level_color.style.color = "rgb(202, 17, 41)";
+        }
+        else if ($scope.water_level > 25 && $scope.water_level <= 50) {
+            water_level.style.backgroundColor = "rgb(212, 147, 49)";
+            water_level_color.style.color = "rgb(212, 147, 49)";
+        }
+        else if ($scope.water_level > 50 && $scope.water_level <= 80) {
+            water_level.style.backgroundColor = "#00A86B";
+            water_level_color.style.color = "#00A86B";
+        }
+        else if ($scope.water_level > 80 && $scope.water_level <= 94) {
+            water_level.style.backgroundColor = "rgb(243, 116, 94)";
+            water_level_color.style.color = "rgb(243, 116, 94)";
+        }
+        else if ($scope.water_level > 94 && $scope.water_level <= 100) {
+            water_level.style.backgroundColor = "rgb(202, 17, 41)";
+            water_level_color.style.color = "rgb(202, 17, 41)";
+        }
+    }
+    function waterFlowDataGenerator() {
+        $scope.water_flow = Math.floor(Math.random() * Math.floor(100) + 1);
+        var water_flow_indicator = document.getElementById("water_flow_indicator");
+        if ($scope.water_flow > 0 && $scope.water_flow <= 20) {
+            water_flow_indicator.style.color = "red";
+            $scope.water_flow_status = 'Low Pressure';
+        } else if ($scope.water_flow > 20 && $scope.water_flow <= 30) {
+            water_flow_indicator.style.color = "#B22222";
+            $scope.water_flow_status = 'Semi Low Pressure';
+        } else if ($scope.water_flow > 30 && $scope.water_flow <= 40) {
+            water_flow_indicator.style.color = "rgb(212, 147, 49)";
+            $scope.water_flow_status = 'Medium Pressure';
+        } else if ($scope.water_flow > 40 && $scope.water_flow <= 50) {
+            water_flow_indicator.style.color = "#00A86B";
+            $scope.water_flow_status = 'Normal Pressure';
+        } else if ($scope.water_flow > 50 && $scope.water_flow <= 60) {
+            water_flow_indicator.style.color = "rgb(202, 17, 41)";
+            $scope.water_flow_status = 'Semi High Pressure';
+        } else if ($scope.water_flow > 60) {
+            water_flow_indicator.style.color = "red";
+            $scope.water_flow_status = 'High Pressure';
+        }
+    }
+    $scope.show_risk_graph = true;
     // Create chart
     var pumpStatusGuageChart = document.getElementsByClassName("pump-status-gauge");
     var lostEnergyGauge = document.getElementsByClassName("lost-energy-gauge");
@@ -126,124 +213,149 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
         });
     }
 
+    const formatter = (value, ctx) => {
+        const otherDatasetIndex = ctx.datasetIndex === 0 ? 1 : 0;
+        const total =
+            ctx.chart.data.datasets[otherDatasetIndex].data[ctx.dataIndex] + value;
+
+        return `${(value / total * 100).toFixed(0)}%`;
+    };
+
     var Bar_chart = new Chart(barChart, {
         type: "bar",
         data: {
-            labels: ["A", "B", 'C'],
-            datasets: [{
-                label: 'Dataset 1',
-                data: [50, 100, 150],
-                backgroundColor: [
-                    "#BCD2EE", "#6495ED", "#5971AD"
-                ],
-                // color: '#162252'
+            labels: ["MON", "TUE", 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
+            datasets: [
 
-            },
-            {
-                label: 'Dataset 2',
-                data: [100, 150, 200],
-                backgroundColor: [
-                    "#FFA07A", "#CD5C5C", "#B22222"
-                ]
-            },
-            {
-                label: 'Dataset 3',
-                data: [150, 200, 250],
-                backgroundColor: [
-                    "#20B2AA", "#3CB371", "#98FB98"
-                ]
-            }]
+                {
+                    type: 'line',
+                    label: 'Dataset 2',
+                    data: [80, 60, 70, 100, 80, 110, 70],
+                    borderColor: '#1034A6',
+                    pointBackgroundColor: "#B22222",
+                    pointHoverBorderColor: "#3CB371",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 6,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 5,
+                    fill: false,
+                    borderWidth: 4,
+                    // color: ["#B22222"],
+                    datalabels: {
+                        color: "yellow",
+                        // formatter: formatter
+                    }
+
+                },
+                {
+                    type: 'bar',
+                    label: 'Dataset 1',
+                    data: [50, 90, 120, 70, 60, 80, 100],
+                    backgroundColor: [
+                        "#BCD2EE", "#6495ED", "#5971AD", "#0080FF", "#0F52BA", "#1034A6", "#000080"
+                    ],
+                    datalabels: {
+                        color: "white",
+                        // formatter: formatter
+                    },
+                },
+                {
+                    type: 'bar',
+                    label: 'Dataset 3',
+                    data: [150, 120, 150, 170, 140, 130, 150],
+                    backgroundColor: [
+                        "#D0F0C0", "#98FB98", "#50C878", "#3CB371", "#00A572", "#20B2AA", "#01796F",
+                    ],
+                    datalabels: {
+                        color: "white",
+                        // formatter: formatter
+                    }
+                },
+            ]
         },
         options: {
+            maintainAspectRatio: false,
+            spanGaps: false,
+            // responsive: true,
             legend: {
+                display: true,
+                position: "top",
                 labels: {
-                    fontColor: 'black'
+                    boxWidth: 14,
+                }
+            },
+            tooltips: {
+                mode: "label",
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        const type = data.datasets[tooltipItem.datasetIndex].label;
+                        const value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                        let total = 0;
+                        for (let i = 0; i < data.datasets.length; i++)
+                            total += data.datasets[i].data[tooltipItem.index];
+                        if (tooltipItem.datasetIndex !== data.datasets.length - 1) {
+                            return (
+                                type + " : " + value.toFixed(0).replace(/(\d)(?=(\d{3})+\.)/g, "1,")
+                            );
+                        } else {
+                            return [
+                                type +
+                                " : " +
+                                value.toFixed(0).replace(/(\d)(?=(\d{3})+\.)/g, "1,"),
+                                "Overall : " + total
+                            ];
+                        }
+                    }
+                }
+            },
+            plugins: {
+                datalabels: {
+                    color: "white",
+                    align: "center"
                 }
             },
             scales: {
                 xAxes: [{
                     stacked: true,
-                    ticks: {
-                        callback: function (value, index, values) {
-                            return value;
-                        }
-                    },
                     scaleLabel: {
                         display: true,
                         labelString: 'X axis legend'
-                    }
-                }],
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                },
+                ],
                 yAxes: [{
                     stacked: true,
-                    ticks: {
-                        max: 600,
-                        min: 0,
-                        stepSize: 100
-                    },
                     scaleLabel: {
                         display: true,
                         labelString: 'Y axis legend'
-                    }
+                    },
                 },
                 {
-                    position: 'right',
                     stacked: true,
+                    position: 'right',
                     ticks: {
-                        max: 600,
-                        min: 0,
-                        stepSize: 100
+                        max: 6000,
+                        min: 1000,
                     },
                     scaleLabel: {
                         display: true,
                         labelString: 'Y axis legend'
-                    }
+                    },
+                    gridLines: {
+                        display: false
+                    },
                 }
                 ]
-            }
-
-
+            },
         }
     });
 
     var water_level_up = document.getElementById("water_level_up");
     var water_level_down = document.getElementById("water_level_down");
     var water_level_overflow = document.getElementById("water_level_overflow");
-    $scope.show_water_level_up = false;
-    $scope.show_water_level_down = false;
-    $scope.show_water_level_overflow = false;
-
-
-    if ($scope.water_level <= 0) {
-        $scope.show_water_level_down = true;
-        water_level_down.classList.add("below_water_level");
-        $scope.water_level = "Invalid Data";
-
-    } else if ($scope.water_level > 100) {
-        $scope.show_water_level_overflow = true;
-        water_level_overflow.classList.add("overflow_water_level");
-    }
-    if ($scope.water_level > 0 && $scope.water_level <= 25) {
-        $scope.show_water_level_down = true;
-        $scope.show_water_level_up = false;
-        water_level_down.classList.add("below_water_level");
-    }
-    else if ($scope.water_level > 25 && $scope.water_level <= 50) {
-        $scope.show_water_level_up = true;
-        water_level_up.classList.add("level_water");
-    }
-    else if ($scope.water_level > 50 && $scope.water_level <= 80) {
-        $scope.show_water_level_up = true;
-        water_level_up.classList.add("normal_water_level");
-    }
-    else if ($scope.water_level > 80 && $scope.water_level <= 94) {
-        $scope.show_water_level_up = true;
-        water_level_up.classList.add("semi_overflow_water_level");
-    }
-    else if ($scope.water_level > 94 && $scope.water_level <= 100) {
-        $scope.show_water_level_up = true;
-        water_level_up.classList.add("overflow_water_level");
-    }
-
 
     $scope.water_pump_data = [
 
@@ -433,7 +545,7 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
                 { title: 'DEVICE ID', width: '12px', data: 'id' },
                 { title: "STATUS ", width: '50px', data: 'status' },
                 { title: "ALERT ", width: '30px', data: 'alert' },
-                { title: "ADVISE ", width: '30px', data: 'advise' }
+                { title: "RECOMMENDED ACTION ", width: '30px', data: 'recommended_action' }
             ],
             createdRow: function (row, data, dataIndex) {
                 $compile(angular.element(row).contents())($scope);
@@ -454,6 +566,10 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
     }
 
     $scope.simulate = function () {
+
+
+        waterLevelDataGenerator();
+        waterFlowDataGenerator();
 
         $http.get("/waterPump/generate")
             .then(function (response) {
@@ -480,26 +596,39 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
                 plot_lost_energy_chart();
                 plot_emission_lost_chart();
 
+                generateMinPeakHourData();
+                generateMaxPeakHourData();
+                generateWaterPressureData();
+
+
                 $scope.alert_array = [];
-                var alert_list = [" - Water Pump stop operating due to discontinue power supply", " - Water Pump getting sparks", " - Water Pump performance get reducing", " - Water Pump has starting problem ", " - Water Pump getting heated", " - Water Pump has working stop"];
-                var rand = alert_list[Math.floor(Math.random() * alert_list.length)];
+                var alert_list = ["Water Pump stop operating due to discontinue power supply", "Water Pump getting sparks", "Water Pump performance get reducing", "Water Pump has starting problem ", "Water Pump getting heated", "Water Pump has working stop"];
+                var recommended_action_list = ["Need Servicing", "Need Replacing", "Replace Pump Motor", "Replace suction Pipe", "Replace wiring"];
+
                 for (var i = 0; i < failed_ids.length; i++) {
-                    $scope.alert_array.push(failed_ids[i] + alert_list[Math.floor(Math.random() * alert_list.length)]);
+                    var alertObj = {};
+                    alertObj.id = failed_ids[i];
+                    alertObj.alert = alert_list[Math.floor(Math.random() * alert_list.length)];
+                    alertObj.recommended_action = recommended_action_list[Math.floor(Math.random() * recommended_action_list.length)];
+                    alertObj.status = '<span style="color:red">Need Repairing</span>';
+                    $scope.alert_array.push(alertObj);
                 }
+
 
                 $scope.table = null;
                 var alert_advisory_data = [];
-                for (var j = 0; j < $scope.water_pump_data.length; j++) {
+                for (var i = 0; i < $scope.alert_array.length; i++) {
                     var listData = {};
-                    if (failed_ids.includes($scope.water_pump_data[j].id)) {
-                        listData.id = $scope.water_pump_data[j].id;
-                        listData.status = '<span style="color:red">Need Repairing</span>';
-                        listData.alert = 'Monthly Maintanace';
-                        listData.advise = 'Servicing Required';
+                    if (failed_ids.includes($scope.alert_array[i].id)) {
+                        listData.id = $scope.alert_array[i].id;
+                        listData.status = $scope.alert_array[i].status;
+                        listData.alert = $scope.alert_array[i].alert;
+                        listData.recommended_action = $scope.alert_array[i].recommended_action;
                         alert_advisory_data.push(listData);
                     } else {
-                        listData.status = '<span>Needs Repairing</span>';
+                        listData.status = $scope.alert_array[i].status;
                     }
+
                 }
 
                 return alert_advisory_data;

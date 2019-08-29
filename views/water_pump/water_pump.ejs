@@ -156,11 +156,14 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="box box-primary">
-
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title">Trap status over time and Energy
+                                            loss </h4>
+                                    </div>
                                     <div class="box-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <canvas class="stacked_bar_chart"></canvas>
+                                                <canvas height="300" class="stacked_bar_chart"></canvas>
                                             </div>
 
                                         </div>
@@ -169,31 +172,10 @@
                             </div>
                         </div>
                     </div>
-                    <style>
-                        .normal_water_level {
-                            background-color: rgb(59, 97, 62);
-                        }
-
-                        .below_water_level {
-                            background-color: rgb(202, 17, 41);
-                        }
-
-                        .overflow_water_level {
-                            background-color: rgb(202, 17, 41);
-                        }
-
-                        .semi_overflow_water_level {
-                            background-color: rgb(243, 116, 94);
-                        }
-
-                        .level_water {
-                            background-color: rgb(212, 147, 49);
-                        }
-                    </style>
 
                     <div class="col-md-3">
                         <div class="col-md-12">
-                            <div class="box box-primary" ng-cloak>
+                            <div class="box box-primary">
                                 <div class="box-header with-border">
                                     <h4 class="box-title" style="font-weight: bold">WATER LEVEL </h4>
                                 </div>
@@ -201,17 +183,10 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-6 col-xs-12">
                                             <div>
-                                                <img class="normal_water_level " src="/images/water-level-up.png"
-                                                    height="50" width="40" ng-show="show_water_level_up"
-                                                    id="water_level_up">
-                                                <img src="/images/water-level-down.png" height="50" width="40"
-                                                    ng-show="show_water_level_down" class="below_water_level"
-                                                    id="water_level_down">
-                                                <img src="/images/water-overflow.png" height="50" width="40"
-                                                    ng-show="show_water_level_overflow" class="overflow_water_level"
-                                                    id="water_level_overflow">
-                                                <span style="font-size: 30px; margin-left: 30px; 
-                                                        font-weight: bold; color: darkgoldenrod; ">{{water_level}}
+                                                <img src="/images/water_level.png" height="50" width="40"
+                                                    id="water_level">
+                                                <span id="water_level_color" style="font-size: 25px; margin-left: 10px; 
+                                                        font-weight: bold; ">{{water_level}}
                                                     %</span>
                                             </div>
                                         </div>
@@ -220,22 +195,71 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="box box-primary" ng-cloak>
+                            <div class="box box-primary">
                                 <div class="box-header with-border">
                                     <h4 class="box-title" style="font-weight: bold">WATER PRESSURE </h4>
                                 </div>
                                 <div class="box-body">
                                     <div>
-                                        <img src="/images/water_volume.png" height="50" width="40"
-                                            ng-show="show_water_volume" id="water_volume" alt="water volume"
-                                            tooltip="water volume">
-                                        <span
-                                            style="font-size: 30px; margin-left: 30px; font-weight: bold; color: darkgoldenrod; ">{{water_pressure}}
-                                            Ltr</span>
+                                        <img src="/images/water_pressure_meter.png" height="50" width="40"
+                                            id="water_pressure_img" alt="water volume">
+                                        <span id="water_pressure_value"
+                                            style="font-size: 25px; margin-left: 10px; font-weight: bold;">{{water_pressure}}
+                                            psi</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title" style="font-weight: bold">WATER FLOW </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <span
+                                            style="font-size: 25px; margin-left: 5px; font-weight: bold; color: darkgoldenrod; ">
+                                            {{water_flow}}&nbsp; gallon/Hr</span><br>
+                                        <b id="water_flow_indicator" style=" margin-left: 5px">{{water_flow_status}}</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title" style="font-weight: bold">PEAK HOUR PRESSURE </h4>
+                                </div>
+                                <div class="box-body">
+
+                                    <b>Min</b>&nbsp;&nbsp;&nbsp; -&nbsp;
+                                    <span
+                                        style="font-size: 20px; margin-left: 5px; font-weight: bold; color: darkgoldenrod; ">
+
+                                        &nbsp;{{min_peak_hour_pressure}}&nbsp;psi</span><br>
+                                    <b>Max</b> &nbsp; -&nbsp; &nbsp;
+                                    <span
+                                        style="font-size: 20px; margin-left: 5px; font-weight: bold; color: darkgoldenrod; ">
+                                        {{max_peak_hour_pressure}}&nbsp;psi</span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title" style="font-weight: bold">PUMP PERFORMANCE </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <span
+                                            style="font-size: 30px; margin-left: 30px; font-weight: bold; color: darkgoldenrod; ">{{pump_performance}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
                         <div class="col-md-12">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
@@ -244,10 +268,10 @@
                                 <div class="row">
                                     <div class="box-body" style="height: 175px; overflow-y: auto">
 
-                                        <ul class="menu" ng-repeat="alert in alert_array">
+                                        <ul class="menu" ng-repeat="alert in alert_array track by $index">
                                             <a href="#" style="color: rgb(255, 115, 0)">
                                                 <i class="fa fa-warning"></i>
-                                                {{alert}}
+                                                {{alert.id}}&nbsp;:&nbsp;&nbsp;{{alert.alert}}
                                             </a>
                                         </ul>
                                     </div>
@@ -255,6 +279,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
 
