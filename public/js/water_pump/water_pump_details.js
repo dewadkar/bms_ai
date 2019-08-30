@@ -742,4 +742,9 @@ app.controller("WPDetailsController", function ($scope, $http, $window, $compile
         update();
     }
 
+    $http.get("/waterPump/csvtojson")
+        .then(function (response) {
+            console.log(response)
+        });
+
 });

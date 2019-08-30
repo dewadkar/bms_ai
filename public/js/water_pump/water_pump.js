@@ -576,20 +576,15 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
                 generateMaxPeakHourData();
                 generateWaterPressureData();
 
-
                 $scope.alert_array = [];
-                var alert_list = ["Water Pump stop operating due to discontinue power supply", "Water Pump getting sparks", "Water Pump performance get reducing", "Water Pump has starting problem ", "Water Pump getting heated", "Water Pump has working stop"];
-                var recommended_action_list = ["Need Servicing", "Need Replacing", "Replace Pump Motor", "Replace suction Pipe", "Replace wiring"];
-
-                for (var i = 0; i < failed_ids.length; i++) {
+                for (var i = 0; i < failed_data.length; i++) {
                     var alertObj = {};
-                    alertObj.id = failed_ids[i];
-                    alertObj.alert = alert_list[Math.floor(Math.random() * alert_list.length)];
-                    alertObj.recommended_action = recommended_action_list[Math.floor(Math.random() * recommended_action_list.length)];
-                    alertObj.status = '<span style="color:red">ON</span>';
+                    alertObj.id = failed_data[i].id;
+                    alertObj.alert = failed_data[i].alert;
+                    alertObj.recommended_action = failed_data[i].recommended_action;
+                    alertObj.status = '<span style="color:red">' + failed_data[i].status + '</span>';
                     $scope.alert_array.push(alertObj);
                 }
-
 
                 $scope.table = null;
                 var alert_advisory_data = [];
@@ -604,7 +599,6 @@ app.controller("waterPumpController", function ($scope, $http, $window, $compile
                     } else {
                         listData.status = $scope.alert_array[i].status;
                     }
-
                 }
 
                 return alert_advisory_data;

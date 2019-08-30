@@ -3,7 +3,7 @@ exports.water_pump_data =
         {
             id: "WP-1",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -18,7 +18,7 @@ exports.water_pump_data =
         {
             id: "WP-2",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -33,7 +33,7 @@ exports.water_pump_data =
         {
             id: "WP-3",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -48,7 +48,7 @@ exports.water_pump_data =
         {
             id: "WP-4",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -63,7 +63,7 @@ exports.water_pump_data =
         {
             id: "WP-5",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -78,7 +78,7 @@ exports.water_pump_data =
         {
             id: "WP-6",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -93,7 +93,7 @@ exports.water_pump_data =
         {
             id: "WP-7",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -108,7 +108,7 @@ exports.water_pump_data =
         {
             id: "WP-8",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -123,7 +123,7 @@ exports.water_pump_data =
         {
             id: "WP-9",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -138,7 +138,7 @@ exports.water_pump_data =
         {
             id: "WP-10",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -153,7 +153,7 @@ exports.water_pump_data =
         {
             id: "WP-11",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -168,7 +168,7 @@ exports.water_pump_data =
         {
             id: "WP-12",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -183,7 +183,7 @@ exports.water_pump_data =
         {
             id: "WP-13",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -198,7 +198,7 @@ exports.water_pump_data =
         {
             id: "WP-14",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -213,7 +213,7 @@ exports.water_pump_data =
         {
             id: "WP-15",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -228,7 +228,7 @@ exports.water_pump_data =
         {
             id: "WP-16",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -243,7 +243,7 @@ exports.water_pump_data =
         {
             id: "WP-17",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -258,7 +258,7 @@ exports.water_pump_data =
         {
             id: "WP-17",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -273,7 +273,7 @@ exports.water_pump_data =
         {
             id: "WP-18",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -288,7 +288,7 @@ exports.water_pump_data =
         {
             id: "WP-19",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -303,7 +303,7 @@ exports.water_pump_data =
         {
             id: "WP-20",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -318,7 +318,7 @@ exports.water_pump_data =
         {
             id: "WP-21",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -333,7 +333,7 @@ exports.water_pump_data =
         {
             id: "WP-22",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -348,7 +348,7 @@ exports.water_pump_data =
         {
             id: "WP-23",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -363,7 +363,7 @@ exports.water_pump_data =
         {
             id: "WP-24",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -378,7 +378,7 @@ exports.water_pump_data =
         {
             id: "WP-25",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -393,7 +393,7 @@ exports.water_pump_data =
         {
             id: "WP-26",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -408,7 +408,7 @@ exports.water_pump_data =
         {
             id: "WP-27",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",
@@ -423,7 +423,7 @@ exports.water_pump_data =
         {
             id: "WP-28",
             symbol: '\u25C8',
-            status: "on",
+            status: "ON", alert: "", recommended_action: "",
             description: "Installed since three month",
             rul: "900 ",
             risk: "10 %",

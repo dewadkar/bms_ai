@@ -51,9 +51,21 @@ module.exports = function (app) {
             });
     };
 
+    this.csvToJson = function (request, response) {
+        status.csvToJson(function (error, result) {
+            if (error) {
+                response.send(error);
+            } else {
+                response.send(result);
+            }
+        });
+
+    };
+
     // Digiset Page
     app.get('/waterPump', this.view);
     app.get('/waterPump/details/:id', this.viewTurbinesDetails);
     app.get('/waterPump/generate', this.generateData);
     app.get('/waterPump/status/:id', this.getTurbineDetails);
+    app.get('/waterPump/csvtojson', this.csvToJson);
 };
