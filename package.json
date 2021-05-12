@@ -10,7 +10,7 @@
     "admin-lte": "^2.4.15",
     "angular": "^1.7.8",
     "bootstrap-dialog": "^1.34.6",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "chartjs-plugin-datalabels": "^0.6.0",
     "cookie-parser": "~1.4.4",
     "csv-parser": "^2.3.0",
